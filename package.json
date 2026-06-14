@@ -7,14 +7,11 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
-    "db:up": "docker compose up -d",
-    "db:down": "docker compose down",
     "db:push": "node scripts/run-with-env.mjs \"npx prisma db push\"",
     "db:migrate": "node scripts/run-with-env.mjs \"npx prisma migrate dev\"",
     "db:seed": "node scripts/run-with-env.mjs \"npx tsx prisma/seed.ts\"",
-    "db:setup": "node scripts/db-setup.mjs",
     "db:studio": "prisma studio",
-    "deploy:do": "node scripts/deploy-digitalocean.mjs",
+    "docs:pdf": "node docs/generate-pdf.mjs",
     "postinstall": "prisma generate"
   },
   "engines": {

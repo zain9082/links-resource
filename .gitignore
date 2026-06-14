@@ -37,7 +37,6 @@ yarn-error.log*
 
 # vercel
 .vercel
-.do/app.deploy.yaml
 
 # typescript
 *.tsbuildinfo

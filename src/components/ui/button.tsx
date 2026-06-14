@@ -8,6 +8,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        audit:
+          "bg-gradient-purple text-white glow-shadow hover:shadow-[0_22px_70px_-18px_rgba(139,92,246,0.8)] hover:-translate-y-0.5",
         primary:
           "bg-gradient-purple text-white glow-shadow hover:shadow-[0_22px_70px_-18px_rgba(139,92,246,0.8)] hover:-translate-y-0.5",
         gradientBlue:

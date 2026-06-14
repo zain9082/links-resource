@@ -13,6 +13,7 @@ import { Check, Rocket } from "lucide-react";
 import { Particles } from "@/components/backgrounds/particles";
 import { HeroLeadForm } from "@/components/forms/hero-lead-form";
 import { HeroGradientHeading } from "@/components/shared/cursor-gradient-text";
+import { SeoAuditButton } from "@/components/seo-audit/seo-audit-button";
 import { Button } from "@/components/ui/button";
 import { heroBullets } from "@/lib/data";
 
@@ -95,7 +96,8 @@ export function Hero() {
               transition={{ delay: 0.25 }}
               className="mt-8 flex flex-wrap items-center gap-4"
             >
-              <Button asChild size="lg">
+              <SeoAuditButton size="lg" />
+              <Button asChild size="lg" variant="glass">
                 <Link href="/case-studies">View Case Study</Link>
               </Button>
               <div className="flex flex-wrap gap-2 text-xs text-muted">

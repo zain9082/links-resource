@@ -8,26 +8,19 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { navigateToHash } from "@/components/layout/hash-scroll";
-import { navbarLinkBuildingMenu, navbarMoreServicesMenu } from "@/lib/data";
+import { SeoAuditButton } from "@/components/seo-audit/seo-audit-button";
+import {
+  navbarServicesMenu,
+  type NavbarMenuItem,
+  type NavbarMenuSection,
+} from "@/lib/data";
 
 const links = [
-  { href: "/", label: "Home" },
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/#reviews", label: "Reviews" },
   { href: "/about", label: "About" },
 ];
 
-const mobileLinks = [
-  { href: "/", label: "Home" },
-  { href: "/resources?category=link-building", label: "Link Building Services" },
-  { href: "/resources?category=seo-tools", label: "More Services" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/#reviews", label: "Reviews" },
-  { href: "/contact", label: "Contact" },
-  { href: "/about", label: "About" },
-];
-
-const contactMenu = [
+const contactMenu: NavbarMenuItem[] = [
   {
     title: "Contact Us",
     description: "Talk with our team about your SEO and growth goals.",
@@ -56,9 +49,7 @@ const navLinkClass =
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [menu, setMenu] = useState<"link-building" | "more-services" | "contact" | null>(
-    null
-  );
+  const [menu, setMenu] = useState<"more-services" | "contact" | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -90,23 +81,6 @@ export function Navbar() {
           </Link>
 
           <div
-            onMouseEnter={() => setMenu("link-building")}
-            onMouseLeave={() => setMenu(null)}
-            className="relative shrink-0"
-          >
-            <button className={cn(navLinkClass, "inline-flex items-center gap-1")}>
-              <span className="hidden xl:inline">Link Building Services</span>
-              <span className="xl:hidden">Link Building</span>
-              <ChevronDown className="size-3.5 shrink-0 xl:size-4" />
-            </button>
-            <MegaMenu
-              open={menu === "link-building"}
-              title="Link Building SERVICES"
-              items={navbarLinkBuildingMenu}
-            />
-          </div>
-
-          <div
             onMouseEnter={() => setMenu("more-services")}
             onMouseLeave={() => setMenu(null)}
             className="relative shrink-0"
@@ -114,14 +88,10 @@ export function Navbar() {
             <button className={cn(navLinkClass, "inline-flex items-center gap-1")}>
               More Services <ChevronDown className="size-3.5 shrink-0 xl:size-4" />
             </button>
-            <MegaMenu
-              open={menu === "more-services"}
-              title="OUR SERVICES"
-              items={navbarMoreServicesMenu}
-            />
+            <ServicesMegaMenu open={menu === "more-services"} sections={navbarServicesMenu} />
           </div>
 
-          {links.slice(1).map((l) => (
+          {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -150,12 +120,11 @@ export function Navbar() {
           <Button asChild variant="ghost" size="sm" className="hidden xl:inline-flex">
             <Link href="/login">Sign in</Link>
           </Button>
-          <Button asChild size="sm" className="whitespace-nowrap text-xs xl:text-sm">
-            <Link href="/contact">
-              <span className="hidden xl:inline">Get Free Site Data Sample</span>
-              <span className="xl:hidden">Free Sample</span>
-            </Link>
-          </Button>
+          <SeoAuditButton
+            size="sm"
+            responsive
+            className="whitespace-nowrap text-xs xl:text-sm"
+          />
         </div>
 
         <button
@@ -176,7 +145,33 @@ export function Navbar() {
             className="mx-auto mt-2 max-w-[min(1440px,calc(100vw-1.5rem))] overflow-hidden rounded-2xl glass-strong p-3 lg:hidden"
           >
             <div className="flex flex-col gap-1">
-              {mobileLinks.map((l) => (
+              <Link
+                href="/"
+                onClick={() => setOpen(false)}
+                className="rounded-xl px-4 py-3 text-sm text-muted hover:bg-white/5 hover:text-white"
+              >
+                Home
+              </Link>
+
+              {navbarServicesMenu.map((section) => (
+                <div key={section.title} className="mt-1">
+                  <p className="px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-purple-2">
+                    {section.title}
+                  </p>
+                  {section.items.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="block rounded-xl px-4 py-2.5 text-sm text-muted hover:bg-white/5 hover:text-white"
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              ))}
+
+              {links.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
@@ -189,6 +184,15 @@ export function Navbar() {
                   {l.label}
                 </Link>
               ))}
+
+              <Link
+                href="/contact"
+                onClick={() => setOpen(false)}
+                className="rounded-xl px-4 py-3 text-sm text-muted hover:bg-white/5 hover:text-white"
+              >
+                Contact
+              </Link>
+
               <div className="mt-2 flex gap-2">
                 <ThemeToggle />
                 <Button asChild variant="outline" size="sm" className="flex-1">
@@ -196,17 +200,85 @@ export function Navbar() {
                     Sign in
                   </Link>
                 </Button>
-                <Button asChild size="sm" className="flex-1">
-                  <Link href="/contact" onClick={() => setOpen(false)}>
-                    Free Sample
-                  </Link>
-                </Button>
+                <SeoAuditButton
+                  size="sm"
+                  short
+                  className="flex-1"
+                  onOpen={() => setOpen(false)}
+                />
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </header>
+  );
+}
+
+function MenuItemCard({ item }: { item: NavbarMenuItem }) {
+  const cardClass =
+    "block rounded-xl border border-white/10 bg-bg-800/90 p-4 transition-colors hover:border-purple-2/30 hover:bg-bg-700/90";
+
+  if (item.href.startsWith("mailto:")) {
+    return (
+      <a href={item.href} className={cardClass}>
+        <h4 className="text-sm font-semibold text-white">{item.title}</h4>
+        <p className="mt-1 text-xs leading-relaxed text-muted">{item.description}</p>
+      </a>
+    );
+  }
+
+  return (
+    <Link href={item.href} className={cardClass}>
+      <h4 className="text-sm font-semibold text-white">{item.title}</h4>
+      <p className="mt-1 text-xs leading-relaxed text-muted">{item.description}</p>
+    </Link>
+  );
+}
+
+function ServicesMegaMenu({
+  open,
+  sections,
+}: {
+  open: boolean;
+  sections: NavbarMenuSection[];
+}) {
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 8 }}
+          transition={{ duration: 0.2 }}
+          className="absolute left-1/2 top-[calc(100%+8px)] z-50 w-[920px] -translate-x-1/2 rounded-2xl border border-white/15 bg-bg-800/95 p-5 shadow-2xl backdrop-blur-xl"
+        >
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-purple-2">
+            Our Services
+          </p>
+          <div className="grid grid-cols-2 gap-5">
+            {sections.map((section, index) => (
+              <div
+                key={section.title}
+                className={cn(
+                  "min-w-0",
+                  index > 0 && "border-l border-white/10 pl-5"
+                )}
+              >
+                <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/70">
+                  {section.title}
+                </p>
+                <div className="flex flex-col gap-2.5">
+                  {section.items.map((item) => (
+                    <MenuItemCard key={item.title} item={item} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -217,7 +289,7 @@ function MegaMenu({
 }: {
   open: boolean;
   title: string;
-  items: { title: string; description: string; href: string }[];
+  items: NavbarMenuItem[];
 }) {
   return (
     <AnimatePresence>
@@ -234,29 +306,7 @@ function MegaMenu({
           </p>
           <div className="grid grid-cols-2 gap-3">
             {items.map((item) => (
-              item.href.startsWith("mailto:") ? (
-                <a
-                  key={item.title}
-                  href={item.href}
-                  className="rounded-xl border border-white/10 bg-bg-800/90 p-4 transition-colors hover:bg-bg-700/90"
-                >
-                  <h4 className="text-sm font-semibold text-white">{item.title}</h4>
-                  <p className="mt-1 text-xs leading-relaxed text-muted">
-                    {item.description}
-                  </p>
-                </a>
-              ) : (
-                <Link
-                  key={item.title}
-                  href={item.href}
-                  className="rounded-xl border border-white/10 bg-bg-800/90 p-4 transition-colors hover:bg-bg-700/90"
-                >
-                  <h4 className="text-sm font-semibold text-white">{item.title}</h4>
-                  <p className="mt-1 text-xs leading-relaxed text-muted">
-                    {item.description}
-                  </p>
-                </Link>
-              )
+              <MenuItemCard key={item.title} item={item} />
             ))}
           </div>
         </motion.div>

@@ -3,13 +3,16 @@
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider, useTheme } from "next-themes";
 import { Toaster } from "sonner";
+import { SeoAuditProvider } from "@/components/seo-audit/seo-audit-provider";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <SessionProvider>
-        <ThemedToaster />
-        {children}
+        <SeoAuditProvider>
+          <ThemedToaster />
+          {children}
+        </SeoAuditProvider>
       </SessionProvider>
     </ThemeProvider>
   );

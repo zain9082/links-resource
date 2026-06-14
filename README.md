@@ -27,23 +27,13 @@ required** for browsing. Auth and persistence need a database.
 
 ## Database (optional, for auth + persistence)
 
+Use any PostgreSQL provider (Neon, Supabase, local Postgres, etc.) and set `DATABASE_URL` in `.env`.
+
 ```bash
-# Start Postgres (Docker) — uses port 5433 to avoid conflicts with other local DBs
-npm run db:up
-
-# One-command setup: start Docker, push schema, seed data
-npm run db:setup
-
-# Or step by step:
 npm run db:push
 npm run db:seed
-
-# Inspect data
-npm run db:studio
+npm run db:studio   # optional — browse data
 ```
-
-**Important:** Set `DATABASE_URL` in `.env` to this project only:
-`postgresql://postgres:postgres@localhost:5433/links_resource`
 
 Seeded admin: `admin@linksresource.com` — password is `SEED_ADMIN_PASSWORD` in `.env`
 

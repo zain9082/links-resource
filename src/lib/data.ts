@@ -53,6 +53,23 @@ export const heroBullets = [
   "Clear Reporting & Measurable Results",
 ];
 
+export const seoAuditContent = {
+  label: "Get My Free SEO Audit",
+  shortLabel: "Free SEO Audit",
+  badge: "Free SEO Audit",
+  title: "Instant SEO Audit for Your Website",
+  description:
+    "Enter your URL and get an immediate on-page SEO report — technical checks, content signals, and actionable recommendations.",
+  formTitle: "Analyze Your Website",
+  formSubtitle: "Complete the form below to generate your instant SEO audit report.",
+  benefits: [
+    "Technical SEO health and indexability checks",
+    "Title, meta, heading, and content analysis",
+    "Performance and mobile readiness signals",
+    "Clear pass, warning, and issue breakdown",
+  ],
+};
+
 export const leadFormGoals = [
   "SEO + GEO Services",
   "Link Building Services",
@@ -206,7 +223,24 @@ export const websiteMetrics: WebsiteMetric[] = [
   },
 ];
 
-export const navbarLinkBuildingMenu = [
+export type NavbarMenuItem = {
+  title: string;
+  description: string;
+  href: string;
+};
+
+export type NavbarMenuSection = {
+  title: string;
+  items: NavbarMenuItem[];
+};
+
+export const navbarLinkBuildingMenu: NavbarMenuItem[] = [
+  {
+    title: "Link Building Services",
+    description:
+      "Explore premium publications, packages, and scalable link building solutions.",
+    href: "/link-building-services",
+  },
   {
     title: "Editorial Guest Posting Services",
     description:
@@ -227,7 +261,7 @@ export const navbarLinkBuildingMenu = [
   },
 ];
 
-export const navbarMoreServicesMenu = [
+export const navbarMoreServicesMenu: NavbarMenuItem[] = [
   {
     title: "SEO Services",
     description:
@@ -253,6 +287,17 @@ export const navbarMoreServicesMenu = [
     title: "Web Development",
     description: "Build fast, conversion-focused websites designed for growth.",
     href: "/resources/web-design-development",
+  },
+];
+
+export const navbarServicesMenu: NavbarMenuSection[] = [
+  {
+    title: "Link Building Services",
+    items: navbarLinkBuildingMenu,
+  },
+  {
+    title: "SEO & Digital Marketing",
+    items: navbarMoreServicesMenu,
   },
 ];
 
