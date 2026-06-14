@@ -1,19 +1,51 @@
 "use client";
 
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { howItWorks } from "@/lib/data";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Reveal } from "@/components/shared/reveal";
 import { Check } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function HowItWorks() {
-  const ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [completed, setCompleted] = useState<boolean[]>(
+    () => howItWorks.map(() => false)
+  );
+
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: containerRef,
     offset: ["start end", "end start"],
   });
   const lineHeight = useTransform(scrollYProgress, [0.1, 0.8], ["0%", "100%"]);
+
+  const setStepRef = useCallback((index: number, el: HTMLDivElement | null) => {
+    stepRefs.current[index] = el;
+  }, []);
+
+  useEffect(() => {
+    const updateCompleted = () => {
+      const threshold = window.innerHeight * 0.52;
+      const next = howItWorks.map((_, i) => {
+        const el = stepRefs.current[i];
+        if (!el) return false;
+        return el.getBoundingClientRect().top < threshold;
+      });
+      setCompleted((prev) =>
+        prev.some((v, i) => v !== next[i]) ? next : prev
+      );
+    };
+
+    updateCompleted();
+    window.addEventListener("scroll", updateCompleted, { passive: true });
+    window.addEventListener("resize", updateCompleted, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", updateCompleted);
+      window.removeEventListener("resize", updateCompleted);
+    };
+  }, []);
 
   return (
     <section className="container-wide py-24">
@@ -28,8 +60,7 @@ export function HowItWorks() {
         subtitle="A clear, transparent workflow designed around measurable business growth."
       />
 
-      <div ref={ref} className="relative mt-16 max-w-3xl">
-        {/* Progress line */}
+      <div ref={containerRef} className="relative mt-16 max-w-3xl">
         <div className="absolute bottom-0 left-5 top-0 w-0.5 bg-white/10" />
         <motion.div
           style={{ height: lineHeight }}
@@ -39,16 +70,33 @@ export function HowItWorks() {
         <div className="space-y-6">
           {howItWorks.map((s, i) => (
             <Reveal key={s.index} delay={i}>
-              <div className="relative flex gap-6 pl-14">
-                {/* Step marker */}
+              <div
+                ref={(el) => setStepRef(i, el)}
+                className="relative flex gap-6 pl-14"
+              >
                 <div className="absolute left-0 top-6 z-10">
-                  <div className="grid size-10 place-items-center rounded-full border-2 border-purple/50 bg-bg-900 text-sm font-bold text-purple-2">
-                    {i === 0 ? (
-                      <Check className="size-4" />
-                    ) : (
-                      s.index.replace("0", "")
+                  <motion.div
+                    layout
+                    className={cn(
+                      "grid size-10 place-items-center rounded-full border-2 text-sm font-bold transition-colors duration-300",
+                      completed[i]
+                        ? "border-purple bg-gradient-purple text-white glow-shadow"
+                        : "border-purple/50 bg-bg-900 text-purple-2"
                     )}
-                  </div>
+                  >
+                    {completed[i] ? (
+                      <motion.span
+                        key="check"
+                        initial={{ scale: 0.5, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 22 }}
+                      >
+                        <Check className="size-4" strokeWidth={3} />
+                      </motion.span>
+                    ) : (
+                      <span>{s.index.replace("0", "")}</span>
+                    )}
+                  </motion.div>
                 </div>
 
                 <div className="glass glow-border flex-1 rounded-2xl p-6 sm:p-7">

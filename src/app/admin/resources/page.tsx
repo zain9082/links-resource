@@ -5,9 +5,9 @@ import { resources, getCategoryBySlug } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatNumber } from "@/lib/utils";
-import { buildMetadata } from "@/lib/seo";
+import { buildAdminMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({ title: "Admin · Resources" });
+export const metadata: Metadata = buildAdminMetadata("Admin · Resources", "/admin/resources");
 
 export default function AdminResources() {
   return (

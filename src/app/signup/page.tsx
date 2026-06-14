@@ -4,7 +4,9 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Sign up",
+  description: "Create your Links Resource account to save favorites and track resources.",
   path: "/signup",
+  noindex: true,
 });
 
 export default function SignupPage() {

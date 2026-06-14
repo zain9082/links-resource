@@ -3,10 +3,10 @@ import { Plus } from "lucide-react";
 import { categories, getResourcesByCategory } from "@/lib/data";
 import { Icon } from "@/components/shared/icon";
 import { Button } from "@/components/ui/button";
-import { buildMetadata } from "@/lib/seo";
+import { buildAdminMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = buildMetadata({ title: "Admin · Categories" });
+export const metadata: Metadata = buildAdminMetadata("Admin · Categories", "/admin/categories");
 
 const grad: Record<string, string> = {
   purple: "bg-gradient-purple",

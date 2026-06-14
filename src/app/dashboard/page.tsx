@@ -8,7 +8,11 @@ import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/shared/page-header";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({ title: "Dashboard" });
+export const metadata: Metadata = buildMetadata({
+  title: "Dashboard",
+  path: "/dashboard",
+  noindex: true,
+});
 
 export default async function DashboardPage() {
   let session = null;

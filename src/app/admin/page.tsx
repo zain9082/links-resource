@@ -4,9 +4,9 @@ import { resources, categories, tags } from "@/lib/data";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { Badge } from "@/components/ui/badge";
 import { formatNumber } from "@/lib/utils";
-import { buildMetadata } from "@/lib/seo";
+import { buildAdminMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({ title: "Admin · Overview" });
+export const metadata: Metadata = buildAdminMetadata("Admin · Overview", "/admin");
 
 export default function AdminOverview() {
   const totalViews = resources.reduce((s, r) => s + r.views, 0);

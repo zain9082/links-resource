@@ -11,6 +11,8 @@ import type {
   Partnership,
   Placement,
   WebsiteMetric,
+  ServicePageContent,
+  TeamMember,
 } from "./types";
 
 /* ============================================================
@@ -28,10 +30,10 @@ export const site = {
   phone: "+44 7476 606752",
   address: "0/1 7 Aberfoyle Street, Glasgow, United Kingdom, G31 3RW",
   socials: {
-    facebook: "https://facebook.com",
-    x: "https://x.com",
-    instagram: "https://instagram.com",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://www.linkedin.com/company/links-resource-ltd",
+    facebook: "https://www.facebook.com/linksresourceltd",
+    x: "https://x.com/LinksResource",
+    instagram: "https://www.instagram.com/linksresourceltd",
   },
 };
 
@@ -206,12 +208,6 @@ export const websiteMetrics: WebsiteMetric[] = [
 
 export const navbarLinkBuildingMenu = [
   {
-    title: "Link Building Services",
-    description:
-      "Link building services built to increase authority, improve rankings, and generate consistent organic growth.",
-    href: "/resources?category=link-building",
-  },
-  {
     title: "Editorial Guest Posting Services",
     description:
       "Custom outreach campaigns that improve rankings, traffic and brand visibility.",
@@ -236,7 +232,7 @@ export const navbarMoreServicesMenu = [
     title: "SEO Services",
     description:
       "Data-driven strategies to boost rankings, traffic and conversions.",
-    href: "/resources?category=seo-tools",
+    href: "/resources/technical-seo-audit",
   },
   {
     title: "Boost DA/DR",
@@ -252,6 +248,11 @@ export const navbarMoreServicesMenu = [
     title: "Local SEO",
     description: "Improve local rankings and attract nearby customers.",
     href: "/resources/local-seo",
+  },
+  {
+    title: "Web Development",
+    description: "Build fast, conversion-focused websites designed for growth.",
+    href: "/resources/web-design-development",
   },
 ];
 
@@ -367,7 +368,7 @@ export const aboutPageContent = {
       {
         title: "Website Development",
         body: "Build fast, responsive, and user-friendly websites designed for performance and business growth.",
-        href: "/resources?category=web-development",
+        href: "/resources/web-design-development",
       },
       {
         title: "Local SEO Services",
@@ -377,7 +378,7 @@ export const aboutPageContent = {
       {
         title: "Technical SEO Optimization",
         body: "Improve website structure, indexing, performance, and technical health for better search visibility.",
-        href: "/resources/technical-seo",
+        href: "/resources/technical-seo-audit",
       },
       {
         title: "Guest Posting & Outreach",
@@ -391,6 +392,38 @@ export const aboutPageContent = {
     body: "Whether you need SEO, website development, content writing, or digital growth support, we're here to help you find the right strategy for your business goals.",
     button: "Get A Free Quote",
   },
+};
+
+export const teamPageContent = {
+  title: "Meet the Team Behind Your SEO Growth",
+  subtitle:
+    "A dedicated group of outreach, SEO, and content specialists focused on delivering measurable business growth.",
+  trustHeading: "Why Clients Trust Our Team",
+  trustPoints: [
+    "Skilled specialists with hands-on campaign experience",
+    "Clear communication and transparent reporting",
+    "Reliable quality checks before every delivery",
+    "Business-first execution focused on outcomes",
+  ],
+  workflowHeading: "From Strategy To Rankings",
+  workflow: [
+    {
+      title: "Analyze Your Website",
+      body: "We review your goals, audience, and current SEO position before planning campaigns.",
+    },
+    {
+      title: "Build a Custom Growth Plan",
+      body: "Your strategy is tailored to your niche, competition level, and growth targets.",
+    },
+    {
+      title: "Secure Quality Placements",
+      body: "Our team executes outreach and content workflows focused on quality and relevance.",
+    },
+    {
+      title: "Track Growth & Performance",
+      body: "You get clear reporting and ongoing optimization recommendations every month.",
+    },
+  ],
 };
 
 export const consultationBanner = {
@@ -676,6 +709,916 @@ export const resources: Resource[] = [
 ];
 
 /* ============================================================
+   Dynamic service pages — built from legacy service layouts
+   ============================================================ */
+export const servicePages: ServicePageContent[] = [
+  {
+    slug: "technical-seo-audit",
+    eyebrow: "SEO Services",
+    title: "Rank Higher with Data-Driven SEO Strategies",
+    subtitle:
+      "Custom SEO campaigns that improve rankings, traffic quality, and conversion opportunities for long-term growth.",
+    heroPoints: [
+      "On-page, technical, and off-page SEO execution",
+      "Keyword clusters and intent mapping",
+      "Transparent monthly reporting and KPI tracking",
+      "Built for sustainable growth, not quick wins",
+    ],
+    stats: [
+      { label: "Keywords Ranked", value: "5,360", delta: "+28%" },
+      { label: "Monthly Organic Traffic", value: "2,300", delta: "+421%" },
+      { label: "Referring Domains", value: "2,480", delta: "+15%" },
+      { label: "Average DR Growth", value: "72", delta: "+12%" },
+    ],
+    packages: [
+      {
+        name: "Starter SEO",
+        price: "$299",
+        period: "/month",
+        description: "For small websites building organic foundations.",
+        features: [
+          "Keyword research and mapping",
+          "On-page optimization",
+          "Technical SEO checkup",
+          "Monthly reporting dashboard",
+        ],
+      },
+      {
+        name: "Growth SEO",
+        price: "$499",
+        period: "/month",
+        description: "For scaling websites targeting competitive keywords.",
+        features: [
+          "Everything in Starter",
+          "Content optimization briefs",
+          "Internal link optimization",
+          "Authority strategy planning",
+        ],
+      },
+      {
+        name: "Dominance SEO",
+        price: "$899",
+        period: "/month",
+        description: "For brands needing aggressive SEO growth.",
+        features: [
+          "Everything in Growth",
+          "Advanced technical fixes",
+          "Competitor gap campaigns",
+          "Conversion-first tracking",
+        ],
+      },
+    ],
+    whyTitle: "Why Our SEO Strategy Delivers Better Results",
+    whyDescription:
+      "We blend technical optimization, authority campaigns, and user-intent content to build compounding search growth.",
+    whyPoints: [
+      "Focused on buyer intent and commercial keywords",
+      "Content + technical + authority executed as one system",
+      "Transparent reporting with clear growth milestones",
+      "Strategies adapted monthly from real performance data",
+    ],
+    processTitle: "Our SEO Growth Process",
+    processSteps: [
+      {
+        title: "Audit & Opportunity Mapping",
+        description:
+          "We audit your current website performance, rankings, and competitors to identify the fastest growth opportunities.",
+      },
+      {
+        title: "SEO Strategy & Roadmap",
+        description:
+          "We build a prioritized roadmap covering technical fixes, content priorities, and authority campaigns.",
+      },
+      {
+        title: "Implementation & Optimization",
+        description:
+          "Our team executes improvements and continuously optimizes pages and campaigns based on performance.",
+      },
+      {
+        title: "Tracking, Reporting & Scale",
+        description:
+          "We monitor rankings, traffic, and conversions, then expand what is performing best.",
+      },
+    ],
+    deliverablesTitle: "What You Get",
+    deliverables: [
+      "Technical SEO fixes and health monitoring",
+      "Keyword maps and page-level optimization",
+      "Monthly SEO progress reports",
+      "Competitor and content gap insights",
+      "Conversion-oriented recommendations",
+      "Dedicated strategist support",
+    ],
+    sampleLogos: ["/logos/google.svg", "/logos/semrush.svg", "/logos/stripe.svg", "/logos/paypal.svg"],
+    faqTitle: "FAQs",
+    faq: [
+      {
+        q: "How long does SEO take to show results?",
+        a: "Most campaigns start seeing meaningful movement in 8-12 weeks, while stronger compounding growth happens over 4-6 months.",
+      },
+      {
+        q: "Do you offer local and national SEO?",
+        a: "Yes. We run both local SEO campaigns and broader national/international strategies based on your business goals.",
+      },
+      {
+        q: "Will I receive monthly reports?",
+        a: "Yes. You get transparent monthly reporting with rankings, traffic, visibility, and action updates.",
+      },
+    ],
+    ctaTitle: "Ready To Grow Your Business?",
+    ctaButton: "Get Free Proposal",
+  },
+  {
+    slug: "seo-content-writing",
+    eyebrow: "SEO Content Writing",
+    title: "Rank-Ready Content Designed to Convert",
+    subtitle:
+      "SEO-focused content production that improves visibility, authority, and qualified traffic across your key pages.",
+    heroPoints: [
+      "Keyword-focused editorial planning",
+      "Brand-matched writing tone and voice",
+      "On-page SEO formatting and optimization",
+      "Content designed for rankings and conversions",
+    ],
+    stats: [
+      { label: "Articles Published", value: "800", delta: "+150%" },
+      { label: "Monthly Traffic Lift", value: "4,100", delta: "+412%" },
+      { label: "Keywords Indexed", value: "2,700", delta: "+210%" },
+      { label: "Avg. Content Score", value: "91/100", delta: "+18%" },
+    ],
+    packages: [
+      {
+        name: "Basic Content",
+        price: "$20",
+        period: "/article",
+        description: "SEO blog posts for foundational growth.",
+        features: [
+          "Keyword-focused outline",
+          "SEO-ready headings and structure",
+          "Human-written content",
+          "Basic optimization notes",
+        ],
+      },
+      {
+        name: "Growth Content",
+        price: "$40",
+        period: "/article",
+        description: "Conversion-focused content for scaling sites.",
+        features: [
+          "Everything in Basic",
+          "Search intent optimization",
+          "Internal link suggestions",
+          "Enhanced readability tuning",
+        ],
+      },
+      {
+        name: "Authority Content",
+        price: "$70",
+        period: "/article",
+        description: "High-performance content for competitive niches.",
+        features: [
+          "Everything in Growth",
+          "SERP competitor gap mapping",
+          "CTA and conversion copy layers",
+          "Advanced editorial QA",
+        ],
+      },
+    ],
+    whyTitle: "Why Our Content Strategy Works Better",
+    whyDescription:
+      "Our writing process aligns keyword intent, topical depth, and conversion flow so pages rank and perform.",
+    whyPoints: [
+      "SEO-first planning before writing starts",
+      "Editorial quality designed for brand trust",
+      "Content built for both users and search engines",
+      "Performance optimization after publishing",
+    ],
+    processTitle: "Simple Content Creation Process",
+    processSteps: [
+      {
+        title: "Research & Topic Planning",
+        description:
+          "We map topics, keyword clusters, and content priorities around your business goals.",
+      },
+      {
+        title: "Writing & Optimization",
+        description:
+          "Our team writes content with SEO structure, readability, and conversion flow in mind.",
+      },
+      {
+        title: "Review & Publish Support",
+        description:
+          "We deliver publication-ready drafts with formatting and optimization recommendations.",
+      },
+      {
+        title: "Performance Refresh",
+        description:
+          "We monitor published content and recommend updates to strengthen rankings over time.",
+      },
+    ],
+    deliverablesTitle: "What You Get",
+    deliverables: [
+      "SEO-focused content briefs",
+      "Human-written optimized articles",
+      "Meta title and meta description suggestions",
+      "Internal linking recommendations",
+      "Editorial proofreading and QA",
+      "Optional monthly content calendar",
+    ],
+    sampleLogos: ["/logos/google.svg", "/logos/googlepay.svg", "/logos/semrush.svg", "/logos/binance.svg"],
+    faqTitle: "FAQs",
+    faq: [
+      {
+        q: "Can you match our existing brand tone?",
+        a: "Yes. We align each piece with your preferred voice, positioning, and audience style guidelines.",
+      },
+      {
+        q: "Do you include keyword research?",
+        a: "Yes. Every package includes keyword mapping and topic targeting to support ranking growth.",
+      },
+      {
+        q: "Can your team upload content to our CMS?",
+        a: "Yes. We can support formatting and publishing workflows for WordPress and similar platforms.",
+      },
+    ],
+    ctaTitle: "Ready To Rank Higher with Powerful Content?",
+    ctaButton: "Get Free Proposal",
+  },
+  {
+    slug: "da-dr-boost",
+    eyebrow: "DA / DR Boost",
+    title: "Build Authority with High-Quality Mentions",
+    subtitle:
+      "Secure trusted placements and links from relevant websites that improve domain strength and SEO performance.",
+    heroPoints: [
+      "Niche-relevant, quality-first placements",
+      "Real websites with organic traffic",
+      "Safe anchor strategy and manual outreach",
+      "Monthly authority growth tracking",
+    ],
+    stats: [
+      { label: "Avg DA Increase", value: "22", delta: "+180%" },
+      { label: "Avg DR Increase", value: "18", delta: "+150%" },
+      { label: "Placement Success", value: "89%", delta: "+25%" },
+      { label: "Client Retention", value: "94%", delta: "+19%" },
+    ],
+    packages: [
+      {
+        name: "Starter Boost",
+        price: "$250",
+        period: "/month",
+        description: "For new sites improving baseline authority.",
+        features: [
+          "Manual outreach placement list",
+          "Niche-relevant opportunities",
+          "Anchor strategy guidance",
+          "Monthly progress report",
+        ],
+      },
+      {
+        name: "Growth Boost",
+        price: "$500",
+        period: "/month",
+        description: "For growing domains needing faster trust signals.",
+        features: [
+          "Everything in Starter",
+          "Higher-authority placement mix",
+          "Competitor authority comparison",
+          "Priority campaign execution",
+        ],
+      },
+      {
+        name: "Authority Boost",
+        price: "$900",
+        period: "/month",
+        description: "For aggressive authority and ranking campaigns.",
+        features: [
+          "Everything in Growth",
+          "Premium outreach network",
+          "Advanced performance tracking",
+          "Dedicated campaign manager",
+        ],
+      },
+    ],
+    whyTitle: "What Sets Our Link Building Results Apart",
+    whyDescription:
+      "Our focus is quality relevance and long-term impact instead of bulk link quantity.",
+    whyPoints: [
+      "Manual vetting for every placement",
+      "Contextual links from relevant content",
+      "No risky automation or spam tactics",
+      "Built to support sustained organic growth",
+    ],
+    processTitle: "Link Building Methods We Use",
+    processSteps: [
+      {
+        title: "Prospect Research",
+        description:
+          "We identify websites aligned with your niche, audience, and quality requirements.",
+      },
+      {
+        title: "Outreach & Relationship Building",
+        description:
+          "Our team runs manual outreach to secure relevant and trustworthy placement opportunities.",
+      },
+      {
+        title: "Content Placement",
+        description:
+          "We place contextual links in high-quality content with safe anchor optimization.",
+      },
+      {
+        title: "Reporting & Growth Reviews",
+        description:
+          "You receive transparent placement reports, authority movement, and next-step recommendations.",
+      },
+    ],
+    deliverablesTitle: "Explore More Digital Growth Services",
+    deliverables: [
+      "Editorial guest posting",
+      "White-label outreach support",
+      "On-page SEO alignment",
+      "Content writing for placements",
+      "Monthly campaign planning",
+      "Authority performance dashboard",
+    ],
+    sampleLogos: ["/logos/semrush.svg", "/logos/google.svg", "/logos/stripe.svg", "/logos/binance.svg"],
+    faqTitle: "FAQs",
+    faq: [
+      {
+        q: "Do you guarantee specific DA/DR numbers?",
+        a: "We do not guarantee exact third-party metrics, but we build campaigns designed to improve authority signals safely and consistently.",
+      },
+      {
+        q: "Are links built manually?",
+        a: "Yes. We rely on manual outreach and quality vetting, not automated link blasts.",
+      },
+      {
+        q: "Can this help ranking growth?",
+        a: "Yes, stronger authority usually supports improved rankings when paired with technical and content optimization.",
+      },
+    ],
+    ctaTitle: "Ready To Grow Your Business?",
+    ctaButton: "Get Free Proposal",
+  },
+  {
+    slug: "web-design-development",
+    eyebrow: "Web Development",
+    title: "Build Fast, Conversion-Focused Websites",
+    subtitle:
+      "Modern websites designed for performance, usability, and business growth with clean UX and scalable architecture.",
+    heroPoints: [
+      "Responsive, mobile-first design system",
+      "SEO-ready architecture and page speed",
+      "Conversion-focused page layouts",
+      "Reliable support after launch",
+    ],
+    stats: [
+      { label: "Avg Load Speed", value: "1.8s", delta: "+52%" },
+      { label: "Mobile Score", value: "90+", delta: "+38%" },
+      { label: "Conversion Uplift", value: "32%", delta: "+21%" },
+      { label: "Client Satisfaction", value: "96%", delta: "+18%" },
+    ],
+    packages: [
+      {
+        name: "Starter Site",
+        price: "$399",
+        period: "/one-time",
+        description: "For businesses launching their first conversion-ready site.",
+        features: [
+          "Up to 5 custom pages",
+          "Mobile responsive design",
+          "Basic speed optimization",
+          "Contact form integration",
+        ],
+      },
+      {
+        name: "Business Site",
+        price: "$899",
+        period: "/one-time",
+        description: "For teams needing stronger performance and flexibility.",
+        features: [
+          "Everything in Starter",
+          "Service-focused landing pages",
+          "On-page SEO structure",
+          "CMS-friendly setup",
+        ],
+      },
+      {
+        name: "Scale Site",
+        price: "$1499",
+        period: "/one-time",
+        description: "For growth brands with advanced requirements.",
+        features: [
+          "Everything in Business",
+          "Advanced UX conversion flow",
+          "Performance-first architecture",
+          "Technical support handover",
+        ],
+      },
+    ],
+    whyTitle: "Why Our Web Development Stands Out",
+    whyDescription:
+      "We design and build websites as growth assets, not just design mockups.",
+    whyPoints: [
+      "Built for speed, SEO, and usability",
+      "Design decisions tied to business goals",
+      "Scalable structure for future updates",
+      "Clear communication from discovery to launch",
+    ],
+    processTitle: "Simple Development Process",
+    processSteps: [
+      {
+        title: "Discovery",
+        description:
+          "We gather goals, brand direction, user needs, and key conversion actions.",
+      },
+      {
+        title: "Design & Build",
+        description:
+          "Our team designs responsive UI and develops clean, performance-optimized pages.",
+      },
+      {
+        title: "QA & Launch",
+        description:
+          "We test across devices, optimize critical paths, and launch with confidence.",
+      },
+      {
+        title: "Ongoing Optimization",
+        description:
+          "Post-launch improvements help keep the website fast, relevant, and conversion-ready.",
+      },
+    ],
+    deliverablesTitle: "What You Get",
+    deliverables: [
+      "Custom responsive page layouts",
+      "SEO-friendly website structure",
+      "Fast-loading performance setup",
+      "Lead form and conversion tracking",
+      "Editable content-ready sections",
+      "Launch and support checklist",
+    ],
+    sampleLogos: ["/logos/stripe.svg", "/logos/googlepay.svg", "/logos/paypal.svg", "/logos/google.svg"],
+    faqTitle: "FAQs",
+    faq: [
+      {
+        q: "Do you build on WordPress and custom stacks?",
+        a: "Yes. We support WordPress and modern custom web stacks depending on project needs.",
+      },
+      {
+        q: "Will the website be mobile optimized?",
+        a: "Absolutely. Every build is responsive and tested for mobile performance and usability.",
+      },
+      {
+        q: "Can you redesign our existing website?",
+        a: "Yes. We can rebuild or upgrade your current site while preserving important SEO assets.",
+      },
+    ],
+    ctaTitle: "Ready To Build a Powerful Website?",
+    ctaButton: "Get Free Proposal",
+  },
+  {
+    slug: "local-seo",
+    eyebrow: "Local SEO",
+    title: "Get Found in Google Maps & Local Search",
+    subtitle:
+      "Local SEO campaigns that improve map visibility, location rankings, and lead quality for service-area businesses.",
+    heroPoints: [
+      "Google Business Profile optimization",
+      "Location page and citation strategy",
+      "Local keyword and intent targeting",
+      "Monthly rankings and lead tracking",
+    ],
+    stats: [
+      { label: "Map Visibility", value: "+900%", delta: "+74%" },
+      { label: "Calls from Local SEO", value: "134", delta: "+61%" },
+      { label: "Qualified Leads", value: "61", delta: "+42%" },
+      { label: "Avg Timeline", value: "10 weeks", delta: "steady" },
+    ],
+    packages: [
+      {
+        name: "Starter Local SEO",
+        price: "$249",
+        period: "/month",
+        description: "For single-location businesses starting local growth.",
+        features: [
+          "Google profile optimization",
+          "Core citation cleanup",
+          "Local keyword mapping",
+          "Monthly report",
+        ],
+      },
+      {
+        name: "Growth Local SEO",
+        price: "$399",
+        period: "/month",
+        description: "For businesses aiming to dominate their city market.",
+        features: [
+          "Everything in Starter",
+          "Local landing page optimization",
+          "Review growth framework",
+          "Competitor local analysis",
+        ],
+      },
+      {
+        name: "Multi-Location SEO",
+        price: "$699",
+        period: "/month",
+        description: "For brands with multiple locations and service regions.",
+        features: [
+          "Everything in Growth",
+          "Multi-location campaign setup",
+          "Scalable local content strategy",
+          "Advanced local rank tracking",
+        ],
+      },
+    ],
+    whyTitle: "Why Local SEO Matters",
+    whyDescription:
+      "Local intent searches convert fast. We build campaigns that turn nearby demand into measurable leads.",
+    whyPoints: [
+      "Map pack visibility for high-intent searches",
+      "Optimized business listings across directories",
+      "Localized content strategy for service regions",
+      "Focused growth from calls, direction requests, and leads",
+    ],
+    processTitle: "Simple Local SEO Process",
+    processSteps: [
+      {
+        title: "Local Audit",
+        description:
+          "We evaluate your profile, citations, local rankings, and nearby competitors.",
+      },
+      {
+        title: "Optimization Setup",
+        description:
+          "We optimize listings, pages, and local signals to improve relevance and trust.",
+      },
+      {
+        title: "Authority & Reviews",
+        description:
+          "We strengthen local authority with review strategy and citation consistency.",
+      },
+      {
+        title: "Performance Tracking",
+        description:
+          "You receive local ranking and lead reports with ongoing improvement recommendations.",
+      },
+    ],
+    deliverablesTitle: "What You Get",
+    deliverables: [
+      "Google Business Profile improvements",
+      "Citation consistency and cleanup",
+      "Local keyword and page optimization",
+      "Review growth recommendations",
+      "Lead and call tracking insights",
+      "Monthly local growth roadmap",
+    ],
+    sampleLogos: ["/logos/google.svg", "/logos/semrush.svg", "/logos/googlepay.svg", "/logos/paypal.svg"],
+    faqTitle: "FAQs",
+    faq: [
+      {
+        q: "Can local SEO help service-area businesses?",
+        a: "Yes. We build campaigns for both storefront and service-area businesses targeting nearby customers.",
+      },
+      {
+        q: "How quickly can map rankings improve?",
+        a: "Many businesses see early movement in 4-8 weeks, with stronger consistency over 2-4 months.",
+      },
+      {
+        q: "Do you manage Google Business Profile updates?",
+        a: "Yes. We support profile optimization, updates, and strategic posting guidance.",
+      },
+    ],
+    ctaTitle: "Want More Local Customers Finding Your Business?",
+    ctaButton: "Get Free Proposal",
+  },
+  {
+    slug: "editorial-guest-posting",
+    eyebrow: "Editorial Guest Posting",
+    title: "Guest Posting Campaigns That Support Long-Term SEO Growth",
+    subtitle:
+      "Manual outreach and placement campaigns to secure contextual backlinks on trusted, niche-relevant websites.",
+    heroPoints: [
+      "Manual outreach and real relationships",
+      "No PBNs, no spammy automation",
+      "Niche-relevant contextual placements",
+      "Transparent live campaign reporting",
+    ],
+    stats: [
+      { label: "Placements Delivered", value: "89+", delta: "monthly" },
+      { label: "Average DR Mix", value: "50-90", delta: "quality" },
+      { label: "Link Approval Rate", value: "82%", delta: "+23%" },
+      { label: "Avg Growth Timeline", value: "3-6 mo", delta: "steady" },
+    ],
+    packages: [
+      {
+        name: "Starter Outreach",
+        price: "$89",
+        period: "/link",
+        description: "For businesses building foundational link equity.",
+        features: [
+          "Manual outreach campaign",
+          "Niche-relevant publisher selection",
+          "Contextual in-content links",
+          "Reporting with live URLs",
+        ],
+      },
+      {
+        name: "Growth Outreach",
+        price: "$149",
+        period: "/link",
+        description: "For campaigns focused on stronger authority lift.",
+        features: [
+          "Everything in Starter",
+          "Higher-authority publisher mix",
+          "Anchor strategy alignment",
+          "Priority turnaround window",
+        ],
+      },
+      {
+        name: "Agency Outreach",
+        price: "$249",
+        period: "/link",
+        description: "For agencies and brands requiring scale.",
+        features: [
+          "Everything in Growth",
+          "White-label reporting options",
+          "Multi-campaign planning",
+          "Dedicated account support",
+        ],
+      },
+    ],
+    whyTitle: "How Our Guest Posting Process Works",
+    whyDescription:
+      "Every campaign is planned for quality, relevance, and sustainability to protect long-term rankings.",
+    whyPoints: [
+      "Prospect qualification by niche fit and metrics",
+      "Custom outreach with real editors and webmasters",
+      "Contextual placement in relevant content",
+      "Clear reporting from first prospect to live link",
+    ],
+    processTitle: "How Our Guest Posting Process Works",
+    processSteps: [
+      {
+        title: "Prospect Research",
+        description:
+          "We identify relevant websites aligned with your niche and campaign objectives.",
+      },
+      {
+        title: "Manual Outreach",
+        description:
+          "Our team runs personalized outreach to secure high-quality editorial opportunities.",
+      },
+      {
+        title: "Content & Placement",
+        description:
+          "We place contextual, natural links inside quality content built for user and SEO value.",
+      },
+      {
+        title: "Reporting & Optimization",
+        description:
+          "You receive live placement reports and strategy improvements for upcoming cycles.",
+      },
+    ],
+    deliverablesTitle: "What You Get",
+    deliverables: [
+      "Pre-vetted niche-relevant prospects",
+      "Manual outreach and deal handling",
+      "Contextual editorial placements",
+      "Anchor text strategy support",
+      "Live placement and metric reporting",
+      "Scalable monthly campaign plans",
+    ],
+    sampleLogos: ["/logos/google.svg", "/logos/semrush.svg", "/logos/binance.svg", "/logos/stripe.svg"],
+    faqTitle: "FAQs",
+    faq: [
+      {
+        q: "Do you use private blog networks?",
+        a: "No. We focus on real outreach and editorial placements on genuine websites.",
+      },
+      {
+        q: "Can I review sites before publishing?",
+        a: "Yes. We can provide a pre-approval workflow based on your campaign package.",
+      },
+      {
+        q: "Is guest posting safe for long-term SEO?",
+        a: "Yes, when done ethically with relevance and quality controls, which is exactly how we operate.",
+      },
+    ],
+    ctaTitle: "Get a Free Digital Growth Consultation",
+    ctaButton: "Get Free Proposal",
+  },
+  {
+    slug: "editorial-link-building",
+    eyebrow: "Editorial Link Building",
+    title: "Editorial Links from Real Websites That Drive Rankings",
+    subtitle:
+      "Authority-focused editorial link campaigns built through manual outreach and relevant placements.",
+    heroPoints: [
+      "Editorial placements on relevant sites",
+      "Manual outreach with vetted publishers",
+      "Campaigns aligned to niche relevance",
+      "Monthly reporting and clear visibility",
+    ],
+    stats: [
+      { label: "Placement Quality Mix", value: "DR 50-90", delta: "high" },
+      { label: "Average Approval Rate", value: "84%", delta: "+17%" },
+      { label: "Campaign Retention", value: "91%", delta: "+13%" },
+      { label: "Organic Lift", value: "2.4x", delta: "+26%" },
+    ],
+    packages: [
+      {
+        name: "Starter Editorial",
+        price: "$100",
+        period: "/link",
+        description: "For businesses starting high-quality link acquisition.",
+        features: [
+          "Manual outreach to niche publishers",
+          "Contextual editorial link placements",
+          "Quality checks and domain vetting",
+          "Transparent reporting",
+        ],
+      },
+      {
+        name: "Growth Editorial",
+        price: "$180",
+        period: "/link",
+        description: "For stronger authority campaigns in competitive sectors.",
+        features: [
+          "Everything in Starter",
+          "Higher-authority publisher mix",
+          "Anchor strategy planning",
+          "Priority delivery windows",
+        ],
+      },
+    ],
+    whyTitle: "How Our Editorial Outreach Process Works",
+    whyDescription:
+      "We prioritize quality, relevance, and editorial integrity to support sustainable ranking growth.",
+    whyPoints: [
+      "Manual prospect selection for every campaign",
+      "Contextual placements built for users and SEO",
+      "Publisher quality vetting before placement",
+      "Performance-focused campaign iteration",
+    ],
+    processTitle: "How Our Editorial Outreach Process Works",
+    processSteps: [
+      {
+        title: "Website Prospect Discovery",
+        description:
+          "We identify highly relevant publishers based on niche fit, authority, and content quality.",
+      },
+      {
+        title: "Manual Outreach & Negotiation",
+        description:
+          "Our team handles communication and placement negotiation to secure quality opportunities.",
+      },
+      {
+        title: "Placement & QA Review",
+        description:
+          "Each placement is reviewed for context, anchor quality, and long-term SEO safety.",
+      },
+      {
+        title: "Reporting & Next Campaign",
+        description:
+          "You receive live reports with performance updates and suggestions for the next cycle.",
+      },
+    ],
+    deliverablesTitle: "What You Get",
+    deliverables: [
+      "Niche-relevant publisher outreach",
+      "Contextual editorial placements",
+      "Campaign-quality filters and checks",
+      "Anchor optimization guidance",
+      "Live link and metric reporting",
+      "Monthly campaign recommendations",
+    ],
+    sampleLogos: ["/logos/google.svg", "/logos/semrush.svg", "/logos/stripe.svg", "/logos/paypal.svg"],
+    faqTitle: "FAQs",
+    faq: [
+      {
+        q: "Are placements on real websites?",
+        a: "Yes. We focus on real publishers with organic activity and content relevance.",
+      },
+      {
+        q: "Can I scale this monthly?",
+        a: "Yes. Editorial campaigns can be scaled month by month based on goals and competition.",
+      },
+      {
+        q: "Do you provide transparent reports?",
+        a: "Yes. You receive complete link-level reporting with campaign updates.",
+      },
+    ],
+    ctaTitle: "Get a Free Digital Growth Consultation",
+    ctaButton: "Get Free Proposal",
+  },
+  {
+    slug: "white-label-link-building",
+    eyebrow: "White Label Link Building",
+    title: "White Label Link Building Services for SEO Agencies",
+    subtitle:
+      "Scalable outreach and backlink delivery designed for agencies that need quality and consistency.",
+    heroPoints: [
+      "Agency-ready campaign workflows",
+      "Consistent white-label reporting",
+      "Manual outreach and editorial quality",
+      "Built for monthly scaling",
+    ],
+    stats: [
+      { label: "Agency Retention", value: "93%", delta: "+21%" },
+      { label: "Average Delivery", value: "100+ links/mo", delta: "scaled" },
+      { label: "Client Approval", value: "89%", delta: "+19%" },
+      { label: "Campaign Growth", value: "2.2x", delta: "+24%" },
+    ],
+    packages: [
+      {
+        name: "Starter White Label",
+        price: "$100",
+        period: "/link",
+        description: "For agencies building repeatable link delivery systems.",
+        features: [
+          "Manual outreach placement campaigns",
+          "White-label ready reporting",
+          "Niche-relevant website targeting",
+          "Monthly strategy alignment",
+        ],
+      },
+      {
+        name: "Scale White Label",
+        price: "$190",
+        period: "/link",
+        description: "For agencies requiring premium placement quality and volume.",
+        features: [
+          "Everything in Starter",
+          "Higher authority placement mix",
+          "Priority campaign management",
+          "Dedicated account coordination",
+        ],
+      },
+    ],
+    whyTitle: "How Our Outreach Process Works",
+    whyDescription:
+      "Our white-label model keeps delivery quality high while giving agencies clear, client-ready reporting.",
+    whyPoints: [
+      "Built for agency workflows and handoff",
+      "Quality-first publisher selection",
+      "Transparent delivery updates every cycle",
+      "Scalable system for long-term growth",
+    ],
+    processTitle: "How Our Outreach Process Works",
+    processSteps: [
+      {
+        title: "Campaign Intake",
+        description:
+          "We align with your client goals, niche focus, quality thresholds, and monthly targets.",
+      },
+      {
+        title: "Prospect Vetting",
+        description:
+          "Websites are vetted for relevance, authority, and quality before outreach begins.",
+      },
+      {
+        title: "Outreach & Placement",
+        description:
+          "Manual outreach secures contextual placements aligned with your campaign strategy.",
+      },
+      {
+        title: "White Label Reporting",
+        description:
+          "You receive clean, client-facing reports and insights for ongoing campaign planning.",
+      },
+    ],
+    deliverablesTitle: "What You Get",
+    deliverables: [
+      "White-label campaign delivery",
+      "Manual outreach and negotiation",
+      "Contextual editorial placements",
+      "Client-ready monthly reports",
+      "Scalable volume planning",
+      "Dedicated support for agencies",
+    ],
+    sampleLogos: ["/logos/semrush.svg", "/logos/google.svg", "/logos/binance.svg", "/logos/stripe.svg"],
+    faqTitle: "FAQs",
+    faq: [
+      {
+        q: "Do clients see Links Resource branding?",
+        a: "No. White-label workflows are designed so agencies can present delivery under their own brand.",
+      },
+      {
+        q: "Can we run multiple client campaigns?",
+        a: "Yes. We support multi-client monthly delivery with scalable campaign management.",
+      },
+      {
+        q: "Is quality consistent at scale?",
+        a: "Yes. We use repeatable quality controls and vetting processes across all campaigns.",
+      },
+    ],
+    ctaTitle: "Get a Free Digital Growth Consultation",
+    ctaButton: "Get Free Proposal",
+  },
+];
+
+/* ============================================================
    Services — preserved from linksresource.com
    ============================================================ */
 export const services: Service[] = [
@@ -800,6 +1743,73 @@ export const caseStudyTabs = [
   "Local SEO",
   "Content Writing",
 ] as const;
+
+export const teamMembers: TeamMember[] = [
+  {
+    name: "Usama Javed",
+    role: "Founder & Head of SEO Outreach",
+    bio: "Leading outreach campaigns, authority link building, digital PR, and client strategy.",
+    email: "usama@linksresource.com",
+    image: "/team/usama.png",
+    hoverImage: "/team/usama-hover.jpg",
+  },
+  {
+    name: "Arslan Javed",
+    role: "Senior Link Building Specialist",
+    bio: "Manual outreach, guest posting, niche edits, and authority backlink acquisition.",
+    email: "arslan@linksresource.com",
+    image: "/team/faizan.png",
+    hoverImage: "/team/arslan.png",
+  },
+  {
+    name: "M. Faizan",
+    role: "SEO Strategist",
+    bio: "SEO roadmaps, competitor analysis, keyword research, and organic growth planning.",
+    email: "strategy@linksresource.com",
+    image: "/team/zain.png",
+    hoverImage: "/team/faizan-hover.jpg",
+  },
+  {
+    name: "Ali Butt",
+    role: "Outreach & Partnerships Specialist",
+    bio: "Publisher relations, outreach, negotiations, and placements.",
+    email: "outreach@linksresource.com",
+    image: "/team/ali-butt.png",
+    hoverImage: "/team/ali-butt-hover.jpg",
+  },
+  {
+    name: "Ali Hassan",
+    role: "SEO Analyst",
+    bio: "Technical insights, audits, and performance optimization across campaigns.",
+    email: "alihassan@linksresource.com",
+    image: "/team/ali-hassan.png",
+    hoverImage: "/team/ali-hassan-hover.jpg",
+  },
+  {
+    name: "Hamza Saeed",
+    role: "Campaign Manager",
+    bio: "Coordinates campaign delivery and keeps monthly growth timelines on track.",
+    email: "hamza@linksresource.com",
+    image: "/team/hamza.png",
+    hoverImage: "/team/hamza-hover.jpg",
+  },
+  {
+    name: "Zain Baig",
+    role: "Growth Specialist",
+    bio: "Supports client growth plans with campaign analytics and reporting improvements.",
+    email: "zain@linksresource.com",
+    image: "/team/zain-hover.jpg",
+    hoverImage: "/team/zain.png",
+  },
+  {
+    name: "Andrew Robin",
+    role: "Technical Specialist",
+    bio: "Supports automation, workflow tooling, and technical SEO implementations.",
+    email: "andrew@linksresource.com",
+    image: "/team/robin.png",
+    hoverImage: "/team/andrew.png",
+  },
+];
 
 /* ============================================================
    Reviews — preserved from linksresource.com
@@ -955,6 +1965,10 @@ export function getResources() {
 
 export function getResourceBySlug(slug: string) {
   return resources.find((r) => r.slug === slug);
+}
+
+export function getServicePageBySlug(slug: string) {
+  return servicePages.find((page) => page.slug === slug);
 }
 
 export function getCategoryBySlug(slug: string) {

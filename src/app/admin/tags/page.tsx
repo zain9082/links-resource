@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Plus } from "lucide-react";
 import { tags, getResourcesByTag } from "@/lib/data";
 import { Button } from "@/components/ui/button";
-import { buildMetadata } from "@/lib/seo";
+import { buildAdminMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({ title: "Admin · Tags" });
+export const metadata: Metadata = buildAdminMetadata("Admin · Tags", "/admin/tags");
 
 export default function AdminTags() {
   return (

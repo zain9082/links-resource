@@ -4,7 +4,9 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Sign in",
+  description: "Sign in to your Links Resource account to manage saved resources and favorites.",
   path: "/login",
+  noindex: true,
 });
 
 export default function LoginPage() {

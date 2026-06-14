@@ -28,10 +28,13 @@ required** for browsing. Auth and persistence need a database.
 ## Database (optional, for auth + persistence)
 
 ```bash
-# Start Postgres locally
-docker compose up -d
+# Start Postgres (Docker) — uses port 5433 to avoid conflicts with other local DBs
+npm run db:up
 
-# Push schema + seed content (categories, tags, resources, admin user)
+# One-command setup: start Docker, push schema, seed data
+npm run db:setup
+
+# Or step by step:
 npm run db:push
 npm run db:seed
 
@@ -39,18 +42,22 @@ npm run db:seed
 npm run db:studio
 ```
 
-Seeded admin: `admin@linksresource.com` / `admin1234`
+**Important:** Set `DATABASE_URL` in `.env` to this project only:
+`postgresql://postgres:postgres@localhost:5433/links_resource`
+
+Seeded admin: `admin@linksresource.com` — password is `SEED_ADMIN_PASSWORD` in `.env`
 
 ## Environment Variables
 
 | Variable | Purpose |
 |----------|---------|
 | `DATABASE_URL` | PostgreSQL connection string |
-| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (SEO) |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (SEO) — e.g. `https://linksresource.com` |
 | `AUTH_SECRET` | NextAuth secret (`npx auth secret`) |
+| `SEED_ADMIN_PASSWORD` | Password for seeded admin user (`npm run db:seed`) |
+| `GOOGLE_SITE_VERIFICATION` | Google Search Console HTML tag verification code |
 | `AUTH_GOOGLE_ID/SECRET` | Optional Google OAuth |
 | `AUTH_GITHUB_ID/SECRET` | Optional GitHub OAuth |
-| `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` | Optional — enables a real LLM in `src/app/api/chat/route.ts` |
 
 > OAuth buttons only appear when their env vars are set. The AI assistant works out of
 > the box with a built-in recommendation engine; add an API key to swap in a real LLM.
@@ -90,4 +97,17 @@ prisma/                # schema + seed
 ```bash
 npm run build && npm run start
 ```
-```
+
+### Custom domain (linksresource.com)
+
+1. Add domain in Vercel → Project Settings → Domains
+2. Set `NEXT_PUBLIC_SITE_URL=https://linksresource.com` in Vercel env
+3. Redeploy
+
+### Google Search Console
+
+1. Go to [Google Search Console](https://search.google.com/search-console)
+2. Add property `https://linksresource.com`
+3. Choose **HTML tag** verification → copy the `content` value
+4. Set `GOOGLE_SITE_VERIFICATION=<content-value>` in Vercel env and redeploy
+5. Submit sitemap: `https://linksresource.com/sitemap.xml`

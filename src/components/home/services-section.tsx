@@ -14,6 +14,13 @@ const grad: Record<string, string> = {
   Search: "bg-gradient-blue",
 };
 
+const serviceHrefBySlug: Record<string, string> = {
+  "link-building": "/resources/editorial-guest-posting",
+  "content-writing": "/resources/seo-content-writing",
+  "web-development": "/resources/web-design-development",
+  seo: "/resources/technical-seo-audit",
+};
+
 export function ServicesSection() {
   return (
     <section className="container-wide py-24">
@@ -51,7 +58,7 @@ export function ServicesSection() {
                 size="sm"
                 className="mt-6 w-fit"
               >
-                <Link href={`/resources?category=${s.slug}`}>
+                <Link href={serviceHrefBySlug[s.slug] ?? `/resources?category=${s.slug}`}>
                   Learn More <ArrowUpRight className="size-4" />
                 </Link>
               </Button>

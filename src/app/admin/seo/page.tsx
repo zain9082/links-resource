@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
-import { buildMetadata } from "@/lib/seo";
+import { buildAdminMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({ title: "Admin · SEO" });
+export const metadata: Metadata = buildAdminMetadata("Admin · SEO", "/admin/seo");
 
 const checks = [
   { label: "Dynamic metadata", value: "Per-page title, description & canonical" },
-  { label: "Open Graph & Twitter Cards", value: "Generated site-wide" },
-  { label: "Structured data (JSON-LD)", value: "Organization, WebSite, SoftwareApplication" },
+  { label: "Open Graph & Twitter Cards", value: "Generated site-wide with /og.png" },
+  { label: "Structured data (JSON-LD)", value: "Organization, WebSite, Service, SoftwareApplication" },
   { label: "Sitemap", value: "/sitemap.xml (auto-generated)" },
   { label: "Robots", value: "/robots.txt (auto-generated)" },
+  { label: "Google Search Console", value: "Set GOOGLE_SITE_VERIFICATION env var" },
   { label: "Image optimization", value: "next/image + AVIF/WebP" },
 ];
 

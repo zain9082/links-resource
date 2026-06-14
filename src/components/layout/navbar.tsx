@@ -14,7 +14,6 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/#reviews", label: "Reviews" },
-  { href: "/contact", label: "Contact" },
   { href: "/about", label: "About" },
 ];
 
@@ -28,13 +27,36 @@ const mobileLinks = [
   { href: "/about", label: "About" },
 ];
 
+const contactMenu = [
+  {
+    title: "Contact Us",
+    description: "Talk with our team about your SEO and growth goals.",
+    href: "/contact",
+  },
+  {
+    title: "Book Free Consultation",
+    description: "Request a strategy call and get a growth action plan.",
+    href: "/contact",
+  },
+  {
+    title: "Email Support",
+    description: "Reach us directly: support@linksresource.com",
+    href: "mailto:support@linksresource.com",
+  },
+  {
+    title: "Meet Our Team",
+    description: "See the specialists behind your campaigns.",
+    href: "/team",
+  },
+];
+
 const navLinkClass =
   "shrink-0 whitespace-nowrap rounded-full px-2.5 py-2 text-xs text-muted transition-colors hover:bg-white/5 hover:text-white xl:px-3.5 xl:text-sm";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [menu, setMenu] = useState<"link-building" | "more-services" | null>(
+  const [menu, setMenu] = useState<"link-building" | "more-services" | "contact" | null>(
     null
   );
 
@@ -50,7 +72,7 @@ export function Navbar() {
       <nav
         className={cn(
           "mx-auto flex h-16 max-w-[min(1440px,calc(100vw-1.5rem))] items-center justify-between gap-2 rounded-2xl px-3 transition-all duration-300 sm:px-5 lg:gap-3",
-          scrolled ? "glass-strong glow-shadow" : "bg-transparent"
+          scrolled ? "glass-strong glow-shadow" : "glass-strong"
         )}
       >
         <Link href="/" className="group flex shrink-0 items-center gap-2">
@@ -111,6 +133,16 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
+          <div
+            onMouseEnter={() => setMenu("contact")}
+            onMouseLeave={() => setMenu(null)}
+            className="relative shrink-0"
+          >
+            <button className={cn(navLinkClass, "inline-flex items-center gap-1")}>
+              Contact <ChevronDown className="size-3.5 shrink-0 xl:size-4" />
+            </button>
+            <MegaMenu open={menu === "contact"} title="GET IN TOUCH" items={contactMenu} />
+          </div>
         </div>
 
         <div className="hidden shrink-0 items-center gap-1.5 lg:flex xl:gap-2">
@@ -195,23 +227,36 @@ function MegaMenu({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 8 }}
           transition={{ duration: 0.2 }}
-          className="absolute left-1/2 top-[calc(100%+8px)] z-50 w-[860px] -translate-x-1/2 rounded-2xl glass-strong p-5 shadow-2xl"
+          className="absolute left-1/2 top-[calc(100%+8px)] z-50 w-[860px] -translate-x-1/2 rounded-2xl border border-white/15 bg-bg-800/95 p-5 shadow-2xl backdrop-blur-xl"
         >
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-purple-2">
             {title}
           </p>
           <div className="grid grid-cols-2 gap-3">
             {items.map((item) => (
-              <Link
-                key={item.title}
-                href={item.href}
-                className="rounded-xl border border-white/10 bg-white/[0.02] p-4 transition-colors hover:bg-white/10"
-              >
-                <h4 className="text-sm font-semibold text-white">{item.title}</h4>
-                <p className="mt-1 text-xs leading-relaxed text-muted">
-                  {item.description}
-                </p>
-              </Link>
+              item.href.startsWith("mailto:") ? (
+                <a
+                  key={item.title}
+                  href={item.href}
+                  className="rounded-xl border border-white/10 bg-bg-800/90 p-4 transition-colors hover:bg-bg-700/90"
+                >
+                  <h4 className="text-sm font-semibold text-white">{item.title}</h4>
+                  <p className="mt-1 text-xs leading-relaxed text-muted">
+                    {item.description}
+                  </p>
+                </a>
+              ) : (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="rounded-xl border border-white/10 bg-bg-800/90 p-4 transition-colors hover:bg-bg-700/90"
+                >
+                  <h4 className="text-sm font-semibold text-white">{item.title}</h4>
+                  <p className="mt-1 text-xs leading-relaxed text-muted">
+                    {item.description}
+                  </p>
+                </Link>
+              )
             ))}
           </div>
         </motion.div>

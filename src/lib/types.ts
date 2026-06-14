@@ -90,3 +90,54 @@ export type WebsiteMetric = {
   dr: number;
   traffic: string;
 };
+
+export type ServiceStat = {
+  label: string;
+  value: string;
+  delta?: string;
+};
+
+export type ServicePackage = {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+};
+
+export type ServiceProcessStep = {
+  title: string;
+  description: string;
+};
+
+export type ServicePageContent = {
+  slug: string;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  heroPoints: string[];
+  stats: ServiceStat[];
+  packages: ServicePackage[];
+  whyTitle: string;
+  whyDescription: string;
+  whyPoints: string[];
+  processTitle: string;
+  processSteps: ServiceProcessStep[];
+  deliverablesTitle: string;
+  deliverables: string[];
+  sampleLogos: string[];
+  faqTitle: string;
+  faq: { q: string; a: string }[];
+  ctaTitle: string;
+  ctaButton: string;
+};
+
+export type TeamMember = {
+  name: string;
+  role: string;
+  bio: string;
+  email: string;
+  image: string;
+  hoverImage?: string;
+  linkedin?: string;
+};

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Users, ShieldCheck } from "lucide-react";
-import { buildMetadata } from "@/lib/seo";
+import { buildAdminMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({ title: "Admin · Users" });
+export const metadata: Metadata = buildAdminMetadata("Admin · Users", "/admin/users");
 
 export default function AdminUsers() {
   return (

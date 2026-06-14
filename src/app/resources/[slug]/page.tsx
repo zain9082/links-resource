@@ -4,14 +4,17 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight, Eye, Star, Check, ArrowLeft } from "lucide-react";
 import {
   getResourceBySlug,
+  getServicePageBySlug,
   getResources,
   getCategoryBySlug,
   getResourcesByCategory,
+  caseStudies,
 } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ResourceCard } from "@/components/resources/resource-card";
-import { buildMetadata, baseUrl } from "@/lib/seo";
+import { ServiceLandingPage } from "@/components/services/service-landing-page";
+import { buildMetadata, serviceJsonLd, baseUrl } from "@/lib/seo";
 import { formatNumber, formatDate } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -26,12 +29,24 @@ export async function generateMetadata({
   const { slug } = await params;
   const resource = getResourceBySlug(slug);
   if (!resource) return buildMetadata({ title: "Not found" });
+  const servicePage = getServicePageBySlug(slug);
   return buildMetadata({
-    title: resource.title,
-    description: resource.description,
+    title: servicePage ? `${servicePage.eyebrow} | ${resource.title}` : resource.title,
+    description: servicePage?.subtitle ?? resource.description,
     path: `/resources/${resource.slug}`,
   });
 }
+
+const serviceCaseStudyCategoryMap: Record<string, string> = {
+  "technical-seo-audit": "Search Engine Optimization",
+  "seo-content-writing": "Content Writing",
+  "da-dr-boost": "DA-DR Boost",
+  "web-design-development": "Web Development",
+  "local-seo": "Local SEO",
+  "editorial-guest-posting": "Link Building",
+  "editorial-link-building": "Link Building",
+  "white-label-link-building": "Link Building",
+};
 
 export default async function ResourceDetail({
   params,
@@ -41,6 +56,34 @@ export default async function ResourceDetail({
   const { slug } = await params;
   const resource = getResourceBySlug(slug);
   if (!resource) notFound();
+  const servicePage = getServicePageBySlug(slug);
+
+  if (servicePage) {
+    const caseStudyCategory = serviceCaseStudyCategoryMap[slug] ?? "";
+    const relatedCaseStudies = caseStudies
+      .filter((study) => study.category === caseStudyCategory)
+      .slice(0, 2);
+
+    const jsonLd = serviceJsonLd({
+      name: resource.title,
+      description: servicePage.subtitle,
+      url: `${baseUrl}/resources/${resource.slug}`,
+    });
+
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <ServiceLandingPage
+          resource={resource}
+          content={servicePage}
+          relatedCaseStudies={relatedCaseStudies}
+        />
+      </>
+    );
+  }
 
   const category = getCategoryBySlug(resource.category);
   const related = getResourcesByCategory(resource.category)

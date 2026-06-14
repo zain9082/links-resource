@@ -85,20 +85,24 @@ async function main() {
     }
   }
 
-  // Admin user
-  const passwordHash = await bcrypt.hash("admin1234", 10);
-  await prisma.user.upsert({
-    where: { email: "admin@linksresource.com" },
-    update: {},
-    create: {
-      email: "admin@linksresource.com",
-      name: "Admin",
-      role: "ADMIN",
-      passwordHash,
-    },
-  });
-
-  console.log("Seed complete. Admin: admin@linksresource.com / admin1234");
+  // Admin user — password from SEED_ADMIN_PASSWORD (never commit real passwords)
+  const adminPassword = process.env.SEED_ADMIN_PASSWORD;
+  if (adminPassword) {
+    const passwordHash = await bcrypt.hash(adminPassword, 12);
+    await prisma.user.upsert({
+      where: { email: "admin@linksresource.com" },
+      update: { passwordHash, role: "ADMIN" },
+      create: {
+        email: "admin@linksresource.com",
+        name: "Admin",
+        role: "ADMIN",
+        passwordHash,
+      },
+    });
+    console.log("Admin user ready: admin@linksresource.com (password from SEED_ADMIN_PASSWORD)");
+  } else {
+    console.log("Skipped admin seed — set SEED_ADMIN_PASSWORD to create admin user");
+  }
 }
 
 main()

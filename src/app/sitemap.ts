@@ -12,10 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/search",
     "/submit",
     "/about",
+    "/team",
     "/case-studies",
     "/contact",
-    "/login",
-    "/signup",
   ].map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: now,

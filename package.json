@@ -7,10 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:push": "prisma db push",
-    "db:migrate": "prisma migrate dev",
-    "db:seed": "tsx prisma/seed.ts",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:push": "node scripts/run-with-env.mjs \"npx prisma db push\"",
+    "db:migrate": "node scripts/run-with-env.mjs \"npx prisma migrate dev\"",
+    "db:seed": "node scripts/run-with-env.mjs \"npx tsx prisma/seed.ts\"",
+    "db:setup": "node scripts/db-setup.mjs",
     "db:studio": "prisma studio",
+    "docs:pdf": "node docs/generate-pdf.mjs",
     "postinstall": "prisma generate"
   },
   "prisma": {
@@ -44,6 +48,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
+    "puppeteer-core": "^25.1.0",
     "tailwindcss": "^4",
     "tsx": "^4.22.4",
     "typescript": "^5"
