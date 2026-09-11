@@ -5,16 +5,14 @@ import { HeroLeadForm } from "@/components/forms/hero-lead-form";
 import { CaseStudyCard } from "@/components/case-studies/case-study-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { CaseStudy, Resource, ServicePageContent } from "@/lib/types";
+import type { CaseStudy, ServicePageContent } from "@/lib/types";
 
 type ServiceLandingPageProps = {
-  resource: Resource;
   content: ServicePageContent;
   relatedCaseStudies: CaseStudy[];
 };
 
 export function ServiceLandingPage({
-  resource,
   content,
   relatedCaseStudies,
 }: ServiceLandingPageProps) {
@@ -49,11 +47,6 @@ export function ServiceLandingPage({
                   {content.ctaButton}
                   <ArrowRight className="size-4" />
                 </Link>
-              </Button>
-              <Button asChild variant="glass" size="lg">
-                <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                  View Old Service Page
-                </a>
               </Button>
             </div>
           </div>

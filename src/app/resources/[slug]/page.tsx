@@ -77,7 +77,6 @@ export default async function ResourceDetail({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <ServiceLandingPage
-          resource={resource}
           content={servicePage}
           relatedCaseStudies={relatedCaseStudies}
         />
@@ -90,27 +89,8 @@ export default async function ResourceDetail({
     .filter((r) => r.slug !== resource.slug)
     .slice(0, 3);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: resource.title,
-    description: resource.description,
-    applicationCategory: category?.name,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: resource.rating,
-      ratingCount: resource.views,
-    },
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-    url: `${baseUrl}/resources/${resource.slug}`,
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <div className="container-wide pt-32 sm:pt-36">
         <Link
           href="/resources"

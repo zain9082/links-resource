@@ -58,7 +58,7 @@ export function ServicesSection() {
                 size="sm"
                 className="mt-6 w-fit"
               >
-                <Link href={serviceHrefBySlug[s.slug] ?? `/resources?category=${s.slug}`}>
+                <Link href={serviceHrefBySlug[s.slug] ?? "/resources"}>
                   Learn More <ArrowUpRight className="size-4" />
                 </Link>
               </Button>

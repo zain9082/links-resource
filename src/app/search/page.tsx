@@ -4,11 +4,23 @@ import { ResourceExplorer } from "@/components/resources/resource-explorer";
 import { PageHeader } from "@/components/shared/page-header";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({
+const searchMetadata = buildMetadata({
   title: "Search",
   description: "Search the full resource directory instantly.",
   path: "/search",
 });
+
+export const metadata: Metadata = {
+  ...searchMetadata,
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
+};
 
 export default async function SearchPage({
   searchParams,

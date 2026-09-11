@@ -398,17 +398,17 @@ export const aboutPageContent = {
       {
         title: "SEO Services",
         body: "Improve search visibility, organic traffic, and website performance through tailored SEO strategies.",
-        href: "/resources?category=seo-tools",
+        href: "/categories/seo-tools",
       },
       {
         title: "Link Building Services",
         body: "Strengthen website authority with niche-relevant placements and quality backlink strategies.",
-        href: "/resources?category=link-building",
+        href: "/categories/link-building",
       },
       {
         title: "Content Writing Services",
         body: "Create SEO-focused content designed to improve readability, engagement, and online visibility.",
-        href: "/resources?category=content-writing",
+        href: "/categories/content-writing",
       },
       {
         title: "Website Development",
@@ -553,7 +553,7 @@ export const resources: Resource[] = [
     tagline: "Custom outreach campaigns that improve rankings & visibility",
     description:
       "Manual, niche-relevant guest posting on real websites with organic traffic. Pre-approval system, live link tracking and safe anchor strategy — no PBNs, no automation.",
-    url: "https://linksresource.com/editorial-guest-posting-services/",
+    url: "https://linksresource.com/resources/editorial-guest-posting",
     category: "link-building",
     tags: ["backlinks", "outreach"],
     pricing: "Paid",
@@ -570,7 +570,7 @@ export const resources: Resource[] = [
     tagline: "Trusted backlinks from relevant high-authority websites",
     description:
       "Build authority with contextual, domain-approved placements from DR 50–90 websites. Every link is earned through real outreach and relationships.",
-    url: "https://linksresource.com/editorial-link-building-services/",
+    url: "https://linksresource.com/resources/editorial-link-building",
     category: "link-building",
     tags: ["backlinks", "outreach"],
     pricing: "Paid",
@@ -587,7 +587,7 @@ export const resources: Resource[] = [
     tagline: "Scalable link building for agencies & SEO resellers",
     description:
       "Reseller-ready link building with transparent reporting and consistent monthly campaigns designed to scale your agency without in-house hiring.",
-    url: "https://linksresource.com/white-label-link-building/",
+    url: "https://linksresource.com/resources/white-label-link-building",
     category: "link-building",
     tags: ["backlinks", "outreach"],
     pricing: "Paid",
@@ -604,7 +604,7 @@ export const resources: Resource[] = [
     tagline: "High-quality mentions & links from top media sites",
     description:
       "Secure authority-boosting placements that lift your Domain Authority and Domain Rating with safe, sustainable strategies.",
-    url: "https://linksresource.com/da-dr-boost-services/",
+    url: "https://linksresource.com/resources/da-dr-boost",
     category: "link-building",
     tags: ["backlinks", "analytics"],
     pricing: "Paid",
@@ -621,7 +621,7 @@ export const resources: Resource[] = [
     tagline: "Content built to rank, attract traffic and convert",
     description:
       "SEO-optimized, well-researched content that matches your brand voice and is engineered to rank and convert visitors into leads.",
-    url: "https://linksresource.com/seo-content-writing-services/",
+    url: "https://linksresource.com/resources/seo-content-writing",
     category: "content-writing",
     tags: ["copywriting", "keyword-research"],
     pricing: "Paid",
@@ -638,7 +638,7 @@ export const resources: Resource[] = [
     tagline: "Improve local rankings & attract nearby customers",
     description:
       "Location-focused SEO to improve maps ranking, local visibility and lead generation for businesses targeting nearby customers.",
-    url: "https://linksresource.com/local-seo-services/",
+    url: "https://linksresource.com/resources/local-seo",
     category: "seo-tools",
     tags: ["local-seo", "analytics"],
     pricing: "Paid",
@@ -655,7 +655,7 @@ export const resources: Resource[] = [
     tagline: "Fix indexing, performance & Core Web Vitals",
     description:
       "Improve website structure, indexing, performance and technical health for better search visibility and stronger rankings.",
-    url: "https://linksresource.com/search-engine-optimaization-services/",
+    url: "https://linksresource.com/resources/technical-seo-audit",
     category: "seo-tools",
     tags: ["analytics", "keyword-research"],
     pricing: "Freemium",
@@ -672,7 +672,7 @@ export const resources: Resource[] = [
     tagline: "Conversion-focused, SEO-optimized websites that perform",
     description:
       "Fast, modern, responsive websites built for performance and business growth, with conversion-focused UX and clean code.",
-    url: "https://linksresource.com/web-development-services/",
+    url: "https://linksresource.com/resources/web-design-development",
     category: "web-development",
     tags: ["framework", "hosting"],
     pricing: "Paid",
