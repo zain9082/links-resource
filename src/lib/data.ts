@@ -763,6 +763,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Rank Higher with Data-Driven SEO Strategies",
     subtitle:
       "Custom SEO campaigns that improve rankings, traffic quality, and conversion opportunities for long-term growth.",
+    seoTitle: "Technical SEO Audit Services for Crawl & Indexing",
+    seoDescription:
+      "Find and prioritize crawlability, indexation, Core Web Vitals, speed, and on-page SEO issues that limit organic growth.",
     heroPoints: [
       "On-page, technical, and off-page SEO execution",
       "Keyword clusters and intent mapping",
@@ -879,6 +882,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Rank-Ready Content Designed to Convert",
     subtitle:
       "SEO-focused content production that improves visibility, authority, and qualified traffic across your key pages.",
+    seoTitle: "SEO Content Writing Services for Organic Growth",
+    seoDescription:
+      "Get SEO-focused content planned around search intent, written for readers, and structured to support rankings and conversions.",
     heroPoints: [
       "Keyword-focused editorial planning",
       "Brand-matched writing tone and voice",
@@ -995,6 +1001,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Build Authority with High-Quality Mentions",
     subtitle:
       "Secure trusted placements and links from relevant websites that improve domain strength and SEO performance.",
+    seoTitle: "DA/DR Boost Services for Website Authority",
+    seoDescription:
+      "Improve website authority with trusted mentions, relevant backlinks, safe anchor strategy, and transparent authority-growth tracking.",
     heroPoints: [
       "Niche-relevant, quality-first placements",
       "Real websites with organic traffic",
@@ -1111,6 +1120,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Build Fast, Conversion-Focused Websites",
     subtitle:
       "Modern websites designed for performance, usability, and business growth with clean UX and scalable architecture.",
+    seoTitle: "Web Design & Development Services",
+    seoDescription:
+      "Build fast, responsive, SEO-ready websites with clean UX, scalable structure, and conversion-focused page layouts.",
     heroPoints: [
       "Responsive, mobile-first design system",
       "SEO-ready architecture and page speed",
@@ -1227,6 +1239,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Get Found in Google Maps & Local Search",
     subtitle:
       "Local SEO campaigns that improve map visibility, location rankings, and lead quality for service-area businesses.",
+    seoTitle: "Local SEO Services for Google Maps & Leads",
+    seoDescription:
+      "Improve Google Maps visibility, local rankings, citations, and service-area lead quality with focused local SEO campaigns.",
     heroPoints: [
       "Google Business Profile optimization",
       "Location page and citation strategy",
@@ -1343,6 +1358,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Guest Posting Campaigns That Support Long-Term SEO Growth",
     subtitle:
       "Manual outreach and placement campaigns to secure contextual backlinks on trusted, niche-relevant websites.",
+    seoTitle: "Guest Posting Services for Quality Backlinks",
+    seoDescription:
+      "Manual outreach campaigns that secure niche-relevant guest posts, contextual backlinks, and transparent reporting without PBNs or spam automation.",
     heroPoints: [
       "Manual outreach and real relationships",
       "No PBNs, no spammy automation",
@@ -1459,6 +1477,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Editorial Links from Real Websites That Drive Rankings",
     subtitle:
       "Authority-focused editorial link campaigns built through manual outreach and relevant placements.",
+    seoTitle: "Editorial Link Building Services",
+    seoDescription:
+      "Build authority with contextual editorial links from relevant websites, manual outreach, publisher vetting, and clear campaign reporting.",
     heroPoints: [
       "Editorial placements on relevant sites",
       "Manual outreach with vetted publishers",
@@ -1563,6 +1584,9 @@ export const servicePages: ServicePageContent[] = [
     title: "White Label Link Building Services for SEO Agencies",
     subtitle:
       "Scalable outreach and backlink delivery designed for agencies that need quality and consistency.",
+    seoTitle: "White Label Link Building for SEO Agencies",
+    seoDescription:
+      "Scalable white-label backlink delivery for SEO agencies, with manual outreach, client-ready reporting, and consistent placement quality.",
     heroPoints: [
       "Agency-ready campaign workflows",
       "Consistent white-label reporting",

@@ -115,6 +115,8 @@ export type ServicePageContent = {
   eyebrow: string;
   title: string;
   subtitle: string;
+  seoTitle?: string;
+  seoDescription?: string;
   heroPoints: string[];
   stats: ServiceStat[];
   packages: ServicePackage[];

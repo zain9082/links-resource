@@ -32,8 +32,10 @@ export async function generateMetadata({
   if (!resource) return buildMetadata({ title: "Not found" });
   const servicePage = getServicePageBySlug(slug);
   return buildMetadata({
-    title: servicePage ? `${servicePage.eyebrow} | ${resource.title}` : resource.title,
-    description: servicePage?.subtitle ?? resource.description,
+    title: servicePage
+      ? servicePage.seoTitle ?? `${servicePage.eyebrow} | ${resource.title}`
+      : resource.title,
+    description: servicePage?.seoDescription ?? servicePage?.subtitle ?? resource.description,
     path: `/resources/${resource.slug}`,
   });
 }
