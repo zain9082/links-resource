@@ -22,22 +22,13 @@ const cols = [
       { href: "/contact", label: "Contact" },
     ],
   },
-  {
-    title: "Legal",
-    links: [
-      { href: "/terms-of-service", label: "Terms of Service" },
-      { href: "/privacy-policy", label: "Privacy Policy" },
-      { href: "/refund-policy", label: "Refund Policy" },
-      { href: "/service-policy", label: "Service Policy" },
-    ],
-  },
 ];
 
 export function Footer() {
   return (
     <footer className="relative mt-24 border-t border-white/5">
       <div className="container-wide py-16">
-        <div className="grid gap-12 lg:grid-cols-5">
+        <div className="grid gap-12 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2">
               <span className="grid size-9 place-items-center rounded-xl bg-gradient-purple glow-shadow">
