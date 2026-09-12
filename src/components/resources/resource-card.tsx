@@ -63,12 +63,13 @@ export function ResourceCard({
 
       <div className="mt-4 flex flex-wrap gap-1.5">
         {resource.tags.slice(0, 3).map((t) => (
-          <span
+          <Link
             key={t}
-            className="rounded-full bg-white/5 px-2.5 py-0.5 text-[11px] text-muted"
+            href={`/tags/${t}`}
+            className="relative z-10 rounded-full bg-white/5 px-2.5 py-0.5 text-[11px] text-muted transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-2"
           >
             #{t}
-          </span>
+          </Link>
         ))}
       </div>
 

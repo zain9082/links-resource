@@ -14,7 +14,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ResourceCard } from "@/components/resources/resource-card";
 import { ServiceLandingPage } from "@/components/services/service-landing-page";
-import { buildMetadata, serviceJsonLd, baseUrl } from "@/lib/seo";
+import { Breadcrumbs, type BreadcrumbItem } from "@/components/shared/breadcrumbs";
+import { buildMetadata, serviceJsonLd, baseUrl, breadcrumbJsonLd } from "@/lib/seo";
 import { formatNumber, formatDate } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -31,8 +32,10 @@ export async function generateMetadata({
   if (!resource) return buildMetadata({ title: "Not found" });
   const servicePage = getServicePageBySlug(slug);
   return buildMetadata({
-    title: servicePage ? `${servicePage.eyebrow} | ${resource.title}` : resource.title,
-    description: servicePage?.subtitle ?? resource.description,
+    title: servicePage
+      ? servicePage.seoTitle ?? `${servicePage.eyebrow} | ${resource.title}`
+      : resource.title,
+    description: servicePage?.seoDescription ?? servicePage?.subtitle ?? resource.description,
     path: `/resources/${resource.slug}`,
   });
 }
@@ -57,6 +60,12 @@ export default async function ResourceDetail({
   const resource = getResourceBySlug(slug);
   if (!resource) notFound();
   const servicePage = getServicePageBySlug(slug);
+  const breadcrumbs: BreadcrumbItem[] = [
+    { name: "Home", href: "/" },
+    { name: "Resources", href: "/resources" },
+    { name: resource.title, href: `/resources/${resource.slug}` },
+  ];
+  const breadcrumbSchema = breadcrumbJsonLd(breadcrumbs);
 
   if (servicePage) {
     const caseStudyCategory = serviceCaseStudyCategoryMap[slug] ?? "";
@@ -64,7 +73,7 @@ export default async function ResourceDetail({
       .filter((study) => study.category === caseStudyCategory)
       .slice(0, 2);
 
-    const jsonLd = serviceJsonLd({
+    const serviceSchema = serviceJsonLd({
       name: resource.title,
       description: servicePage.subtitle,
       url: `${baseUrl}/resources/${resource.slug}`,
@@ -74,12 +83,16 @@ export default async function ResourceDetail({
       <>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
         <ServiceLandingPage
-          resource={resource}
           content={servicePage}
           relatedCaseStudies={relatedCaseStudies}
+          breadcrumbs={<Breadcrumbs items={breadcrumbs} />}
         />
       </>
     );
@@ -90,31 +103,17 @@ export default async function ResourceDetail({
     .filter((r) => r.slug !== resource.slug)
     .slice(0, 3);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: resource.title,
-    description: resource.description,
-    applicationCategory: category?.name,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: resource.rating,
-      ratingCount: resource.views,
-    },
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-    url: `${baseUrl}/resources/${resource.slug}`,
-  };
-
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="container-wide pt-32 sm:pt-36">
+        <Breadcrumbs items={breadcrumbs} />
         <Link
           href="/resources"
-          className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-white"
+          className="mt-5 inline-flex items-center gap-1.5 text-sm text-muted hover:text-white"
         >
           <ArrowLeft className="size-4" /> Back to resources
         </Link>

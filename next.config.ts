@@ -4,6 +4,46 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/our-team",
+        destination: "/team",
+        permanent: true,
+      },
+      {
+        source: "/about-links-resource",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/about-links-resource-2",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/website-development",
+        destination: "/resources/web-design-development",
+        permanent: true,
+      },
+      {
+        source: "/web-development-2",
+        destination: "/resources/web-design-development",
+        permanent: true,
+      },
+      {
+        source: "/guest-posting-2",
+        destination: "/resources/editorial-guest-posting",
+        permanent: true,
+      },
+      {
+        source: "/da-dr-boost",
+        destination: "/resources/da-dr-boost",
+        permanent: true,
+      },
+      {
+        source: "/link-building",
+        destination: "/link-building-services",
+        permanent: true,
+      },
+      {
         source: "/search-engine-optimaization-services",
         destination: "/resources/technical-seo-audit",
         permanent: true,

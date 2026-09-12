@@ -1,27 +1,29 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { ArrowRight, Check, Dot, TrendingUp } from "lucide-react";
 import { HeroLeadForm } from "@/components/forms/hero-lead-form";
 import { CaseStudyCard } from "@/components/case-studies/case-study-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { CaseStudy, Resource, ServicePageContent } from "@/lib/types";
+import type { CaseStudy, ServicePageContent } from "@/lib/types";
 
 type ServiceLandingPageProps = {
-  resource: Resource;
   content: ServicePageContent;
   relatedCaseStudies: CaseStudy[];
+  breadcrumbs?: ReactNode;
 };
 
 export function ServiceLandingPage({
-  resource,
   content,
   relatedCaseStudies,
+  breadcrumbs,
 }: ServiceLandingPageProps) {
   return (
     <>
       <section className="container-wide pt-32 sm:pt-36">
-        <div className="grid items-center gap-8 lg:grid-cols-5 lg:gap-10">
+        {breadcrumbs}
+        <div className="mt-8 grid items-center gap-8 lg:grid-cols-5 lg:gap-10">
           <div className="lg:col-span-3">
             <Badge variant="purple">{content.eyebrow}</Badge>
             <h1 className="mt-5 text-4xl font-bold leading-tight text-white sm:text-5xl">
@@ -49,11 +51,6 @@ export function ServiceLandingPage({
                   {content.ctaButton}
                   <ArrowRight className="size-4" />
                 </Link>
-              </Button>
-              <Button asChild variant="glass" size="lg">
-                <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                  View Old Service Page
-                </a>
               </Button>
             </div>
           </div>
