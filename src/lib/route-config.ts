@@ -1,4 +1,5 @@
 import { categories, resources, tags } from "@/lib/data";
+import { restoredLegalRoutes, restoredServiceRoutes } from "@/lib/restored-routes";
 
 export type IndexableRoute = {
   path: string;
@@ -17,6 +18,8 @@ export const staticRoutes: IndexableRoute[] = [
 export function indexableRoutes(): IndexableRoute[] {
   return [
     ...staticRoutes,
+    ...[...Object.keys(restoredServiceRoutes), ...Object.keys(restoredLegalRoutes)]
+      .map((path) => ({ path, indexable: true, updatedAt: "2026-10-30" })),
     ...resources
       .filter((resource) => !resource.slug.startsWith("sync-probe-"))
       .map((resource) => ({ path: `/resources/${resource.slug}`, indexable: true })),
