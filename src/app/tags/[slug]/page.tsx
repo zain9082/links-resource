@@ -5,6 +5,8 @@ import { Breadcrumbs, type BreadcrumbItem } from "@/components/shared/breadcrumb
 import { ResourceCard } from "@/components/resources/resource-card";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return tags.map((t) => ({ slug: t.slug }));
 }

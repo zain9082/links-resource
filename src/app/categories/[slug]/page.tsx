@@ -9,6 +9,8 @@ import { ResourceExplorer } from "@/components/resources/resource-explorer";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/shared/breadcrumbs";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
 }

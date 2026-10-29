@@ -18,6 +18,8 @@ import { Breadcrumbs, type BreadcrumbItem } from "@/components/shared/breadcrumb
 import { buildMetadata, serviceJsonLd, baseUrl, breadcrumbJsonLd } from "@/lib/seo";
 import { formatNumber, formatDate } from "@/lib/utils";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getResources().map((r) => ({ slug: r.slug }));
 }
