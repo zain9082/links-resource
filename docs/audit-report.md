@@ -544,7 +544,7 @@ Decision recorded 30 October 2026 (Asia/Karachi): **use `origin/main` at `4fb6ac
 
 **Source download:** B did not win the baseline comparison. The conditional Vercel source download into `../links-resource-production-source` was therefore not performed. No domain, DNS, Vercel project or deployment was changed.
 
-The earlier `docs/new-structure.csv` exists in commit `c797ae6` on `codex/homepage-seo-content`. It is intentionally absent from `redesign/phase-2`, which was created directly from `origin/main`; this documentation-only commit contains only the live snapshot and audit report as requested. Carry the CSV into a later approved implementation commit before using its row data in Phase 2.
+At the time of the baseline decision, `docs/new-structure.csv` existed only in commit `c797ae6` on `codex/homepage-seo-content`; it was absent from the newly created `redesign/phase-2` branch. Batch 2A step 0 subsequently cherry-picked that CSV as commit `9e8de4a` before implementation.
 
 ## K. Batch 2A results
 
@@ -576,3 +576,32 @@ The word counts below come from `docs/live-snapshot/index.csv` (rendered main te
 | `/categories/web-development` | 54 | Noindex | Thin directory category. |
 
 The snapshot's probe URL returned HTTP 200 with no content. Its removal is required to fix the soft 404, independently of the pending content recommendations above.
+
+### Implementation and verification
+
+- Steps 0–7 were committed separately. The CSV now uses slashless URLs and the normalized white-label paths. `next.config.ts` serves the nine requested direct permanent redirects; Next.js serves slash removal as 308. The previously missing redirect targets and preserved live service/policy URLs are available through the existing service template or a legal page template.
+- The newly restored service routes retain the live snapshot's title, meta description, and H1. Their deeper body sections currently use the controlled baseline's reusable service content; they have **not** been reconciled line by line with A's full body snapshot. Review that copy before deploying this branch.
+- The sitemap now reads the indexable route configuration and excludes the probe. The probe has no record in `src/lib/data.ts`; it was present only on live A. Unknown static directory slugs and the probe return HTTP 404 locally. New restored routes have `updatedAt: 2026-10-30`, the date their content was added here. Existing routes lack a verified content revision date, so their sitemap entries omit `<lastmod>` instead of emitting the same build date for every page. Add verified `updatedAt` values as those pages are edited.
+- The rendered `/about` and `/seo-services` HTML both contain Organization, ProfessionalService and BreadcrumbList JSON-LD. `/resources/sync-probe-1788889913` returns 404 and is absent from the local sitemap.
+- **Footer email discrepancy:** live A's footer uses `hello@linksresource.co.uk`, while this codebase's footer uses `support@linksresource.com` from `src/lib/data.ts`. The footer email was not changed; confirm which mailbox is intended before launch.
+- `npm run build` passed on the controlled baseline after these changes (Next.js 16.2.7, 70 generated pages). No deployment or Vercel setting was changed.
+
+Output from `CHECK_BASE_URL=http://127.0.0.1:3100 node scripts/check-redirects.mjs` against local `next start`:
+
+```text
+PASS /local-seo-services 308 -> /seo-services/local-seo; target 200
+PASS /white-label-link-building-services 308 -> /white-label/link-building; target 200
+PASS /web-development-services 308 -> /web-development; target 200
+PASS /editorial-link-building-services 308 -> /link-building-services; target 200
+PASS /authority-backlinks-services 308 -> /link-building-services; target 200
+PASS /about-links-resource-2 308 -> /about; target 200
+PASS /link-building 308 -> /link-building-services; target 200
+PASS /website-development 308 -> /web-development; target 200
+PASS /case-studies/testing-seo-case-study 308 -> /case-studies; target 200
+PASS /about/ 308 -> /about
+PASS /seo-services/local-seo/ 308 -> /seo-services/local-seo
+PASS /white-label/link-building/ 308 -> /white-label/link-building
+PASS /unknown-route-bef2d1c7-17c5-4892-b878-85bd3440aaf4 HTTP 404
+PASS /resources/sync-probe-1788889913 HTTP 404
+14/14 checks passed
+```
