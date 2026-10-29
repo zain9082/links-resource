@@ -545,3 +545,34 @@ Decision recorded 30 October 2026 (Asia/Karachi): **use `origin/main` at `4fb6ac
 **Source download:** B did not win the baseline comparison. The conditional Vercel source download into `../links-resource-production-source` was therefore not performed. No domain, DNS, Vercel project or deployment was changed.
 
 The earlier `docs/new-structure.csv` exists in commit `c797ae6` on `codex/homepage-seo-content`. It is intentionally absent from `redesign/phase-2`, which was created directly from `origin/main`; this documentation-only commit contains only the live snapshot and audit report as requested. Carry the CSV into a later approved implementation commit before using its row data in Phase 2.
+
+## K. Batch 2A results
+
+### Resource and category URL decisions awaiting approval
+
+The word counts below come from `docs/live-snapshot/index.csv` (rendered main text, excluding navigation and footer). These are recommendations only. No `/resources/*` or `/categories/*` redirect or noindex rule is implemented in this batch.
+
+| Live URL | Words | Recommendation | Reason |
+| --- | ---: | --- | --- |
+| `/resources` | 280 | Keep | Directory hub with its own browsing intent. |
+| `/resources/ai-content-assistant` | 90 | Noindex | Thin product listing; no matching agency service intent. |
+| `/resources/brand-design-system` | 66 | Noindex | Thin product listing; no matching agency service intent. |
+| `/resources/da-dr-boost` | 380 | 301 → `/link-building-services` | Overlaps link building service intent. |
+| `/resources/editorial-guest-posting` | 468 | 301 → `/guest-posting-services` | Overlaps guest posting service intent. |
+| `/resources/editorial-link-building` | 438 | 301 → `/link-building-services` | Overlaps link building service intent. |
+| `/resources/geo-llm-optimization` | 90 | Noindex | Thin listing; the planned AI SEO page needs distinct content first. |
+| `/resources/keyword-research-kit` | 104 | Noindex | Tool listing, not the planned keyword research service. |
+| `/resources/local-seo` | 429 | 301 → `/seo-services/local-seo` | Overlaps local SEO service intent. |
+| `/resources/seo-content-writing` | 386 | 301 → `/content-writing-services` | Overlaps content writing service intent. |
+| `/resources/sync-probe-1788889913` | 0 | Noindex | Test record/soft 404; remove from data and sitemap, serve HTTP 404. |
+| `/resources/technical-seo-audit` | 410 | 301 → `/seo-services` | Snapshot presents the general SEO service, despite its slug. |
+| `/resources/white-label-link-building` | 426 | 301 → `/white-label/link-building` | Overlaps white-label link building service intent. |
+| `/categories` | 82 | Keep | Directory navigation hub; improve content before relying on organic search. |
+| `/categories/ai-tools` | 74 | Noindex | Thin directory category. |
+| `/categories/content-writing` | 54 | Noindex | Thin directory category. |
+| `/categories/design` | 50 | Noindex | Thin directory category. |
+| `/categories/link-building` | 119 | Keep | Distinct directory browsing intent and the strongest category listing. |
+| `/categories/seo-tools` | 93 | Noindex | Thin directory category. |
+| `/categories/web-development` | 54 | Noindex | Thin directory category. |
+
+The snapshot's probe URL returned HTTP 200 with no content. Its removal is required to fix the soft 404, independently of the pending content recommendations above.
