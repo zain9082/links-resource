@@ -125,11 +125,16 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: site.legalName,
+    name: "Links Resource Limited",
     alternateName: site.name,
     url: baseUrl,
     email: site.email,
-    telephone: site.phone,
+    telephone: "+44 7438 836553",
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "UK company number",
+      value: "14819683",
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: "0/1 7 Aberfoyle Street",
@@ -138,6 +143,15 @@ export function organizationJsonLd() {
       addressCountry: "GB",
     },
     sameAs: Object.values(site.socials),
+  };
+}
+
+export function professionalServiceJsonLd() {
+  return {
+    ...organizationJsonLd(),
+    "@type": "ProfessionalService",
+    name: "Links Resource Limited",
+    priceRange: "Contact for a quote",
   };
 }
 

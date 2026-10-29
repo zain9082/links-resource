@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { ResourceCard } from "@/components/resources/resource-card";
 import { ServiceLandingPage } from "@/components/services/service-landing-page";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/shared/breadcrumbs";
-import { buildMetadata, serviceJsonLd, baseUrl, breadcrumbJsonLd } from "@/lib/seo";
+import { buildMetadata, serviceJsonLd, baseUrl } from "@/lib/seo";
 import { formatNumber, formatDate } from "@/lib/utils";
 
 export const dynamicParams = false;
@@ -67,7 +67,6 @@ export default async function ResourceDetail({
     { name: "Resources", href: "/resources" },
     { name: resource.title, href: `/resources/${resource.slug}` },
   ];
-  const breadcrumbSchema = breadcrumbJsonLd(breadcrumbs);
 
   if (servicePage) {
     const caseStudyCategory = serviceCaseStudyCategoryMap[slug] ?? "";
@@ -87,10 +86,6 @@ export default async function ResourceDetail({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
         <ServiceLandingPage
           content={servicePage}
           relatedCaseStudies={relatedCaseStudies}
@@ -107,10 +102,6 @@ export default async function ResourceDetail({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
       <div className="container-wide pt-32 sm:pt-36">
         <Breadcrumbs items={breadcrumbs} />
         <Link

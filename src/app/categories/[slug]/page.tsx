@@ -7,7 +7,7 @@ import {
 } from "@/lib/data";
 import { ResourceExplorer } from "@/components/resources/resource-explorer";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/shared/breadcrumbs";
-import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -43,14 +43,9 @@ export default async function CategoryPage({
     { name: "Categories", href: "/categories" },
     { name: category.name, href: `/categories/${category.slug}` },
   ];
-  const breadcrumbSchema = breadcrumbJsonLd(breadcrumbs);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
       <div className="container-wide pt-32 sm:pt-36">
         <Breadcrumbs items={breadcrumbs} className="flex justify-center" />
         <div className="mt-8 text-center">

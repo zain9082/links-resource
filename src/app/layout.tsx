@@ -8,7 +8,8 @@ import { Footer } from "@/components/layout/footer";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { AiAssistant } from "@/components/ai/ai-assistant";
 import { Providers } from "@/components/providers";
-import { buildMetadata, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { GlobalBreadcrumbSchema } from "@/components/shared/global-breadcrumb-schema";
+import { buildMetadata, organizationJsonLd, professionalServiceJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -43,9 +44,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([organizationJsonLd(), websiteJsonLd()]),
+            __html: JSON.stringify([organizationJsonLd(), professionalServiceJsonLd(), websiteJsonLd()]),
           }}
         />
+        <GlobalBreadcrumbSchema />
         <AuroraBackground />
         <ScrollProgress />
         <Providers>

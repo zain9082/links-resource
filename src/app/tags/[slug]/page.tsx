@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { tags, getTagBySlug, getResourcesByTag } from "@/lib/data";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/shared/breadcrumbs";
 import { ResourceCard } from "@/components/resources/resource-card";
-import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -39,14 +39,9 @@ export default async function TagPage({
     { name: "Resources", href: "/resources" },
     { name: tag.name, href: `/tags/${tag.slug}` },
   ];
-  const breadcrumbSchema = breadcrumbJsonLd(breadcrumbs);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
       <div className="container-wide pt-32 sm:pt-36">
         <Breadcrumbs items={breadcrumbs} className="flex justify-center" />
         <div className="mt-8 text-center">
