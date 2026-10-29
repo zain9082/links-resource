@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { site } from "./data";
 
-export const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
-  site.url ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined) ||
-  "https://linksresource.com";
+// Canonicals always identify the production domain, including in preview builds.
+export const baseUrl = "https://linksresource.com";
+
+export function canonicalUrl(path: string = "/") {
+  const normalized = `/${path.split("/").filter(Boolean).join("/")}`;
+  return `${baseUrl}${normalized}`;
+}
 
 export function buildMetadata({
   title,
@@ -21,8 +23,8 @@ export function buildMetadata({
   noindex?: boolean;
 } = {}): Metadata {
   const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
-  const desc = description ?? site.description;
-  const url = `${baseUrl}${path}`;
+  const desc = description ?? (title ? `${title} at ${site.name}. ${site.description}` : site.description);
+  const url = canonicalUrl(path);
   const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
 
   return {

@@ -20,6 +20,7 @@ export async function generateMetadata({
   const tag = getTagBySlug(slug);
   return buildMetadata({
     title: tag ? `#${tag.name}` : "Tag",
+    description: tag ? `Browse ${tag.name} resources curated by Links Resource.` : "Resource tag not found.",
     path: `/tags/${slug}`,
   });
 }
