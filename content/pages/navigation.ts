@@ -1,24 +1,48 @@
-import type { NavbarMenuSection } from "../../src/lib/data";
 import { visiblePageConfigs } from ".";
 
-export function pageNavigationSections(): NavbarMenuSection[] {
-  const pages = visiblePageConfigs().filter((page) => page.slug !== "/");
-  const groups = [
-    { title: "SEO & Content", accepts: (slug: string) => slug.startsWith("/seo-") || slug.startsWith("/content-writing-services") || slug === "/ai-seo-agency" },
-    { title: "Link Building", accepts: (slug: string) => slug.startsWith("/link-building") || ["/guest-posting-services", "/blogger-outreach-services", "/niche-edits", "/digital-pr-services"].includes(slug) },
-    { title: "White Label", accepts: (slug: string) => slug.startsWith("/white-label") },
-    { title: "PPC", accepts: (slug: string) => slug.startsWith("/ppc-management") },
-    { title: "Web Development", accepts: (slug: string) => slug.startsWith("/web-development") },
-    { title: "Industries", accepts: (slug: string) => slug.startsWith("/industries") },
-    { title: "Locations", accepts: (slug: string) => slug.startsWith("/locations") },
-    { title: "Guides & Results", accepts: (slug: string) => slug.startsWith("/blog") || slug === "/case-studies" },
-  ];
-  return groups.map((group) => ({
-    title: group.title,
-    items: pages.filter((page) => group.accepts(page.slug)).map((page) => ({
-      title: page.title,
-      description: page.metaDescription,
-      href: page.slug,
-    })),
-  })).filter((group) => group.items.length > 0);
+export type HeaderItem = { title: string; description: string; href: string };
+export type HeaderMenu = { title: string; items: HeaderItem[]; bottomLinks?: HeaderItem[] };
+
+const menus: HeaderMenu[] = [
+  { title: "SEO", items: [
+    { title: "SEO Services", description: "Technical, content and authority work in one plan.", href: "/seo-services" },
+    { title: "Local SEO", description: "Win nearby searches and map visibility.", href: "/seo-services/local-seo" },
+    { title: "Technical SEO", description: "Find crawl, speed and indexing blockers.", href: "/seo-services/technical-seo" },
+    { title: "SEO Audit", description: "See what limits rankings and conversions.", href: "/seo-services/seo-audit" },
+    { title: "Ecommerce SEO", description: "Improve product discovery and category performance.", href: "/seo-services/ecommerce-seo" },
+    { title: "AI SEO Agency", description: "Prepare content for AI search discovery.", href: "/ai-seo-agency" },
+  ], bottomLinks: [
+    { title: "Industries →", description: "Find SEO plans for your sector.", href: "/industries" },
+    { title: "Locations →", description: "See local SEO support across the UK.", href: "/locations" },
+  ] },
+  { title: "Link Building", items: [
+    { title: "Link Building Services", description: "Earn relevant authority from vetted publications.", href: "/link-building-services" },
+    { title: "Guest Posting", description: "Place useful articles on real sites.", href: "/guest-posting-services" },
+    { title: "Niche Edits", description: "Add contextual links to existing articles.", href: "/niche-edits" },
+    { title: "Blogger Outreach", description: "Reach publishers matched to your niche.", href: "/blogger-outreach-services" },
+    { title: "Digital PR", description: "Turn newsworthy stories into earned coverage.", href: "/digital-pr-services" },
+    { title: "Link Building Packages", description: "Compare outreach scope and campaign options.", href: "/link-building-services/packages" },
+  ] },
+  { title: "For agencies", items: [
+    { title: "White Label", description: "Scale delivery under your own brand.", href: "/white-label" },
+    { title: "White Label SEO", description: "Offer managed search campaigns to clients.", href: "/white-label/seo" },
+    { title: "SEO Reseller", description: "Resell fulfilment with clear agency reporting.", href: "/white-label/seo/reseller" },
+    { title: "White Label Link Building", description: "Deliver vetted placements behind your brand.", href: "/white-label/link-building" },
+    { title: "White Label PPC", description: "Add paid search without hiring specialists.", href: "/white-label/ppc" },
+    { title: "White Label Web Development", description: "Ship client websites through our team.", href: "/white-label/web-development" },
+  ] },
+  { title: "More Services", items: [
+    { title: "PPC Management", description: "Manage spend, targeting and conversion performance.", href: "/ppc-management" },
+    { title: "Web Development", description: "Build fast sites that support growth.", href: "/web-development" },
+    { title: "Content Writing", description: "Create search-led copy that converts readers.", href: "/content-writing-services" },
+  ] },
+];
+
+export function pageNavigationSections(): HeaderMenu[] {
+  const visible = new Set(visiblePageConfigs().map((page) => page.slug));
+  return menus.map((menu) => ({
+    title: menu.title,
+    items: menu.items.filter((item) => visible.has(item.href)),
+    bottomLinks: menu.bottomLinks?.filter((item) => visible.has(item.href)),
+  })).filter((menu) => menu.items.length || menu.bottomLinks?.length);
 }

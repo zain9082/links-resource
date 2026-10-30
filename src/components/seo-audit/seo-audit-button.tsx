@@ -9,12 +9,14 @@ import { cn } from "@/lib/utils";
 type SeoAuditButtonProps = Omit<ButtonProps, "onClick"> & {
   short?: boolean;
   responsive?: boolean;
+  label?: string;
   onOpen?: () => void;
 };
 
 export function SeoAuditButton({
   short = false,
   responsive = false,
+  label,
   onOpen,
   className,
   size = "md",
@@ -34,14 +36,14 @@ export function SeoAuditButton({
       }}
       {...props}
     >
-      {responsive ? (
+      {label ?? (responsive ? (
         <>
           <span className="hidden xl:inline">{seoAuditContent.label}</span>
           <span className="xl:hidden">{seoAuditContent.shortLabel}</span>
         </>
       ) : (
         short ? seoAuditContent.shortLabel : seoAuditContent.label
-      )}
+      ))}
       <ArrowRight className="size-4" />
     </Button>
   );
