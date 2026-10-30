@@ -46,6 +46,8 @@ Seeded admin: `admin@linksresource.com` — password is `SEED_ADMIN_PASSWORD` in
 | `AUTH_SECRET` | NextAuth secret (`npx auth secret`) |
 | `SEED_ADMIN_PASSWORD` | Password for seeded admin user (`npm run db:seed`) |
 | `GOOGLE_SITE_VERIFICATION` | Google Search Console HTML tag verification code |
+| `SITE_NOINDEX` | Defaults to `true`. When true, all page metadata says noindex,nofollow, every route sends `X-Robots-Tag: noindex, nofollow`, robots.txt disallows `/`, and the sitemap is empty. Set to `false` only after content approval. |
+| `SHOW_DRAFTS` | Defaults to `true` on this branch. When true, draft configs appear in the navigation, footer and hub child lists for review. Set to `false` to show published configs only. Drafts remain noindex regardless. |
 | `AUTH_GOOGLE_ID/SECRET` | Optional Google OAuth |
 | `AUTH_GITHUB_ID/SECRET` | Optional GitHub OAuth |
 

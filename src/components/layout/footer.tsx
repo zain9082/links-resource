@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { Sparkles, Mail, Phone, MapPin } from "lucide-react";
 import { site } from "@/lib/data";
+import { pageNavigationSections } from "../../../content/pages/navigation";
 import { publishedPageConfigs } from "../../../content/pages";
+import { showDrafts } from "@/lib/site-flags";
 
 const cols = [
   {
@@ -74,6 +76,18 @@ export function Footer() {
             </div>
           ))}
         </div>
+
+        {showDrafts && <div className="mt-12 border-t border-white/5 pt-10">
+          <h4 className="mb-6 text-sm font-semibold text-white">Full page structure</h4>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {pageNavigationSections().map((section) => <div key={section.title}>
+              <h5 className="mb-3 text-xs font-semibold uppercase tracking-widest text-purple-2">{section.title}</h5>
+              <ul className="space-y-2">
+                {section.items.map((item) => <li key={item.href}><Link href={item.href} className="text-sm text-muted transition-colors hover:text-white">{item.title}</Link></li>)}
+              </ul>
+            </div>)}
+          </div>
+        </div>}
 
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-white/5 pt-6 text-sm text-muted sm:flex-row">
           <p>

@@ -1,4 +1,5 @@
 import type { PageConfig } from "./types";
+import { showDrafts } from "../../src/lib/site-flags";
 import page0 from "./home";
 import page1 from "./seo-services";
 import page2 from "./seo-services/organic-seo";
@@ -98,6 +99,22 @@ export function getPageConfig(slug: string): PageConfig | undefined {
 
 export function publishedPageConfigs(): PageConfig[] {
   return pageConfigs.filter((page) => page.status === "published");
+}
+
+export function visiblePageConfigs(): PageConfig[] {
+  return showDrafts ? pageConfigs : publishedPageConfigs();
+}
+
+export function visibleChildren(parent: string): PageConfig[] {
+  return visiblePageConfigs().filter((page) => page.parent === parent);
+}
+
+export function visibleRelated(page: PageConfig): PageConfig[] {
+  const visible = new Set(visiblePageConfigs().map((item) => item.slug));
+  return page.relatedSlugs
+    .map((slug) => getPageConfig(slug))
+    .filter((related): related is PageConfig => !!related && visible.has(related.slug))
+    .slice(0, 3);
 }
 
 export function publishedChildren(parent: string): PageConfig[] {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import type { PageBlock, PageConfig, PageFaq, PageTemplate } from "../../../content/pages/types";
-import { getPageConfig, publishedChildren, publishedRelated } from "../../../content/pages";
+import { getPageConfig, visibleChildren, visibleRelated } from "../../../content/pages";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/shared/breadcrumbs";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
@@ -111,8 +111,8 @@ export function PageSchema({ page }: { page: PageConfig }) {
 }
 
 export function PageInternalLinks({ page }: { page: PageConfig }) {
-  const children = publishedChildren(page.slug);
-  const related = publishedRelated(page);
+  const children = visibleChildren(page.slug);
+  const related = visibleRelated(page);
   const parent = page.parent ? getPageConfig(page.parent) : undefined;
   if (!children.length && !parent && !related.length) return null;
   return <section className="container-wide pb-14">

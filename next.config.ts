@@ -3,6 +3,12 @@ import { resourceRedirects } from "./src/lib/resource-policy";
 
 const nextConfig: NextConfig = {
   trailingSlash: false,
+  async headers() {
+    return process.env.SITE_NOINDEX === "false" ? [] : [{
+      source: "/:path*",
+      headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    }];
+  },
   async redirects() {
     return [
       ...Object.entries(resourceRedirects).map(([slug, destination]) => ({

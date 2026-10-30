@@ -247,12 +247,12 @@ function ServicesMegaMenu({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 8 }}
           transition={{ duration: 0.2 }}
-          className="absolute left-1/2 top-[calc(100%+8px)] z-50 w-[920px] -translate-x-1/2 rounded-2xl border border-white/15 bg-bg-800/95 p-5 shadow-2xl backdrop-blur-xl"
+          className="fixed inset-x-4 top-16 z-50 mx-auto max-h-[75vh] w-[min(1100px,calc(100vw-2rem))] overflow-y-auto rounded-2xl border border-white/15 bg-bg-800/95 p-5 shadow-2xl backdrop-blur-xl"
         >
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-purple-2">
             Our Services
           </p>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-2 gap-5 xl:grid-cols-4">
             {sections.map((section, index) => (
               <div
                 key={section.title}

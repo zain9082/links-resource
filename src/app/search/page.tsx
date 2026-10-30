@@ -3,6 +3,7 @@ import { getResources, categories } from "@/lib/data";
 import { ResourceExplorer } from "@/components/resources/resource-explorer";
 import { PageHeader } from "@/components/shared/page-header";
 import { buildMetadata } from "@/lib/seo";
+import { siteNoindex } from "@/lib/site-flags";
 
 const searchMetadata = buildMetadata({
   title: "Search",
@@ -14,10 +15,10 @@ export const metadata: Metadata = {
   ...searchMetadata,
   robots: {
     index: false,
-    follow: true,
+    follow: !siteNoindex,
     googleBot: {
       index: false,
-      follow: true,
+      follow: !siteNoindex,
     },
   },
 };

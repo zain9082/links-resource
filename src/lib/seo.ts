@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { PageConfig } from "../../content/pages/types";
 import { site } from "./data";
+import { siteNoindex } from "./site-flags";
 
 // Canonicals always identify the production domain, including in preview builds.
 export const baseUrl = "https://linksresource.com";
@@ -29,6 +30,8 @@ export function buildMetadata({
   const desc = description ?? (title ? `${title} at ${site.name}. ${site.description}` : site.description);
   const url = canonicalUrl(path);
   const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+  const shouldNoindex = siteNoindex || noindex;
+  const shouldFollow = siteNoindex ? false : follow;
 
   return {
     title: fullTitle,
@@ -64,8 +67,8 @@ export function buildMetadata({
       description: desc,
       images: [image],
     },
-    robots: noindex
-      ? { index: false, follow, googleBot: { index: false, follow } }
+    robots: shouldNoindex
+      ? { index: false, follow: shouldFollow, googleBot: { index: false, follow: shouldFollow } }
       : {
           index: true,
           follow: true,
