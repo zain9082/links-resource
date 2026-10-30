@@ -4,7 +4,11 @@ import { resourceRedirects } from "./src/lib/resource-policy";
 const nextConfig: NextConfig = {
   trailingSlash: false,
   async headers() {
-    return process.env.SITE_NOINDEX === "false" ? [] : [{
+    const internal = {
+      source: "/internal/:path*",
+      headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    };
+    return process.env.SITE_NOINDEX === "false" ? [internal] : [internal, {
       source: "/:path*",
       headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
     }];
