@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import type { PageBlock, PageConfig, PageFaq, PageTemplate } from "../../../content/pages/types";
 import { getPageConfig, publishedChildren, publishedRelated } from "../../../content/pages";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/shared/breadcrumbs";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { breadcrumbJsonLd, canonicalUrl, serviceJsonLd } from "@/lib/seo";
 
 function breadcrumbItems(page: PageConfig): BreadcrumbItem[] {
@@ -26,56 +27,56 @@ function breadcrumbItems(page: PageConfig): BreadcrumbItem[] {
 
 function Block({ block, index, faqs }: { block: PageBlock; index: number; faqs: PageFaq[] }) {
   if (block.type === "hero") return null;
-  const body = <p className="mt-4 max-w-3xl leading-relaxed text-muted">{block.body}</p>;
-  const heading = block.heading ? <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{block.heading}</h2> : null;
-  const card = "glass glow-border rounded-2xl p-6";
+  const body = <p className="mt-4 max-w-3xl break-words leading-relaxed text-muted">{block.body}</p>;
+  const heading = block.heading ? <h2 className="max-w-3xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">{block.heading}</h2> : null;
+  const sectionClass = "container-wide py-10 sm:py-14";
 
-  if (block.type === "servicesGrid") return <section className="container-wide py-10" id={`section-${index}`}>
+  if (block.type === "servicesGrid") return <section className={sectionClass} id={`section-${index}`}>
     {heading}{body}
-    {block.items?.length ? <div className="mt-7 grid gap-4 md:grid-cols-3">{block.items.map((item) =>
-      <div className={card} key={item.title}>
-        <Badge variant="purple">Service</Badge>
-        <h3 className="mt-4 text-lg font-semibold text-white">{item.title}</h3>
-        <p className="mt-2 text-sm text-muted">{item.description}</p>
-        {item.href && <Link href={item.href} className="mt-4 inline-flex items-center gap-1 text-sm text-purple-2">Learn more <ArrowRight className="size-4" /></Link>}
-      </div>)}</div> : null}
+    {!!block.items?.length && <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{block.items.map((item) =>
+      <Card className="flex h-full min-w-0 flex-col p-7" key={item.title}>
+        <Badge variant="purple" className="w-fit">Service</Badge>
+        <h3 className="mt-5 break-words text-xl font-semibold text-white">{item.title}</h3>
+        <p className="mt-3 flex-1 break-words text-sm leading-relaxed text-muted">{item.description}</p>
+        {item.href && <Link href={item.href} className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-purple-2">Learn more <ArrowRight className="size-4" /></Link>}
+      </Card>)}</div>}
   </section>;
 
-  if (block.type === "process") return <section className="container-wide py-10" id={`section-${index}`}>
+  if (block.type === "process") return <section className={sectionClass} id={`section-${index}`}>
     {heading}{body}
-    {block.steps?.length ? <div className="mt-7 grid gap-4 md:grid-cols-3">{block.steps.map((step, i) =>
-      <div className={card} key={step.title}><span className="text-sm font-semibold text-purple-2">{String(i + 1).padStart(2, "0")}</span><h3 className="mt-3 text-lg font-semibold text-white">{step.title}</h3><p className="mt-2 text-sm text-muted">{step.description}</p></div>)}</div> : null}
+    {!!block.steps?.length && <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{block.steps.map((step, i) =>
+      <Card className="min-w-0 p-7" key={step.title}><span className="text-3xl font-bold text-gradient">{String(i + 1).padStart(2, "0")}</span><h3 className="mt-4 break-words text-xl font-semibold text-white">{step.title}</h3><p className="mt-3 break-words text-sm leading-relaxed text-muted">{step.description}</p></Card>)}</div>}
   </section>;
 
-  if (block.type === "proof") return <section className="container-wide py-10" id={`section-${index}`}>
+  if (block.type === "proof") return <section className={sectionClass} id={`section-${index}`}>
     {heading}{body}
-    {block.metrics?.length ? <div className="mt-7 grid gap-4 md:grid-cols-3">{block.metrics.map((metric) =>
-      <div className={card} key={metric.label}><p className="text-3xl font-bold text-gradient">{metric.value}</p><p className="mt-2 text-sm text-muted">{metric.label}</p></div>)}</div> : null}
+    {!!block.metrics?.length && <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{block.metrics.map((metric) =>
+      <Card className="min-w-0 p-7" key={metric.label}><p className="break-words text-3xl font-bold text-gradient">{metric.value}</p><p className="mt-3 break-words text-sm text-muted">{metric.label}</p></Card>)}</div>}
   </section>;
 
-  if (block.type === "pricing") return <section className="container-wide py-10" id={`section-${index}`}>
+  if (block.type === "pricing") return <section className={sectionClass} id={`section-${index}`}>
     {heading}{body}
-    {block.plans?.length ? <div className="mt-7 grid gap-4 md:grid-cols-3">{block.plans.map((plan) =>
-      <div className={card} key={plan.name}><h3 className="text-lg font-semibold text-white">{plan.name}</h3><p className="mt-2 text-sm text-muted">{plan.description}</p></div>)}</div> : null}
+    {!!block.plans?.length && <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{block.plans.map((plan) =>
+      <Card className="min-w-0 p-7" key={plan.name}><Badge variant="purple">Plan</Badge><h3 className="mt-5 break-words text-xl font-semibold text-white">{plan.name}</h3><p className="mt-3 break-words text-sm leading-relaxed text-muted">{plan.description}</p></Card>)}</div>}
   </section>;
 
-  if (block.type === "comparison") return <section className="container-wide py-10" id={`section-${index}`}>
+  if (block.type === "comparison") return <section className={sectionClass} id={`section-${index}`}>
     {heading}{body}
-    {block.columns?.length ? <div className="mt-7 grid gap-4 md:grid-cols-2">{block.columns.map((column) =>
-      <div className={card} key={column.title}><h3 className="text-lg font-semibold text-white">{column.title}</h3><ul className="mt-3 space-y-2 text-sm text-muted">{column.points.map((point) => <li key={point}>{point}</li>)}</ul></div>)}</div> : null}
+    {!!block.columns?.length && <div className="mt-8 grid gap-5 md:grid-cols-2">{block.columns.map((column) =>
+      <Card className="min-w-0 p-7" key={column.title}><h3 className="break-words text-xl font-semibold text-white">{column.title}</h3><ul className="mt-5 space-y-3 text-sm leading-relaxed text-muted">{column.points.map((point) => <li className="flex items-start gap-3" key={point}><Check className="mt-0.5 size-4 shrink-0 text-purple-2" />{point}</li>)}</ul></Card>)}</div>}
   </section>;
 
-  if (block.type === "cta") return <section className="container-wide py-10" id={`section-${index}`}>
-    <div className="glass-strong glow-border rounded-3xl p-8 sm:p-12">{heading}{body}<Button asChild className="mt-7"><Link href={block.href ?? "/contact"}>{block.label ?? "Contact us"}<ArrowRight className="ml-2 size-4" /></Link></Button></div>
+  if (block.type === "cta") return <section className={sectionClass} id={`section-${index}`}>
+    <div className="glass-strong glow-border rounded-3xl p-8 sm:p-12">{heading}{body}<Button asChild size="lg" className="mt-7"><Link href={block.href ?? "/contact"}>{block.label ?? "Contact us"}<ArrowRight className="size-4" /></Link></Button></div>
   </section>;
 
-  if (block.type === "faq") return <section className="container-wide py-10" id={`section-${index}`}>
+  if (block.type === "faq") return <section className={sectionClass} id={`section-${index}`}>
     {heading}
-    {faqs.length ? <div className="mt-6 space-y-4">{faqs.map((faq) => <div className="glass rounded-2xl p-6" key={faq.question}><h3 className="font-semibold text-white">{faq.question}</h3><p className="mt-2 text-muted">{faq.answer}</p></div>)}</div> : body}
+    {faqs.length ? <div className="mt-8 grid gap-4 md:grid-cols-2">{faqs.map((faq) => <Card className="min-w-0" key={faq.question}><h3 className="break-words font-semibold text-white">{faq.question}</h3><p className="mt-3 break-words text-sm leading-relaxed text-muted">{faq.answer}</p></Card>)}</div> : body}
   </section>;
 
-  return <section className="container-wide py-10" id={`section-${index}`}>
-    <div className={block.type === "problem" ? "glass-strong glow-border rounded-3xl p-8 sm:p-10" : ""}>{heading}{body}</div>
+  return <section className={sectionClass} id={`section-${index}`}>
+    <div className={block.type === "problem" ? "glass-strong glow-border rounded-3xl p-8 sm:p-12" : ""}>{heading}{body}</div>
   </section>;
 }
 
