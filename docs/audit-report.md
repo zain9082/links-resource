@@ -666,3 +666,39 @@ PASS /white-label: status=200 robots=noindex, nofollow sitemap=absent nav/footer
 ```
 
 No deployment or Vercel setting was changed. The seven draft pages remain unavailable for indexing until their copy is written and their status is explicitly changed to `published`.
+
+## M. Full structure build
+
+### Structure and design
+
+- `docs/DESIGN.md` records the existing colour, typography, spacing, surface, button and component system. The shared templates reuse these styles, with responsive card grids and all ten block types.
+- The 83 CSV URLs now have page configs. The 68 new CSV configs are drafts, and `/industries`, `/locations` and `/blog` were added as three draft index hubs. Total configured pages: **86**. Each new page includes typed metadata, keywords, audience, parent, related routes and marked `[COPY PENDING]` sections. The 15 existing P1 configs retain their previous status and copy, but the site-wide switch prevents indexing.
+- The 68 new CSV pages and three extra hubs have section specs in `docs/section-specs/`, giving **86 specs** total. Audience for new pages was inferred from the URL and intent because the CSV has no audience column.
+- With `SHOW_DRAFTS=true`, the navigation, footer and hub child cards include draft pages. `/internal/pages` is unlinked and lists all 86 configured pages for review. `/case-studies` retains its existing custom visible layout; its new config supplies inventory and future template data.
+
+### Safety switches
+
+`SITE_NOINDEX` defaults to `true`. It produces page-level `noindex,nofollow`, an `X-Robots-Tag: noindex, nofollow` response header, `Disallow: /` in robots.txt, and an empty sitemap. `SHOW_DRAFTS` defaults to `true` on this branch for navigation and footer review. Both are documented in `README.md`. The preview deployment explicitly set both values to `true` at build and runtime.
+
+### Verification
+
+`npm run build` passed with Next.js 16.2.7, generating 148 static pages. `npx tsc --noEmit` passed after the template and review-page changes. The existing redirect script passed 14/14 against local `next start`. The new `scripts/check-full-structure.mjs` checked every CSV URL, the three extra hubs and the review page, plus internal links and hub-child relationships:
+
+```text
+CSV routes: 83; checked routes including hubs and review: 87
+HTTP 200: 87/87
+Robots meta noindex,nofollow: 87/87; X-Robots-Tag noindex: 87/87
+Internal links resolving: 99/99; required hub-child links: 68
+robots.txt Disallow /: true; sitemap empty: true
+PASS: full structure checks passed
+```
+
+The redirect script reported `14/14 checks passed`, including one-hop 308 redirects, trailing-slash normalization, true 404 for an unknown route and 404 for the sync probe.
+
+### Preview deployment
+
+- **Project/team:** `links-resource-production` / `Links Resource` (`links-resource`).
+- **Deployment:** `dpl_3KiatQ5mrrhMQfCKxLN29ihhwy87`, target **preview**, status **READY**.
+- **URL:** https://links-resource-production-2tj1lrn7w-links-resource.vercel.app
+- **Preview verification:** `/internal/pages` returned HTTP 200 with `X-Robots-Tag: noindex, nofollow`; its HTML contains draft route `/locations/london` and `noindex,nofollow` metadata. Preview robots.txt disallows `/`, and its sitemap is empty.
+- **Access:** Vercel Authentication protects this preview; access requires a team-authorized login. Production was not deployed or promoted, and no domain or DNS settings were changed.
