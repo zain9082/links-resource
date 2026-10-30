@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { PageConfig } from "../../content/pages/types";
 import { site } from "./data";
 
 // Canonicals always identify the production domain, including in preview builds.
@@ -75,6 +76,15 @@ export function buildMetadata({
 
 export function buildAdminMetadata(title: string, path: string): Metadata {
   return buildMetadata({ title, path, noindex: true });
+}
+
+export function pageMetadata(page: PageConfig): Metadata {
+  return buildMetadata({
+    title: page.title,
+    description: page.metaDescription,
+    path: page.slug,
+    noindex: page.status === "draft",
+  });
 }
 
 export function serviceJsonLd({
