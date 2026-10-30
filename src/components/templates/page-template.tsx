@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import type { PageBlock, PageConfig, PageTemplate } from "../../../content/pages/types";
+import type { PageBlock, PageConfig, PageFaq, PageTemplate } from "../../../content/pages/types";
 import { getPageConfig, publishedChildren, publishedRelated } from "../../../content/pages";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/shared/breadcrumbs";
 import { PageHeader } from "@/components/shared/page-header";
@@ -24,7 +24,7 @@ function breadcrumbItems(page: PageConfig): BreadcrumbItem[] {
   ];
 }
 
-function Block({ block, index }: { block: PageBlock; index: number }) {
+function Block({ block, index, faqs }: { block: PageBlock; index: number; faqs: PageFaq[] }) {
   if (block.type === "hero") return null;
   const body = <p className="mt-4 max-w-3xl leading-relaxed text-muted">{block.body}</p>;
   const heading = block.heading ? <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{block.heading}</h2> : null;
@@ -70,7 +70,8 @@ function Block({ block, index }: { block: PageBlock; index: number }) {
   </section>;
 
   if (block.type === "faq") return <section className="container-wide py-10" id={`section-${index}`}>
-    {heading}{body}
+    {heading}
+    {faqs.length ? <div className="mt-6 space-y-4">{faqs.map((faq) => <div className="glass rounded-2xl p-6" key={faq.question}><h3 className="font-semibold text-white">{faq.question}</h3><p className="mt-2 text-muted">{faq.answer}</p></div>)}</div> : body}
   </section>;
 
   return <section className="container-wide py-10" id={`section-${index}`}>
@@ -99,9 +100,8 @@ function ConfigTemplate({ page, variant }: { page: PageConfig; variant: PageTemp
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     {page.slug !== "/" && <div className="container-wide pt-32"><Breadcrumbs items={crumbs} /></div>}
     <PageHeader eyebrow={variant.replace(/([A-Z])/g, " $1")} title={page.h1} subtitle={hero?.body} />
-    <div className="pb-14">{page.sections.map((block, index) => <Block block={block} index={index} key={`${block.type}-${index}`} />)}</div>
+    <div className="pb-14">{page.sections.map((block, index) => <Block block={block} index={index} faqs={page.faqs} key={`${block.type}-${index}`} />)}</div>
     <PageInternalLinks page={page} />
-    {page.faqs.length > 0 && <section className="container-wide pb-12"><h2 className="text-3xl font-semibold text-white">Frequently asked questions</h2><div className="mt-6 space-y-4">{page.faqs.map((faq) => <div className="glass rounded-2xl p-6" key={faq.question}><h3 className="font-semibold text-white">{faq.question}</h3><p className="mt-2 text-muted">{faq.answer}</p></div>)}</div></section>}
   </>;
 }
 

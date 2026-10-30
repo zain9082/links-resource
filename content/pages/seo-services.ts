@@ -101,7 +101,32 @@ export default {
       "body": "Let's build an SEO strategy tailored to your niche, goals, and growth timeline. ✓ We review your enquiry and match you with the right specialist ✓ Clear scope, timeline, and next steps — no obligation ✓ UK-based team with transparent communication Get Started Now Contact Talk to our UK team +44 7438 836553 hello@linksresource.co.uk WhatsApp Chat UK Company No. 14819683 Get Started Now"
     }
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "question": "How long does SEO take to show results?",
+      "answer": "Most campaigns start seeing meaningful movement in 8–12 weeks, while stronger compounding growth happens over 4–6 months."
+    },
+    {
+      "question": "Do you offer local and national SEO?",
+      "answer": "Yes. We run both local SEO campaigns and broader national/international strategies based on your business goals."
+    },
+    {
+      "question": "Will I receive monthly reports?",
+      "answer": "Yes. You get transparent monthly reporting with rankings, traffic, visibility, and action updates."
+    },
+    {
+      "question": "What's included in your SEO services?",
+      "answer": "Technical SEO, on-page optimization, keyword strategy, content recommendations, link building support, and monthly KPI reporting."
+    },
+    {
+      "question": "Do you work with e-commerce and SaaS brands?",
+      "answer": "Yes. We tailor SEO strategies for e-commerce, SaaS, local businesses, and B2B service companies."
+    },
+    {
+      "question": "Can SEO work alongside our existing marketing?",
+      "answer": "Yes. Our campaigns integrate with content, paid media, and development workflows for aligned growth."
+    }
+  ],
   "relatedSlugs": [
     "/content-writing-services",
     "/link-building-services",

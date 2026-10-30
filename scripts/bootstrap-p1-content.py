@@ -71,6 +71,24 @@ def live_sections(snapshot, h1):
     return sections
 
 
+def live_faqs(snapshot):
+    raw = snapshot.read_text(encoding="utf-8")
+    faqs = []
+    for chunk in re.findall(r"```json\s*(.*?)\s*```", raw, re.S):
+        try:
+            data = json.loads(chunk)
+        except json.JSONDecodeError:
+            continue
+        for item in data if isinstance(data, list) else [data]:
+            if isinstance(item, dict) and item.get("@type") == "FAQPage":
+                for entry in item.get("mainEntity", []):
+                    question = entry.get("name")
+                    answer = entry.get("acceptedAnswer", {}).get("text")
+                    if question and answer:
+                        faqs.append({"question": question, "answer": answer})
+    return faqs
+
+
 def filename_for(path):
     if path == "/":
         return PAGES / "home.ts"
@@ -90,10 +108,13 @@ for path, (template, parent, title, description, h1, snapshot_name) in SPECS.ite
     supporting = [part.replace("*", "").strip() for part in row["Supporting Keywords (use on this page)"].split(",")]
     supporting = [part for part in supporting if part and part != "—"]
     if snapshot_name:
-        sections = live_sections(ROOT / "docs" / "live-snapshot" / snapshot_name, h1)
+        snapshot = ROOT / "docs" / "live-snapshot" / snapshot_name
+        sections = live_sections(snapshot, h1)
+        faqs = live_faqs(snapshot)
         status = "published"
     else:
         status = "draft"
+        faqs = []
         sections = [
             {"type": "hero", "heading": h1, "body": "[COPY PENDING]"},
             {"type": "problem", "heading": "The challenge", "body": "[COPY PENDING]"},
@@ -119,7 +140,7 @@ for path, (template, parent, title, description, h1, snapshot_name) in SPECS.ite
         "supportingKeywords": supporting,
         "priority": "P1",
         "sections": sections,
-        "faqs": [],
+        "faqs": faqs,
         "relatedSlugs": related,
     }
     file = filename_for(path)

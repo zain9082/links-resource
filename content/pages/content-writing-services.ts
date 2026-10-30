@@ -112,7 +112,32 @@ export default {
       "body": "Let's plan content that ranks, engages your audience, and converts visitors into leads. ✓ We review your enquiry and match you with the right specialist ✓ Clear scope, timeline, and next steps — no obligation ✓ UK-based team with transparent communication Get Started Now Contact Talk to our UK team +44 7438 836553 hello@linksresource.co.uk WhatsApp Chat UK Company No. 14819683 Get Started Now"
     }
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "question": "Can you match our existing brand tone?",
+      "answer": "Yes. We align each piece with your preferred voice, positioning, and audience style guidelines."
+    },
+    {
+      "question": "Do you include keyword research?",
+      "answer": "Yes. Every package includes keyword mapping and topic targeting to support ranking growth."
+    },
+    {
+      "question": "Can your team upload content to our CMS?",
+      "answer": "Yes. We can support formatting and publishing workflows for WordPress and similar platforms."
+    },
+    {
+      "question": "What types of content do you write?",
+      "answer": "Blog posts, landing pages, product descriptions, service pages, category copy, and editorial guides."
+    },
+    {
+      "question": "How long does a typical article take?",
+      "answer": "Standard articles are delivered within 5–7 business days. Bulk packages follow an agreed monthly calendar."
+    },
+    {
+      "question": "Do you offer white-label content for agencies?",
+      "answer": "Yes. We provide reseller-ready content with flexible delivery and client-safe reporting options."
+    }
+  ],
   "relatedSlugs": [
     "/link-building-services",
     "/seo-services",

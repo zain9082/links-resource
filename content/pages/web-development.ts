@@ -85,7 +85,24 @@ export default {
       "body": "Share your goals, current site, and timeline. We will recommend the right scope, stack, and next steps — with no pressure. Get a Development Estimate"
     }
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "question": "Do you build with the MERN stack?",
+      "answer": "Yes. We use MongoDB, Express, React, and Node.js for full-stack web applications, plus Next.js for SEO-focused sites."
+    },
+    {
+      "question": "Can you build React Native mobile apps?",
+      "answer": "Absolutely. Malik Zain leads React Native development for iOS and Android with shared codebase efficiency."
+    },
+    {
+      "question": "Will the website be mobile optimized?",
+      "answer": "Every build is responsive and tested for mobile performance, usability, and Core Web Vitals."
+    },
+    {
+      "question": "Do you support existing products?",
+      "answer": "Yes. We can audit, refactor, or extend existing React, Node.js, and React Native applications."
+    }
+  ],
   "relatedSlugs": [
     "/content-writing-services",
     "/link-building-services",

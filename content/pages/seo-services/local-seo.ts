@@ -93,7 +93,32 @@ export default {
       "body": "Let's build a local SEO plan tailored to your service areas and growth goals. ✓ We review your enquiry and match you with the right specialist ✓ Clear scope, timeline, and next steps — no obligation ✓ UK-based team with transparent communication Get Started Now Contact Talk to our UK team +44 7438 836553 hello@linksresource.co.uk WhatsApp Chat UK Company No. 14819683 Get Started Now"
     }
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "question": "Can local SEO help service-area businesses?",
+      "answer": "Yes. We build campaigns for both storefront and service-area businesses targeting nearby customers."
+    },
+    {
+      "question": "How quickly can map rankings improve?",
+      "answer": "Many businesses see early movement in 4–8 weeks, with stronger consistency over 2–4 months."
+    },
+    {
+      "question": "Do you manage Google Business Profile updates?",
+      "answer": "Yes. We support profile optimization, updates, and strategic posting guidance."
+    },
+    {
+      "question": "Do you work with multi-location brands?",
+      "answer": "Yes. Our Multi-Location plan supports scalable GBP, citations, and local page strategies."
+    },
+    {
+      "question": "Will I see call and lead tracking?",
+      "answer": "Yes. Monthly reports include calls, direction requests, and qualified lead indicators where available."
+    },
+    {
+      "question": "Can local SEO work with our existing SEO campaigns?",
+      "answer": "Yes. Local SEO integrates with broader SEO, content, and link building for compounding growth."
+    }
+  ],
   "relatedSlugs": [
     "/",
     "/content-writing-services",

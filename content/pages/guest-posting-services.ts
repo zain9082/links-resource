@@ -88,7 +88,20 @@ export default {
       "body": "Let's build a guest posting campaign designed around your niche, authority goals, and growth targets. Get started now"
     }
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "question": "Do you use private blog networks?",
+      "answer": "No. We focus on real outreach and editorial placements on genuine websites."
+    },
+    {
+      "question": "Can I review sites before publishing?",
+      "answer": "Yes. We can provide a pre-approval workflow based on your campaign package."
+    },
+    {
+      "question": "Is guest posting safe for long-term SEO?",
+      "answer": "Yes, when done ethically with relevance and quality controls, which is exactly how we operate."
+    }
+  ],
   "relatedSlugs": [
     "/",
     "/content-writing-services",

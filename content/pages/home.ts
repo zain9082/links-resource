@@ -95,7 +95,32 @@ export default {
       "body": "Let's create a strategy tailored to your business. ✓ We review your enquiry and match you with the right specialist ✓ Clear scope, timeline, and next steps — no obligation ✓ UK-based team with transparent communication Book a Strategy Call Contact Talk to our UK team +44 7438 836553 hello@linksresource.co.uk WhatsApp Chat UK Company No. 14819683 Book a Strategy Call"
     }
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "question": "What link building services do you offer?",
+      "answer": "We offer guest posting, niche edits, editorial link building, white label link building, digital PR, and SaaS link building."
+    },
+    {
+      "question": "Are links placed on real websites?",
+      "answer": "Yes. We focus on real websites with relevant content and quality checks. We do not use PBNs."
+    },
+    {
+      "question": "Do you provide transparent campaign reports?",
+      "answer": "Yes. You receive clear reports with live links, website metrics, and campaign progress updates."
+    },
+    {
+      "question": "Can agencies use your white label services?",
+      "answer": "Yes. Our white label workflows are built for agencies that need scalable and client-safe delivery."
+    },
+    {
+      "question": "How long does it take to see SEO and authority growth?",
+      "answer": "Early improvements can appear in weeks, while strong compounding growth usually builds over 3-6 months."
+    },
+    {
+      "question": "Do you offer replacement coverage for lost links?",
+      "answer": "Yes. Under our service policy, eligible dropped placements are replaced to maintain campaign value."
+    }
+  ],
   "relatedSlugs": [
     "/content-writing-services",
     "/guest-posting-services",
