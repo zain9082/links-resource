@@ -114,6 +114,9 @@ export function PageSchema({ page }: { page: PageConfig }) {
 export function PageInternalLinks({ page }: { page: PageConfig }) {
   const children = visibleChildren(page.slug);
   const groups = groupHubChildren(page.slug, children);
+  const cardDescription = (child: PageConfig) => child.status === "draft" || child.metaDescription.includes("Learn about the approach")
+    ? "[COPY PENDING]"
+    : child.metaDescription;
   const related = visibleRelated(page);
   const parent = page.parent ? getPageConfig(page.parent) : undefined;
   if (!children.length && !parent && !related.length) return null;
@@ -122,7 +125,7 @@ export function PageInternalLinks({ page }: { page: PageConfig }) {
         <h2 className="text-2xl font-semibold text-white">{hubHeading(page.slug)}</h2>
         {groups.map((group) => <div className="mt-7" key={group.title}>
           <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-purple-2">{group.title}</p>
-          <div className="grid gap-4 md:grid-cols-3">{group.pages.map((child) => <Link href={child.slug} className="glass glow-border rounded-2xl p-6 transition-transform hover:-translate-y-0.5" key={child.slug}><h3 className="font-semibold text-white">{child.title}</h3><p className="mt-2 text-sm text-muted">{child.metaDescription}</p></Link>)}</div>
+          <div className="grid gap-4 md:grid-cols-3">{group.pages.map((child) => <Link href={child.slug} className="glass glow-border rounded-2xl p-6 transition-transform hover:-translate-y-0.5" key={child.slug}><h3 className="font-semibold text-white">{child.title}</h3><p className="mt-2 text-sm text-muted">{cardDescription(child)}</p></Link>)}</div>
         </div>)}
       </div>}
       {parent && <p className="mb-6 text-sm text-muted">Part of <Link href={parent.slug} className="font-medium text-purple-2 hover:text-white">{parent.title}</Link></p>}
