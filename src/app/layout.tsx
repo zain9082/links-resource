@@ -9,6 +9,7 @@ import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { AiAssistant } from "@/components/ai/ai-assistant";
 import { Providers } from "@/components/providers";
 import { GlobalBreadcrumbSchema } from "@/components/shared/global-breadcrumb-schema";
+import { pageConfigs } from "../../content/pages";
 import { buildMetadata, organizationJsonLd, professionalServiceJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const inter = Inter({
@@ -47,7 +48,7 @@ export default function RootLayout({
             __html: JSON.stringify([organizationJsonLd(), professionalServiceJsonLd(), websiteJsonLd()]),
           }}
         />
-        <GlobalBreadcrumbSchema />
+        <GlobalBreadcrumbSchema configuredPaths={pageConfigs.map((page) => page.slug)} />
         <AuroraBackground />
         <ScrollProgress />
         <Providers>

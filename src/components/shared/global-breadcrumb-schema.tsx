@@ -3,9 +3,9 @@
 import { usePathname } from "next/navigation";
 import { breadcrumbJsonLd } from "@/lib/seo";
 
-export function GlobalBreadcrumbSchema() {
+export function GlobalBreadcrumbSchema({ configuredPaths = [] }: { configuredPaths?: string[] }) {
   const pathname = usePathname();
-  if (!pathname || pathname === "/") return null;
+  if (!pathname || pathname === "/" || configuredPaths.includes(pathname)) return null;
 
   const segments = pathname.split("/").filter(Boolean);
   const items = [{ name: "Home", href: "/" }, ...segments.map((segment, index) => ({
