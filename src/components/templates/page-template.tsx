@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { breadcrumbJsonLd, canonicalUrl, serviceJsonLd } from "@/lib/seo";
 import { groupHubChildren, hubHeading } from "@/lib/hub-groups";
+import { ExtendedBlock, isExtendedBlock } from "./extended-blocks";
 
 function breadcrumbItems(page: PageConfig): BreadcrumbItem[] {
   const parents: PageConfig[] = [];
@@ -28,6 +29,7 @@ function breadcrumbItems(page: PageConfig): BreadcrumbItem[] {
 
 function Block({ block, index, faqs }: { block: PageBlock; index: number; faqs: PageFaq[] }) {
   if (block.type === "hero") return null;
+  if (isExtendedBlock(block)) return <ExtendedBlock block={block} index={index} />;
   const body = <p className="mt-4 max-w-3xl break-words leading-relaxed text-muted">{block.body}</p>;
   const heading = block.heading ? <h2 className="max-w-3xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">{block.heading}</h2> : null;
   const sectionClass = "container-wide py-10 sm:py-14";
