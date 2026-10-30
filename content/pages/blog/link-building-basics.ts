@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/blog/link-building-basics",
+  "breadcrumbLabel": "Link Building Basics",
   "parent": "/blog",
   "template": "blogGuide",
   "status": "draft",

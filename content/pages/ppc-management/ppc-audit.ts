@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/ppc-management/ppc-audit",
+  "breadcrumbLabel": "PPC Audit",
   "parent": "/ppc-management",
   "template": "ppc",
   "status": "draft",

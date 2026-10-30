@@ -2,6 +2,7 @@ import type { PageConfig } from "./types";
 
 export default {
   "slug": "/link-building-services",
+  "breadcrumbLabel": "Link Building",
   "parent": "/",
   "template": "serviceHub",
   "status": "published",

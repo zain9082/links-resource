@@ -15,14 +15,20 @@ const topLinks = [
 
 const navLinkClass = "shrink-0 whitespace-nowrap rounded-full px-2.5 py-2 text-xs text-muted transition-colors hover:bg-white/5 hover:text-white xl:px-3.5 xl:text-sm";
 
-function DropdownItem({ item, onClick }: { item: HeaderItem; onClick: () => void }) {
+function DropdownItem({ item, onClick, featured = false }: { item: HeaderItem; onClick: () => void; featured?: boolean }) {
   return <Link
     href={item.href}
     onClick={onClick}
-    className="block rounded-xl border border-white/10 bg-bg-800/90 p-4 transition-colors hover:border-purple-2/30 hover:bg-bg-700/90"
+    className={cn("block rounded-xl border px-3 py-2.5 transition-colors hover:border-purple-2/30 hover:bg-bg-700/90", featured ? "border-purple-2/25 bg-purple/10" : "border-white/10 bg-bg-800/90")}
   >
-    <span className="block text-sm font-semibold text-white">{item.title}</span>
-    <span className="mt-1 block text-xs leading-relaxed text-muted">{item.description}</span>
+    <span className="block text-[15px] font-semibold leading-tight text-white">{item.title}</span>
+    <span className="mt-0.5 block text-[13px] leading-snug text-muted">{item.description}</span>
+  </Link>;
+}
+
+function BottomLink({ item, onClick }: { item: HeaderItem; onClick: () => void }) {
+  return <Link href={item.href} onClick={onClick} className="inline-flex min-w-0 flex-wrap items-baseline gap-x-2 gap-y-0.5 rounded-md text-[13px] leading-snug text-purple-2 hover:text-white">
+    <span className="font-semibold">{item.title}</span><span className="text-muted">{item.description}</span>
   </Link>;
 }
 
@@ -71,14 +77,36 @@ export function Navbar({ servicesMenu }: { servicesMenu: HeaderMenu[] }) {
           <button
             type="button"
             aria-expanded={desktopOpen === section.title}
-            aria-controls="header-dropdown"
-            onClick={() => setDesktopOpen(desktopOpen === section.title ? null : section.title)}
+            aria-controls={`header-dropdown-${section.title.replace(/\s+/g, "-").toLowerCase()}`}
+            onFocus={() => setDesktopOpen(section.title)}
+            onClick={() => setDesktopOpen(section.title)}
             className={cn(navLinkClass, "inline-flex items-center gap-1")}
           >
             {section.title}<ChevronDown className={cn("size-3.5 shrink-0 transition-transform xl:size-4", desktopOpen === section.title && "rotate-180")} />
           </button>
+          <AnimatePresence>
+            {desktopOpen === section.title && <motion.div
+              id={`header-dropdown-${section.title.replace(/\s+/g, "-").toLowerCase()}`}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.2 }}
+              className={cn(
+                "fixed inset-x-4 top-20 z-50 mx-auto hidden rounded-2xl border border-white/15 bg-bg-800/95 p-4 shadow-2xl backdrop-blur-xl lg:block",
+                section.items.length > 3 ? "w-[min(780px,calc(100vw-2rem))]" : "w-[min(540px,calc(100vw-2rem))]"
+              )}
+            >
+              <DropdownItem item={section.items[0]} featured onClick={() => setDesktopOpen(null)} />
+              <div className={cn("mt-3 grid gap-2", section.items.length > 3 ? "grid-cols-3" : "grid-cols-2")}>
+                {section.items.slice(1).map((item) => <DropdownItem key={item.href} item={item} onClick={() => setDesktopOpen(null)} />)}
+              </div>
+              {!!section.bottomLinks?.length && <div className="mt-3 grid grid-cols-2 gap-3 border-t border-white/10 pt-3">
+                {section.bottomLinks.map((item) => <BottomLink key={item.href} item={item} onClick={() => setDesktopOpen(null)} />)}
+              </div>}
+            </motion.div>}
+          </AnimatePresence>
         </div>)}
-        {topLinks.map((item) => <Link key={item.href} href={item.href} onClick={() => setDesktopOpen(null)} className={navLinkClass}>{item.label}</Link>)}
+        {topLinks.map((item) => <Link key={item.href} href={item.href} onFocus={() => setDesktopOpen(null)} onClick={() => setDesktopOpen(null)} className={navLinkClass}>{item.label}</Link>)}
       </div>
       <div className="hidden shrink-0 lg:flex">
         <SeoAuditButton size="sm" label="Get Free SEO Audit" className="whitespace-nowrap text-xs xl:text-sm" />
@@ -87,6 +115,7 @@ export function Navbar({ servicesMenu }: { servicesMenu: HeaderMenu[] }) {
         type="button"
         aria-label="Toggle menu"
         aria-expanded={mobileOpen}
+        aria-controls="mobile-site-menu"
         onClick={() => { setMobileOpen(!mobileOpen); setDesktopOpen(null); }}
         className="grid size-10 shrink-0 place-items-center rounded-xl glass text-white lg:hidden"
       >
@@ -95,46 +124,28 @@ export function Navbar({ servicesMenu }: { servicesMenu: HeaderMenu[] }) {
     </nav>
 
     <AnimatePresence>
-      {desktopOpen && <motion.div
-        id="header-dropdown"
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 8 }}
-        transition={{ duration: 0.2 }}
-        className="fixed inset-x-4 top-20 z-50 mx-auto hidden max-h-[75vh] w-[min(760px,calc(100vw-2rem))] overflow-y-auto rounded-2xl border border-white/15 bg-bg-800/95 p-5 shadow-2xl backdrop-blur-xl lg:block"
-      >
-        {servicesMenu.filter((section) => section.title === desktopOpen).map((section) => <div key={section.title}>
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-purple-2">{section.title}</p>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {section.items.map((item) => <DropdownItem key={item.href} item={item} onClick={() => setDesktopOpen(null)} />)}
-          </div>
-          {!!section.bottomLinks?.length && <div className="mt-4 grid gap-3 border-t border-white/10 pt-4 sm:grid-cols-2">
-            {section.bottomLinks.map((item) => <DropdownItem key={item.href} item={item} onClick={() => setDesktopOpen(null)} />)}
-          </div>}
-        </div>)}
-      </motion.div>}
-    </AnimatePresence>
-
-    <AnimatePresence>
       {mobileOpen && <motion.div
+        id="mobile-site-menu"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
-        className="mx-auto mt-2 max-h-[calc(100vh-6rem)] max-w-[min(1440px,calc(100vw-1.5rem))] overflow-y-auto rounded-2xl glass-strong p-3 lg:hidden"
+        className="mx-auto mt-2 max-h-[calc(100vh-6rem)] max-w-[min(1440px,calc(100vw-1.5rem))] overflow-y-auto rounded-2xl border border-white/15 bg-bg-800/95 p-3 shadow-2xl backdrop-blur-xl lg:hidden"
       >
         {servicesMenu.map((section) => <div key={section.title} className="border-b border-white/10">
           <button
             type="button"
             aria-expanded={mobileSection === section.title}
+            aria-controls={`mobile-section-${section.title.replace(/\s+/g, "-").toLowerCase()}`}
             onClick={() => setMobileSection(mobileSection === section.title ? null : section.title)}
             className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-medium text-white"
           >
             {section.title}<ChevronDown className={cn("size-4 text-purple-2 transition-transform", mobileSection === section.title && "rotate-180")} />
           </button>
-          {mobileSection === section.title && <div className="space-y-2 px-2 pb-3">
-            {section.items.map((item) => <DropdownItem key={item.href} item={item} onClick={() => setMobileOpen(false)} />)}
-            {!!section.bottomLinks?.length && <div className="space-y-2 border-t border-white/10 pt-3">
-              {section.bottomLinks.map((item) => <DropdownItem key={item.href} item={item} onClick={() => setMobileOpen(false)} />)}
+          {mobileSection === section.title && <div id={`mobile-section-${section.title.replace(/\s+/g, "-").toLowerCase()}`} className="space-y-2 px-2 pb-3">
+            <DropdownItem item={section.items[0]} featured onClick={() => setMobileOpen(false)} />
+            {section.items.slice(1).map((item) => <DropdownItem key={item.href} item={item} onClick={() => setMobileOpen(false)} />)}
+            {!!section.bottomLinks?.length && <div className="grid gap-2 border-t border-white/10 pt-3">
+              {section.bottomLinks.map((item) => <BottomLink key={item.href} item={item} onClick={() => setMobileOpen(false)} />)}
             </div>}
           </div>}
         </div>)}

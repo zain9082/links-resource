@@ -2,6 +2,7 @@ import type { PageConfig } from "./types";
 
 export default {
   "slug": "/case-studies",
+  "breadcrumbLabel": "Case Studies",
   "parent": "/",
   "template": "caseStudies",
   "status": "draft",

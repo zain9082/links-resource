@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/web-development/website-redesign",
+  "breadcrumbLabel": "Website Redesign",
   "parent": "/web-development",
   "template": "webDev",
   "status": "draft",

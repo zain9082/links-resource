@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { navbarLinkBuildingMenu } from "@/lib/data";
 import { pageMetadata } from "@/lib/seo";
 import linkBuildingPage from "../../../content/pages/link-building-services";
-import { PageInternalLinks, PageSchema } from "@/components/templates/page-template";
+import { PageBreadcrumbs, PageInternalLinks, PageSchema } from "@/components/templates/page-template";
 
 export const metadata: Metadata = pageMetadata(linkBuildingPage);
 
@@ -16,6 +16,7 @@ export default function LinkBuildingServicesPage() {
   return (
     <>
       <PageSchema page={linkBuildingPage} />
+      <PageBreadcrumbs page={linkBuildingPage} />
       <PageHeader
         eyebrow="Link Building Services"
         title={

@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/seo-services/wordpress-seo",
+  "breadcrumbLabel": "WordPress SEO",
   "parent": "/seo-services",
   "template": "serviceChild",
   "status": "draft",

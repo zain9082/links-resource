@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/blog/geo-vs-seo",
+  "breadcrumbLabel": "GEO vs SEO",
   "parent": "/blog",
   "template": "blogGuide",
   "status": "draft",

@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/seo-services/small-business-seo",
+  "breadcrumbLabel": "Small Business SEO",
   "parent": "/seo-services",
   "template": "serviceChild",
   "status": "draft",

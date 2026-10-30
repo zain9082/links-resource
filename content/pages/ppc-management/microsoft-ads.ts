@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/ppc-management/microsoft-ads",
+  "breadcrumbLabel": "Microsoft Ads",
   "parent": "/ppc-management",
   "template": "ppc",
   "status": "draft",

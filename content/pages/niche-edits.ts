@@ -2,6 +2,7 @@ import type { PageConfig } from "./types";
 
 export default {
   "slug": "/niche-edits",
+  "breadcrumbLabel": "Niche Edits",
   "parent": "/link-building-services",
   "template": "serviceChild",
   "status": "draft",

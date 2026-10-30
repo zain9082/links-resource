@@ -2,6 +2,7 @@ import type { PageConfig } from "../../types";
 
 export default {
   "slug": "/industries/seo-for-tradesmen/gardeners",
+  "breadcrumbLabel": "Gardeners",
   "parent": "/industries/seo-for-tradesmen",
   "template": "industry",
   "status": "draft",

@@ -22,9 +22,14 @@ function breadcrumbItems(page: PageConfig): BreadcrumbItem[] {
   }
   return [
     { name: "Home", href: "/" },
-    ...parents.map((parent) => ({ name: parent.title, href: parent.slug })),
-    { name: page.title, href: page.slug },
+    ...parents.map((parent) => ({ name: parent.breadcrumbLabel, href: parent.slug })),
+    { name: page.breadcrumbLabel, href: page.slug },
   ];
+}
+
+export function PageBreadcrumbs({ page }: { page: PageConfig }) {
+  if (page.slug === "/") return null;
+  return <div className="container-wide pt-32"><Breadcrumbs items={breadcrumbItems(page)} /></div>;
 }
 
 function Block({ block, index, faqs }: { block: PageBlock; index: number; faqs: PageFaq[] }) {
@@ -85,10 +90,9 @@ function Block({ block, index, faqs }: { block: PageBlock; index: number; faqs: 
 
 function ConfigTemplate({ page, variant }: { page: PageConfig; variant: PageTemplate }) {
   const hero = page.sections.find((block) => block.type === "hero");
-  const crumbs = breadcrumbItems(page);
   return <>
     <PageSchema page={page} />
-    {page.slug !== "/" && <div className="container-wide pt-32"><Breadcrumbs items={crumbs} /></div>}
+    <PageBreadcrumbs page={page} />
     <PageHeader eyebrow={variant.replace(/([A-Z])/g, " $1")} title={page.h1} subtitle={hero?.body} />
     <div className="pb-14">{page.sections.map((block, index) => <Block block={block} index={index} faqs={page.faqs} key={`${block.type}-${index}`} />)}</div>
     <PageInternalLinks page={page} />

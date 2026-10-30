@@ -74,13 +74,15 @@ Use the components and utilities above for `serviceHub`, `serviceChild`, `whiteL
 
 | Area | Links |
 | --- | --- |
-| Header SEO | SEO Services, Local SEO, Technical SEO, SEO Audit, Ecommerce SEO, AI SEO Agency; Industries and Locations at the bottom |
-| Header Link Building | Link Building Services, Guest Posting, Niche Edits, Blogger Outreach, Digital PR, Packages |
-| Header For agencies | White Label, White Label SEO, SEO Reseller, White Label Link Building, White Label PPC, White Label Web Development |
+| Header SEO | All SEO Services, Local SEO, Technical SEO, SEO Audit, Ecommerce SEO, AI SEO Agency; slim Industries and Locations links at the bottom |
+| Header Link Building | All Link Building, Guest Posting, Niche Edits, Blogger Outreach, Digital PR, Packages |
+| Header For agencies | All White Label Services, White Label SEO, SEO Reseller, White Label Link Building, White Label PPC, White Label Web Development |
 | Header More Services | PPC Management, Web Development, Content Writing |
 | Header direct | Pricing, Case Studies, Get Free SEO Audit CTA |
 | Footer | Services, For Agencies, Industries (hub + five), Locations (hub + six), Company, legal links |
 | Location hub | London, South East, South West, Midlands, North, Scotland groups |
+
+Desktop dropdowns use a highlighted hub row, then three columns for six-item menus and two columns for the three-item menu. Cards use 15px titles and 13px descriptions. The mobile menu uses the same order in accordions. Page configs set `breadcrumbLabel` independently of SEO titles; visible breadcrumbs and `BreadcrumbList` use that short label.
 
 ## Block library
 

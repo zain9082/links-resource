@@ -2,6 +2,7 @@ import type { PageConfig } from "./types";
 
 export default {
   "slug": "/content-writing-services",
+  "breadcrumbLabel": "Content Writing",
   "parent": "/",
   "template": "serviceChild",
   "status": "published",

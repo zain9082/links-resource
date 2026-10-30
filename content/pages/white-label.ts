@@ -2,6 +2,7 @@ import type { PageConfig } from "./types";
 
 export default {
   "slug": "/white-label",
+  "breadcrumbLabel": "White Label",
   "parent": "/",
   "template": "whiteLabel",
   "status": "draft",

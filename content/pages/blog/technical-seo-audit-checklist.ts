@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/blog/technical-seo-audit-checklist",
+  "breadcrumbLabel": "Technical SEO Audit",
   "parent": "/blog",
   "template": "blogGuide",
   "status": "draft",

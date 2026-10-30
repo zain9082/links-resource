@@ -2,6 +2,7 @@ import type { PageConfig } from "./types";
 
 export default {
   "slug": "/blog",
+  "breadcrumbLabel": "Blog",
   "parent": "/",
   "template": "blogGuide",
   "status": "draft",

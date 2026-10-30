@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/blog/seo-for-estate-agents",
+  "breadcrumbLabel": "Estate Agent SEO",
   "parent": "/blog",
   "template": "blogGuide",
   "status": "draft",

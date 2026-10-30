@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/blog/how-much-does-seo-cost-uk",
+  "breadcrumbLabel": "SEO Costs UK",
   "parent": "/blog",
   "template": "blogGuide",
   "status": "draft",

@@ -2,6 +2,7 @@ import type { PageConfig } from "./types";
 
 export default {
   "slug": "/locations",
+  "breadcrumbLabel": "Locations",
   "parent": "/",
   "template": "serviceHub",
   "status": "draft",

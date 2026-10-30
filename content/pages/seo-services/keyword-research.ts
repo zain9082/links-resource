@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/seo-services/keyword-research",
+  "breadcrumbLabel": "Keyword Research",
   "parent": "/seo-services",
   "template": "serviceChild",
   "status": "draft",

@@ -2,6 +2,7 @@ import type { PageConfig } from "./types";
 
 export default {
   "slug": "/web-development",
+  "breadcrumbLabel": "Web Development",
   "parent": "/",
   "template": "webDev",
   "status": "published",

@@ -2,6 +2,7 @@ import type { PageConfig } from "./types";
 
 export default {
   "slug": "/blogger-outreach-services",
+  "breadcrumbLabel": "Blogger Outreach",
   "parent": "/link-building-services",
   "template": "serviceChild",
   "status": "draft",

@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/ppc-management/google-ads",
+  "breadcrumbLabel": "Google Ads",
   "parent": "/ppc-management",
   "template": "ppc",
   "status": "draft",

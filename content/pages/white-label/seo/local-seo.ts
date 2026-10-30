@@ -2,6 +2,7 @@ import type { PageConfig } from "../../types";
 
 export default {
   "slug": "/white-label/seo/local-seo",
+  "breadcrumbLabel": "Local SEO",
   "parent": "/white-label/seo",
   "template": "whiteLabel",
   "status": "draft",

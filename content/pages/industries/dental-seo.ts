@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/industries/dental-seo",
+  "breadcrumbLabel": "Dental",
   "parent": "/industries",
   "template": "industry",
   "status": "draft",

@@ -2,6 +2,7 @@ import type { PageConfig } from "./types";
 
 export default {
   "slug": "/guest-posting-services",
+  "breadcrumbLabel": "Guest Posting",
   "parent": "/link-building-services",
   "template": "serviceChild",
   "status": "published",

@@ -47,6 +47,7 @@ export type PageFaq = { question: string; answer: string };
 
 export type PageConfig = {
   slug: string; // canonical pathname, e.g. /seo-services/local-seo
+  breadcrumbLabel: string; // concise navigation label, independent of SEO title
   parent: string | null;
   template: PageTemplate;
   status: PageStatus;

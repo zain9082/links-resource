@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/white-label/link-building",
+  "breadcrumbLabel": "Link Building",
   "parent": "/white-label",
   "template": "whiteLabel",
   "status": "published",

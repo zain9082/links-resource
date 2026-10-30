@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/link-building-services/packages",
+  "breadcrumbLabel": "Packages",
   "parent": "/link-building-services",
   "template": "serviceHub",
   "status": "draft",

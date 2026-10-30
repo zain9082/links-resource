@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/web-development/wordpress",
+  "breadcrumbLabel": "WordPress",
   "parent": "/web-development",
   "template": "webDev",
   "status": "draft",

@@ -2,6 +2,7 @@ import type { PageConfig } from "../types";
 
 export default {
   "slug": "/industries/saas-seo",
+  "breadcrumbLabel": "SaaS",
   "parent": "/industries",
   "template": "industry",
   "status": "draft",

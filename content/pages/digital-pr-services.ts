@@ -2,6 +2,7 @@ import type { PageConfig } from "./types";
 
 export default {
   "slug": "/digital-pr-services",
+  "breadcrumbLabel": "Digital PR",
   "parent": "/link-building-services",
   "template": "serviceChild",
   "status": "draft",
