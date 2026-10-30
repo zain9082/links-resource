@@ -27,6 +27,8 @@ export async function generateMetadata({
     title: `${category.name} Resources`,
     description: category.description,
     path: `/categories/${category.slug}`,
+    noindex: true,
+    follow: true,
   });
 }
 

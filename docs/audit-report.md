@@ -548,34 +548,34 @@ At the time of the baseline decision, `docs/new-structure.csv` existed only in c
 
 ## K. Batch 2A results
 
-### Resource and category URL decisions awaiting approval
+### Resource and category URL decisions (Batch 2B)
 
-The word counts below come from `docs/live-snapshot/index.csv` (rendered main text, excluding navigation and footer). These are recommendations only. No `/resources/*` or `/categories/*` redirect or noindex rule is implemented in this batch.
+The word counts below come from `docs/live-snapshot/index.csv` (rendered main text, excluding navigation and footer). Batch 2B keeps relevant resource pages with 300+ words, redirects thin resources to the closest published service, and gives category detail pages `noindex,follow` while removing them from the sitemap. The directory hubs `/resources` and `/categories` remain indexable. The probe stays a true 404. The prior Batch 2A proposals are superseded by this final action list.
 
-| Live URL | Words | Recommendation | Reason |
+| Live URL | Words | Final action | Reason |
 | --- | ---: | --- | --- |
 | `/resources` | 280 | Keep | Directory hub with its own browsing intent. |
-| `/resources/ai-content-assistant` | 90 | Noindex | Thin product listing; no matching agency service intent. |
-| `/resources/brand-design-system` | 66 | Noindex | Thin product listing; no matching agency service intent. |
-| `/resources/da-dr-boost` | 380 | 301 → `/link-building-services` | Overlaps link building service intent. |
-| `/resources/editorial-guest-posting` | 468 | 301 → `/guest-posting-services` | Overlaps guest posting service intent. |
-| `/resources/editorial-link-building` | 438 | 301 → `/link-building-services` | Overlaps link building service intent. |
-| `/resources/geo-llm-optimization` | 90 | Noindex | Thin listing; the planned AI SEO page needs distinct content first. |
-| `/resources/keyword-research-kit` | 104 | Noindex | Tool listing, not the planned keyword research service. |
-| `/resources/local-seo` | 429 | 301 → `/seo-services/local-seo` | Overlaps local SEO service intent. |
-| `/resources/seo-content-writing` | 386 | 301 → `/content-writing-services` | Overlaps content writing service intent. |
-| `/resources/sync-probe-1788889913` | 0 | Noindex | Test record/soft 404; remove from data and sitemap, serve HTTP 404. |
-| `/resources/technical-seo-audit` | 410 | 301 → `/seo-services` | Snapshot presents the general SEO service, despite its slug. |
-| `/resources/white-label-link-building` | 426 | 301 → `/white-label/link-building` | Overlaps white-label link building service intent. |
+| `/resources/ai-content-assistant` | 90 | 308 → `/content-writing-services` | Thin AI writing listing; closest published content service. |
+| `/resources/brand-design-system` | 66 | 308 → `/web-development` | Thin design listing; closest published web service. |
+| `/resources/da-dr-boost` | 380 | Keep, indexable | Unique, relevant authority-building content above threshold. |
+| `/resources/editorial-guest-posting` | 468 | Keep, indexable | Unique, relevant guest-posting content above threshold. |
+| `/resources/editorial-link-building` | 438 | Keep, indexable | Unique, relevant editorial outreach content above threshold. |
+| `/resources/geo-llm-optimization` | 90 | 308 → `/seo-services` | Thin GEO listing; closest currently published SEO service. |
+| `/resources/keyword-research-kit` | 104 | 308 → `/seo-services` | Thin keyword tool listing; closest published SEO service. |
+| `/resources/local-seo` | 429 | Keep, indexable | Unique, relevant local SEO content above threshold. |
+| `/resources/seo-content-writing` | 386 | Keep, indexable | Unique, relevant writing content above threshold. |
+| `/resources/sync-probe-1788889913` | 0 | HTTP 404 | Test record, absent from data and sitemap. |
+| `/resources/technical-seo-audit` | 410 | Keep, indexable | Unique, relevant SEO content above threshold. |
+| `/resources/white-label-link-building` | 426 | Keep, indexable | Unique, relevant agency fulfilment content above threshold. |
 | `/categories` | 82 | Keep | Directory navigation hub; improve content before relying on organic search. |
-| `/categories/ai-tools` | 74 | Noindex | Thin directory category. |
-| `/categories/content-writing` | 54 | Noindex | Thin directory category. |
-| `/categories/design` | 50 | Noindex | Thin directory category. |
-| `/categories/link-building` | 119 | Keep | Distinct directory browsing intent and the strongest category listing. |
-| `/categories/seo-tools` | 93 | Noindex | Thin directory category. |
-| `/categories/web-development` | 54 | Noindex | Thin directory category. |
+| `/categories/ai-tools` | 74 | Noindex, follow; off sitemap | Thin directory category. |
+| `/categories/content-writing` | 54 | Noindex, follow; off sitemap | Thin directory category. |
+| `/categories/design` | 50 | Noindex, follow; off sitemap | Thin directory category. |
+| `/categories/link-building` | 119 | Noindex, follow; off sitemap | Category rule applies regardless of word count. |
+| `/categories/seo-tools` | 93 | Noindex, follow; off sitemap | Thin directory category. |
+| `/categories/web-development` | 54 | Noindex, follow; off sitemap | Thin directory category. |
 
-The snapshot's probe URL returned HTTP 200 with no content. Its removal is required to fix the soft 404, independently of the pending content recommendations above.
+The snapshot's probe URL returned HTTP 200 with no content. The controlled codebase does not include this record and returns HTTP 404.
 
 ### Implementation and verification
 

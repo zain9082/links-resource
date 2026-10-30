@@ -15,12 +15,14 @@ export function buildMetadata({
   path = "/",
   image = "/og.png",
   noindex = false,
+  follow = !noindex,
 }: {
   title?: string;
   description?: string;
   path?: string;
   image?: string;
   noindex?: boolean;
+  follow?: boolean;
 } = {}): Metadata {
   const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
   const desc = description ?? (title ? `${title} at ${site.name}. ${site.description}` : site.description);
@@ -62,7 +64,7 @@ export function buildMetadata({
       images: [image],
     },
     robots: noindex
-      ? { index: false, follow: false, googleBot: { index: false, follow: false } }
+      ? { index: false, follow, googleBot: { index: false, follow } }
       : {
           index: true,
           follow: true,

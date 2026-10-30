@@ -1,9 +1,15 @@
 import type { NextConfig } from "next";
+import { resourceRedirects } from "./src/lib/resource-policy";
 
 const nextConfig: NextConfig = {
   trailingSlash: false,
   async redirects() {
     return [
+      ...Object.entries(resourceRedirects).map(([slug, destination]) => ({
+        source: `/resources/${slug}`,
+        destination,
+        permanent: true,
+      })),
       {
         source: "/our-team",
         destination: "/team",
