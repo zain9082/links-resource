@@ -81,9 +81,6 @@ function Block({ block, index }: { block: PageBlock; index: number }) {
 function ConfigTemplate({ page, variant }: { page: PageConfig; variant: PageTemplate }) {
   const hero = page.sections.find((block) => block.type === "hero");
   const crumbs = breadcrumbItems(page);
-  const children = publishedChildren(page.slug);
-  const related = publishedRelated(page);
-  const parent = page.parent ? getPageConfig(page.parent) : undefined;
   const faqSchema = page.faqs.length ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -103,7 +100,17 @@ function ConfigTemplate({ page, variant }: { page: PageConfig; variant: PageTemp
     {page.slug !== "/" && <div className="container-wide pt-32"><Breadcrumbs items={crumbs} /></div>}
     <PageHeader eyebrow={variant.replace(/([A-Z])/g, " $1")} title={page.h1} subtitle={hero?.body} />
     <div className="pb-14">{page.sections.map((block, index) => <Block block={block} index={index} key={`${block.type}-${index}`} />)}</div>
-    {(children.length > 0 || parent || related.length > 0) && <section className="container-wide pb-14">
+    <PageInternalLinks page={page} />
+    {page.faqs.length > 0 && <section className="container-wide pb-12"><h2 className="text-3xl font-semibold text-white">Frequently asked questions</h2><div className="mt-6 space-y-4">{page.faqs.map((faq) => <div className="glass rounded-2xl p-6" key={faq.question}><h3 className="font-semibold text-white">{faq.question}</h3><p className="mt-2 text-muted">{faq.answer}</p></div>)}</div></section>}
+  </>;
+}
+
+export function PageInternalLinks({ page }: { page: PageConfig }) {
+  const children = publishedChildren(page.slug);
+  const related = publishedRelated(page);
+  const parent = page.parent ? getPageConfig(page.parent) : undefined;
+  if (!children.length && !parent && !related.length) return null;
+  return <section className="container-wide pb-14">
       {children.length > 0 && <div className="mb-10">
         <h2 className="text-2xl font-semibold text-white">Explore our services</h2>
         <div className="mt-5 grid gap-4 md:grid-cols-3">{children.map((child) => <Link href={child.slug} className="glass glow-border rounded-2xl p-6 transition-transform hover:-translate-y-0.5" key={child.slug}><h3 className="font-semibold text-white">{child.title}</h3><p className="mt-2 text-sm text-muted">{child.metaDescription}</p></Link>)}</div>
@@ -113,9 +120,7 @@ function ConfigTemplate({ page, variant }: { page: PageConfig; variant: PageTemp
         <h2 className="text-xl font-semibold text-white">Related services</h2>
         <div className="mt-4 flex flex-wrap gap-3">{related.map((item) => <Link href={item.slug} className="glass rounded-full px-4 py-2 text-sm text-muted transition-colors hover:text-white" key={item.slug}>{item.title}</Link>)}</div>
       </div>}
-    </section>}
-    {page.faqs.length > 0 && <section className="container-wide pb-12"><h2 className="text-3xl font-semibold text-white">Frequently asked questions</h2><div className="mt-6 space-y-4">{page.faqs.map((faq) => <div className="glass rounded-2xl p-6" key={faq.question}><h3 className="font-semibold text-white">{faq.question}</h3><p className="mt-2 text-muted">{faq.answer}</p></div>)}</div></section>}
-  </>;
+    </section>;
 }
 
 export const ServiceHubTemplate = ({ page }: { page: PageConfig }) => <ConfigTemplate page={page} variant="serviceHub" />;

@@ -12,6 +12,8 @@ import { Partnerships } from "@/components/home/partnerships";
 import { WebsiteMetrics } from "@/components/home/website-metrics";
 import { Faq } from "@/components/home/faq";
 import { Cta } from "@/components/home/cta";
+import { PageInternalLinks } from "@/components/templates/page-template";
+import homePage from "../../content/pages/home";
 
 export default function Home() {
   return (
@@ -30,6 +32,7 @@ export default function Home() {
       <WebsiteMetrics />
       <Faq />
       <Cta />
+      <PageInternalLinks page={homePage} />
     </>
   );
 }
