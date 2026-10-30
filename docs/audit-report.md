@@ -605,3 +605,64 @@ PASS /unknown-route-bef2d1c7-17c5-4892-b878-85bd3440aaf4 HTTP 404
 PASS /resources/sync-probe-1788889913 HTTP 404
 14/14 checks passed
 ```
+
+## L. Batch 2B results
+
+The final action for every live `/resources/*` and `/categories/*` URL, including its snapshot word count, is in the table above. Four thin resources now return a direct HTTP 301 to the closest published service. Seven live resources with at least 300 words of relevant content remain indexable. The sync probe remains HTTP 404. All six category detail pages return `noindex, follow` and are absent from the sitemap; the `/categories` hub remains indexable. The local resource page `/resources/web-design-development` was not in live A's snapshot and was left indexable pending a separate content review.
+
+### P1 page configuration
+
+Each P1 page has a typed file in `content/pages/`, with its canonical slug, parent, template, status, content date, metadata, keywords, ordered sections, FAQs and related slugs. Eight pages with saved live copy are published. Seven new pages contain `[COPY PENDING]` section skeletons and are drafts. Structured FAQ questions and answers were also imported from the live snapshot JSON-LD where present. The shared renderer supports all nine requested templates, block types, breadcrumbs, Service schema and conditional FAQPage schema. The existing bespoke homepage and link-building layouts remain in place; their configs supply metadata, editorial starting sections, sitemap entries, navigation data and automatic child links. Their section blocks are not rendered on those two routes yet. The other P1 routes render their config sections through the shared templates.
+
+| P1 URL | Status | Starting content |
+| --- | --- | --- |
+| `/` | Published | `home.md` live snapshot |
+| `/seo-services` | Published | `seo-services.md` live snapshot |
+| `/seo-services/local-seo` | Published | `local-seo-services.md` live snapshot |
+| `/seo-services/seo-audit` | Draft | Section skeleton |
+| `/seo-packages` | Draft | Section skeleton |
+| `/ai-seo-agency` | Draft | Section skeleton |
+| `/link-building-services` | Published | `link-building-services.md` live snapshot |
+| `/guest-posting-services` | Published | `guest-posting-services.md` live snapshot |
+| `/white-label` | Draft | Section skeleton |
+| `/white-label/link-building` | Published | `white-label-link-building-services.md` live snapshot |
+| `/white-label/seo` | Draft | Section skeleton |
+| `/white-label/seo/reseller` | Draft | Section skeleton |
+| `/ppc-management` | Draft | Section skeleton |
+| `/web-development` | Published | `web-development-services.md` live snapshot |
+| `/content-writing-services` | Published | `content-writing-services.md` live snapshot |
+
+The 15 matching briefs in `docs/content-briefs/` list the primary and supporting keywords, section order and planned incoming/outgoing links. Page titles (including the rendered site suffix) are at most 60 characters; descriptions are at most 155 characters; both include the page's primary keyword. The service mega-menu and footer service links derive from published configs only. Hub templates list published children, while child templates link to their parent and up to three published related pages. The two existing bespoke hubs also display their published child links.
+
+### Local verification
+
+`npm run build` passed on Next.js 16.2.7, generating 77 static pages. Against `next start` on port 3100, `scripts/check-redirects.mjs` passed 14/14 and `scripts/check-draft-pages.mjs` passed 7/7. A separate HTTP check confirmed all four thin resource redirects return 301, retained resources return 200 with `index, follow`, and `/categories/link-building` returns 200 with `noindex, follow`. The sitemap includes `/resources/da-dr-boost` and excludes category detail, thin resource and draft URLs. Rendered `/seo-services` HTML contains Service, BreadcrumbList and FAQPage schema.
+
+```text
+PASS /local-seo-services 308 -> /seo-services/local-seo; target 200
+PASS /white-label-link-building-services 308 -> /white-label/link-building; target 200
+PASS /web-development-services 308 -> /web-development; target 200
+PASS /editorial-link-building-services 308 -> /link-building-services; target 200
+PASS /authority-backlinks-services 308 -> /link-building-services; target 200
+PASS /about-links-resource-2 308 -> /about; target 200
+PASS /link-building 308 -> /link-building-services; target 200
+PASS /website-development 308 -> /web-development; target 200
+PASS /case-studies/testing-seo-case-study 308 -> /case-studies; target 200
+PASS /about/ 308 -> /about
+PASS /seo-services/local-seo/ 308 -> /seo-services/local-seo
+PASS /white-label/link-building/ 308 -> /white-label/link-building
+PASS /unknown-route-244301d6-43f3-4940-a812-9bb456f4c042 HTTP 404
+PASS /resources/sync-probe-1788889913 HTTP 404
+14/14 checks passed
+
+PASS /ai-seo-agency: status=200 robots=noindex, nofollow sitemap=absent nav/footer=absent
+PASS /ppc-management: status=200 robots=noindex, nofollow sitemap=absent nav/footer=absent
+PASS /seo-packages: status=200 robots=noindex, nofollow sitemap=absent nav/footer=absent
+PASS /seo-services/seo-audit: status=200 robots=noindex, nofollow sitemap=absent nav/footer=absent
+PASS /white-label/seo/reseller: status=200 robots=noindex, nofollow sitemap=absent nav/footer=absent
+PASS /white-label/seo: status=200 robots=noindex, nofollow sitemap=absent nav/footer=absent
+PASS /white-label: status=200 robots=noindex, nofollow sitemap=absent nav/footer=absent
+7/7 draft checks passed
+```
+
+No deployment or Vercel setting was changed. The seven draft pages remain unavailable for indexing until their copy is written and their status is explicitly changed to `published`.
