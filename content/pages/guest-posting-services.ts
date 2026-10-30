@@ -21,6 +21,7 @@ export default {
     "guest posting service uk"
   ],
   "priority": "P1",
+  "audience": "both",
   "sections": [
     {
       "type": "hero",

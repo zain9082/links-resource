@@ -23,6 +23,7 @@ export default {
     "top paid search agency"
   ],
   "priority": "P1",
+  "audience": "direct UK business owner",
   "sections": [
     {
       "type": "hero",

@@ -12,6 +12,7 @@ export default {
   "primaryKeyword": "ai seo agency",
   "supportingKeywords": [],
   "priority": "P1",
+  "audience": "direct UK business owner",
   "sections": [
     {
       "type": "hero",

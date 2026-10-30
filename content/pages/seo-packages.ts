@@ -24,6 +24,7 @@ export default {
     "seo packages uk"
   ],
   "priority": "P1",
+  "audience": "direct UK business owner",
   "sections": [
     {
       "type": "hero",

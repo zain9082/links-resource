@@ -23,6 +23,7 @@ export default {
     "website development company uk"
   ],
   "priority": "P1",
+  "audience": "direct UK business owner",
   "sections": [
     {
       "type": "hero",

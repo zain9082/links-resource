@@ -26,6 +26,7 @@ export default {
     "local seo specialist"
   ],
   "priority": "P1",
+  "audience": "direct UK business owner",
   "sections": [
     {
       "type": "hero",

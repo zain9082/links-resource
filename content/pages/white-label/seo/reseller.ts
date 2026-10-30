@@ -18,6 +18,7 @@ export default {
     "seo reseller uk"
   ],
   "priority": "P1",
+  "audience": "white-label agency",
   "sections": [
     {
       "type": "hero",

@@ -12,6 +12,7 @@ export default {
   "primaryKeyword": "white label digital marketing agency",
   "supportingKeywords": [],
   "priority": "P1",
+  "audience": "white-label agency",
   "sections": [
     {
       "type": "hero",

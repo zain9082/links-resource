@@ -19,6 +19,7 @@ export default {
     "white label link building uk"
   ],
   "priority": "P1",
+  "audience": "white-label agency",
   "sections": [
     {
       "type": "hero",

@@ -11,6 +11,7 @@ export type PageTemplate =
 
 export type PageStatus = "draft" | "published";
 export type PagePriority = "P1" | "P2" | "P3";
+export type PageAudience = "direct UK business owner" | "white-label agency" | "both";
 
 type BaseBlock = { heading?: string; body: string };
 
@@ -40,6 +41,7 @@ export type PageConfig = {
   primaryKeyword: string;
   supportingKeywords: string[];
   priority: PagePriority;
+  audience: PageAudience;
   sections: PageBlock[];
   faqs: PageFaq[];
   relatedSlugs: string[];

@@ -21,6 +21,7 @@ export default {
     "white label seo uk"
   ],
   "priority": "P1",
+  "audience": "white-label agency",
   "sections": [
     {
       "type": "hero",

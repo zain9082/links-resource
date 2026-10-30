@@ -27,6 +27,7 @@ export default {
     "safe relevant backlinks"
   ],
   "priority": "P1",
+  "audience": "both",
   "sections": [
     {
       "type": "hero",

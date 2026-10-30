@@ -18,6 +18,7 @@ export default {
     "seo internet marketing companies"
   ],
   "priority": "P1",
+  "audience": "both",
   "sections": [
     {
       "type": "hero",
