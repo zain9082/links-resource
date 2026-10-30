@@ -8,7 +8,7 @@ export default {
   "updatedAt": "2026-10-30",
   "title": "SEO Agency UK",
   "metaDescription": "SEO agency UK for link building, content and web development. Grow qualified traffic and leads with Links Resource.",
-  "h1": "SEO agency UK helping ambitious brands grow",
+  "h1": "Grow Faster with SEO & High-Converting Websites",
   "primaryKeyword": "seo agency uk",
   "supportingKeywords": [
     "digital growth agency",
@@ -21,7 +21,7 @@ export default {
   "sections": [
     {
       "type": "hero",
-      "heading": "SEO agency UK helping ambitious brands grow",
+      "heading": "Grow Faster with SEO & High-Converting Websites",
       "body": "Trusted SEO & Link Building Agency Grow Faster with SEO & High-Converting Websites We build long-term authority campaigns that improve search rankings, grow qualified traffic, and increase pipeline. Manual Outreach Real Websites White Hat Long-Term Results Get My Free Audit Our Services ✓ Manual Outreach process ✓ Real Publisher sites ✓ Clear Campaign reporting Live SEO Dashboard Authority & Organic Growth Last 12 months Backlinks Built 4,286 +18% Referring Domains 1,094 +24% Avg DR 63 +12 pts Organic Traffic +312% YoY growth Organic Traffic Growth 8.7k visits / mo UK-based SEO & digital agency Manual outreach on real websites Transparent reporting & approvals White-hat, quality-controlled delivery UK-Based Agency Manual Outreach Real Publisher Vetting Transparent Reporting Editorial Quality Standards White-Hat SEO Practices UK-Based Agency Manual Outreach Real Publisher Vetting Transparent Reporting Editorial Quality Standards White-Hat SEO Practices Featured / Sample Authority Sites"
     },
     {

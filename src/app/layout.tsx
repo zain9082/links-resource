@@ -11,7 +11,8 @@ import { Providers } from "@/components/providers";
 import { GlobalBreadcrumbSchema } from "@/components/shared/global-breadcrumb-schema";
 import { pageConfigs } from "../../content/pages";
 import { pageNavigationSections } from "../../content/pages/navigation";
-import { buildMetadata, organizationJsonLd, professionalServiceJsonLd, websiteJsonLd } from "@/lib/seo";
+import { pageMetadata, organizationJsonLd, professionalServiceJsonLd, websiteJsonLd } from "@/lib/seo";
+import homePage from "../../content/pages/home";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -25,7 +26,7 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = buildMetadata();
+export const metadata: Metadata = pageMetadata(homePage);
 
 export const viewport: Viewport = {
   themeColor: "#050816",

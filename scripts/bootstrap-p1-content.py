@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAGES = ROOT / "content" / "pages"
 
 SPECS = {
-    "/": ("serviceHub", None, "SEO Agency UK", "SEO agency UK for link building, content and web development. Grow qualified traffic and leads with Links Resource.", "SEO agency UK helping ambitious brands grow", "home.md"),
+    "/": ("serviceHub", None, "SEO Agency UK", "SEO agency UK for link building, content and web development. Grow qualified traffic and leads with Links Resource.", "Grow Faster with SEO & High-Converting Websites", "home.md"),
     "/seo-services": ("serviceHub", "/", "SEO Services UK", "SEO services UK for technical, on-page and off-page growth. Improve rankings, qualified traffic and conversions with Links Resource.", "Results-driven SEO that helps businesses grow faster", "seo-services.md"),
     "/seo-services/local-seo": ("serviceChild", "/seo-services", "Local SEO Agency", "Local SEO agency helping UK businesses earn more map visibility, nearby leads and calls through location-focused campaigns.", "Rank in Google Maps and local search", "local-seo-services.md"),
     "/seo-services/seo-audit": ("serviceChild", "/seo-services", "SEO Audit Services", "SEO audit services that identify technical, content and indexing issues, then turn findings into a clear growth plan.", "SEO audit services that reveal growth opportunities", None),

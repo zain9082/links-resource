@@ -6,14 +6,10 @@ import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { navbarLinkBuildingMenu } from "@/lib/data";
-import { buildMetadata } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
+import linkBuildingPage from "../../../content/pages/link-building-services";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Link Building Services",
-  description:
-    "Premium editorial link building, guest posting, and white-label placements on high-authority publications worldwide.",
-  path: "/link-building-services",
-});
+export const metadata: Metadata = pageMetadata(linkBuildingPage);
 
 export default function LinkBuildingServicesPage() {
   return (

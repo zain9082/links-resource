@@ -2,20 +2,25 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getServicePageBySlug, caseStudies } from "@/lib/data";
 import { restoredServiceRoutes, restoredLegalRoutes } from "@/lib/restored-routes";
-import { buildMetadata, serviceJsonLd, canonicalUrl } from "@/lib/seo";
+import { buildMetadata, serviceJsonLd, canonicalUrl, pageMetadata } from "@/lib/seo";
 import { ServiceLandingPage } from "@/components/services/service-landing-page";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
+import { getPageConfig, pageConfigs } from "../../../content/pages";
+import { PageTemplateRenderer } from "@/components/templates/page-template";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [...Object.keys(restoredServiceRoutes), ...Object.keys(restoredLegalRoutes)]
+  return [...new Set([...pageConfigs.map((page) => page.slug), ...Object.keys(restoredServiceRoutes), ...Object.keys(restoredLegalRoutes)])]
+    .filter((path) => path !== "/")
     .map((path) => ({ slug: path.split("/").filter(Boolean) }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }): Promise<Metadata> {
   const { slug } = await params;
   const path = `/${slug.join("/")}`;
+  const configured = getPageConfig(path);
+  if (configured) return pageMetadata(configured);
   const page = restoredServiceRoutes[path] ?? restoredLegalRoutes[path];
   if (!page) return buildMetadata({ title: "Not found", path, noindex: true });
   return buildMetadata({ title: page.title, description: page.description, path });
@@ -24,6 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function RestoredPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const { slug } = await params;
   const path = `/${slug.join("/")}`;
+  const configured = getPageConfig(path);
+  if (configured) return <PageTemplateRenderer page={configured} />;
   const service = restoredServiceRoutes[path];
   const legal = restoredLegalRoutes[path];
   if (!service && !legal) notFound();
