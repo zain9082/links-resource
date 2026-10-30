@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
       ...Object.entries(resourceRedirects).map(([slug, destination]) => ({
         source: `/resources/${slug}`,
         destination,
-        permanent: true,
+        statusCode: 301,
       })),
       {
         source: "/our-team",

@@ -555,13 +555,13 @@ The word counts below come from `docs/live-snapshot/index.csv` (rendered main te
 | Live URL | Words | Final action | Reason |
 | --- | ---: | --- | --- |
 | `/resources` | 280 | Keep | Directory hub with its own browsing intent. |
-| `/resources/ai-content-assistant` | 90 | 308 → `/content-writing-services` | Thin AI writing listing; closest published content service. |
-| `/resources/brand-design-system` | 66 | 308 → `/web-development` | Thin design listing; closest published web service. |
+| `/resources/ai-content-assistant` | 90 | 301 → `/content-writing-services` | Thin AI writing listing; closest published content service. |
+| `/resources/brand-design-system` | 66 | 301 → `/web-development` | Thin design listing; closest published web service. |
 | `/resources/da-dr-boost` | 380 | Keep, indexable | Unique, relevant authority-building content above threshold. |
 | `/resources/editorial-guest-posting` | 468 | Keep, indexable | Unique, relevant guest-posting content above threshold. |
 | `/resources/editorial-link-building` | 438 | Keep, indexable | Unique, relevant editorial outreach content above threshold. |
-| `/resources/geo-llm-optimization` | 90 | 308 → `/seo-services` | Thin GEO listing; closest currently published SEO service. |
-| `/resources/keyword-research-kit` | 104 | 308 → `/seo-services` | Thin keyword tool listing; closest published SEO service. |
+| `/resources/geo-llm-optimization` | 90 | 301 → `/seo-services` | Thin GEO listing; closest currently published SEO service. |
+| `/resources/keyword-research-kit` | 104 | 301 → `/seo-services` | Thin keyword tool listing; closest published SEO service. |
 | `/resources/local-seo` | 429 | Keep, indexable | Unique, relevant local SEO content above threshold. |
 | `/resources/seo-content-writing` | 386 | Keep, indexable | Unique, relevant writing content above threshold. |
 | `/resources/sync-probe-1788889913` | 0 | HTTP 404 | Test record, absent from data and sitemap. |
