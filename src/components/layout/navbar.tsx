@@ -9,11 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { navigateToHash } from "@/components/layout/hash-scroll";
 import { SeoAuditButton } from "@/components/seo-audit/seo-audit-button";
-import {
-  navbarServicesMenu,
-  type NavbarMenuItem,
-  type NavbarMenuSection,
-} from "@/lib/data";
+import type { NavbarMenuItem, NavbarMenuSection } from "@/lib/data";
 
 const links = [
   { href: "/case-studies", label: "Case Studies" },
@@ -46,7 +42,7 @@ const contactMenu: NavbarMenuItem[] = [
 const navLinkClass =
   "shrink-0 whitespace-nowrap rounded-full px-2.5 py-2 text-xs text-muted transition-colors hover:bg-white/5 hover:text-white xl:px-3.5 xl:text-sm";
 
-export function Navbar() {
+export function Navbar({ servicesMenu }: { servicesMenu: NavbarMenuSection[] }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState<"more-services" | "contact" | null>(null);
@@ -88,7 +84,7 @@ export function Navbar() {
             <button className={cn(navLinkClass, "inline-flex items-center gap-1")}>
               More Services <ChevronDown className="size-3.5 shrink-0 xl:size-4" />
             </button>
-            <ServicesMegaMenu open={menu === "more-services"} sections={navbarServicesMenu} />
+            <ServicesMegaMenu open={menu === "more-services"} sections={servicesMenu} />
           </div>
 
           {links.map((l) => (
@@ -153,7 +149,7 @@ export function Navbar() {
                 Home
               </Link>
 
-              {navbarServicesMenu.map((section) => (
+              {servicesMenu.map((section) => (
                 <div key={section.title} className="mt-1">
                   <p className="px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-purple-2">
                     {section.title}

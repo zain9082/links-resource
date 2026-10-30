@@ -10,6 +10,7 @@ import { AiAssistant } from "@/components/ai/ai-assistant";
 import { Providers } from "@/components/providers";
 import { GlobalBreadcrumbSchema } from "@/components/shared/global-breadcrumb-schema";
 import { pageConfigs } from "../../content/pages";
+import { pageNavigationSections } from "../../content/pages/navigation";
 import { buildMetadata, organizationJsonLd, professionalServiceJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const inter = Inter({
@@ -53,7 +54,7 @@ export default function RootLayout({
         <ScrollProgress />
         <Providers>
           <HashScroll />
-          <Navbar />
+          <Navbar servicesMenu={pageNavigationSections()} />
           <main className="relative">{children}</main>
           <Footer />
           <AiAssistant />

@@ -1,24 +1,20 @@
 import Link from "next/link";
 import { Sparkles, Mail, Phone, MapPin } from "lucide-react";
-import { site, categories } from "@/lib/data";
+import { site } from "@/lib/data";
+import { publishedPageConfigs } from "../../../content/pages";
 
 const cols = [
   {
-    title: "Directory",
-    links: [
-      { href: "/resources", label: "All Resources" },
-      { href: "/categories", label: "Categories" },
-      { href: "/search", label: "Search" },
-      { href: "/submit", label: "Submit Resource" },
-    ],
+    title: "Services",
+    links: publishedPageConfigs().filter((page) => page.slug !== "/").map((page) => ({ href: page.slug, label: page.title })),
   },
   {
     title: "Company",
     links: [
       { href: "/about", label: "About" },
       { href: "/team", label: "Team" },
-      { href: "/#pricing", label: "Pricing" },
-      { href: "/#faq", label: "FAQ" },
+      { href: "/resources", label: "Resources" },
+      { href: "/categories", label: "Categories" },
       { href: "/contact", label: "Contact" },
     ],
   },
@@ -76,18 +72,6 @@ export function Footer() {
                 ))}
               </ul>
             </div>
-          ))}
-        </div>
-
-        <div className="mt-12 flex flex-wrap gap-2 border-t border-white/5 pt-6">
-          {categories.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/categories/${c.slug}`}
-              className="rounded-full glass px-3 py-1 text-xs text-muted hover:text-white"
-            >
-              {c.name}
-            </Link>
           ))}
         </div>
 
