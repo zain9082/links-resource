@@ -28,100 +28,101 @@ const nextConfig: NextConfig = {
       {
         source: "/our-team",
         destination: "/team",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/about-links-resource",
         destination: "/about",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/about-links-resource-2",
         destination: "/about",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/website-development",
         destination: "/web-development",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/web-development-2",
         destination: "/web-development",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/guest-posting-2",
         destination: "/resources/editorial-guest-posting",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/da-dr-boost",
         destination: "/resources/da-dr-boost",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/link-building",
         destination: "/link-building-services",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/search-engine-optimaization-services",
         destination: "/resources/technical-seo-audit",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/seo-content-writing-services",
         destination: "/resources/seo-content-writing",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/da-dr-boost-services",
         destination: "/resources/da-dr-boost",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/web-development-services",
         destination: "/web-development",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/local-seo-services",
         destination: "/seo-services/local-seo",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/editorial-guest-posting-services",
         destination: "/resources/editorial-guest-posting",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/editorial-link-building-services",
         destination: "/link-building-services",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/white-label-link-building",
         destination: "/white-label/link-building",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/white-label-link-building-services",
         destination: "/white-label/link-building",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/authority-backlinks-services",
         destination: "/link-building-services",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/case-studies/testing-seo-case-study",
         destination: "/case-studies",
-        permanent: true,
+        statusCode: 301,
       },
     ];
   },
 };
 
 export default nextConfig;
+

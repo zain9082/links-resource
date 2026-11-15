@@ -12,7 +12,7 @@ for (const path of paths) {
   const response = await fetch(`${base}${path}`, { redirect: "manual" });
   if (response.status === 200) {
     direct++;
-  } else if ([301, 308].includes(response.status)) {
+  } else if (response.status === 301) {
     const location = response.headers.get("location");
     const target = new URL(location, base);
     const second = await fetch(`${base}${target.pathname}`, { redirect: "manual" });
@@ -28,13 +28,15 @@ const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
 const internal = await fetch(`${base}/internal/pages`);
 const draft = await fetch(`${base}/locations/london`);
 const draftHtml = await draft.text();
+const hubs = await Promise.all(["/locations", "/seo-services", "/industries"].map(async (path) => (await (await fetch(`${base}${path}`)).text())));
 const checks = {
   oldUrls: failures.length === 0,
-  homeIndexable: /<meta name="robots" content="index, follow"/.test(html) && !home.headers.get("x-robots-tag")?.includes("noindex"),
-  canonical: html.includes('href="https://linksresource.com/"'),
+  homeIndexable: /<meta name="robots" content="index,\s*follow"/.test(html) && !home.headers.get("x-robots-tag")?.includes("noindex"),
+  canonical: html.includes('rel="canonical" href="https://linksresource.com/"'),
   robots: robots.includes("Allow: /") && robots.includes("https://linksresource.com/sitemap.xml"),
   internal404: internal.status === 404,
   draftNoindex: draftHtml.includes('name="robots" content="noindex') && draft.status === 200,
+  draftHidden: ![html, ...hubs].some((page) => page.includes('href="/locations/london"')),
   draftAbsentSitemap: !sitemap.includes("/locations/london"),
   publishedInSitemap: sitemap.includes("https://linksresource.com/about"),
   obsoleteCompanyAbsent: !/Links Resource (Limited|LTD)|14819683|Aberfoyle/.test(html),
