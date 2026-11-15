@@ -1,8 +1,30 @@
 import type { NextConfig } from "next";
+import { resourceRedirects } from "./src/lib/resource-policy";
 
 const nextConfig: NextConfig = {
+  trailingSlash: false,
+  async headers() {
+    const internal = {
+      source: "/internal/:path*",
+      headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    };
+    return process.env.SITE_NOINDEX === "false" ? [internal] : [internal, {
+      source: "/:path*",
+      headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    }];
+  },
   async redirects() {
     return [
+      ...Object.entries(resourceRedirects).map(([slug, destination]) => ({
+        source: `/resources/${slug}`,
+        destination,
+        statusCode: 301,
+      })),
+      {
+        source: "/resources/sync-probe-1788889913",
+        destination: "/resources",
+        statusCode: 301,
+      },
       {
         source: "/our-team",
         destination: "/team",
@@ -20,12 +42,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/website-development",
-        destination: "/resources/web-design-development",
+        destination: "/web-development",
         permanent: true,
       },
       {
         source: "/web-development-2",
-        destination: "/resources/web-design-development",
+        destination: "/web-development",
         permanent: true,
       },
       {
@@ -60,12 +82,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/web-development-services",
-        destination: "/resources/web-design-development",
+        destination: "/web-development",
         permanent: true,
       },
       {
         source: "/local-seo-services",
-        destination: "/resources/local-seo",
+        destination: "/seo-services/local-seo",
         permanent: true,
       },
       {
@@ -75,12 +97,27 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/editorial-link-building-services",
-        destination: "/resources/editorial-link-building",
+        destination: "/link-building-services",
         permanent: true,
       },
       {
         source: "/white-label-link-building",
-        destination: "/resources/white-label-link-building",
+        destination: "/white-label/link-building",
+        permanent: true,
+      },
+      {
+        source: "/white-label-link-building-services",
+        destination: "/white-label/link-building",
+        permanent: true,
+      },
+      {
+        source: "/authority-backlinks-services",
+        destination: "/link-building-services",
+        permanent: true,
+      },
+      {
+        source: "/case-studies/testing-seo-case-study",
+        destination: "/case-studies",
         permanent: true,
       },
     ];

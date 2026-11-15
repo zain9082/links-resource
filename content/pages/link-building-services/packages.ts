@@ -1,0 +1,190 @@
+import type { PageConfig } from "../types";
+
+export default {
+  "slug": "/link-building-services/packages",
+  "breadcrumbLabel": "Packages",
+  "parent": "/link-building-services",
+  "template": "serviceHub",
+  "status": "draft",
+  "updatedAt": "2026-10-30",
+  "title": "Link Building Packages",
+  "metaDescription": "Explore link building packages with Links Resource. Learn about the approach, deliverables and practical next steps for your UK business.",
+  "h1": "Link Building Packages",
+  "primaryKeyword": "link building packages",
+  "supportingKeywords": [
+    "backlinks price"
+  ],
+  "priority": "P2",
+  "audience": "both",
+  "sections": [
+    {
+      "type": "hero",
+      "heading": "Link Building Packages",
+      "body": "[COPY PENDING] Explore link building packages with a clear plan for visibility, qualified enquiries and sustainable growth. This page will explain who the service suits, what is included, how delivery works and what happens next."
+    },
+    {
+      "type": "problem",
+      "heading": "The challenge",
+      "body": "[COPY PENDING] Businesses considering link building packages often face unclear priorities, limited time and inconsistent results. Explain the specific obstacles readers experience, the cost of leaving them unresolved and what a practical solution must address."
+    },
+    {
+      "type": "servicesGrid",
+      "heading": "What is included",
+      "body": "[COPY PENDING] These link building packages options will be tailored to your goals, audience and current website. Explain the scope of each deliverable and how the pieces work together without promising a result that has not been verified.",
+      "items": [
+        {
+          "title": "Discovery and planning",
+          "description": "[COPY PENDING] Explain how discovery and planning supports link building packages, what the team delivers, and what the client should expect at this stage of work."
+        },
+        {
+          "title": "Technical foundations",
+          "description": "[COPY PENDING] Explain how technical foundations supports link building packages, what the team delivers, and what the client should expect at this stage of work."
+        },
+        {
+          "title": "Content direction",
+          "description": "[COPY PENDING] Explain how content direction supports link building packages, what the team delivers, and what the client should expect at this stage of work."
+        },
+        {
+          "title": "Authority support",
+          "description": "[COPY PENDING] Explain how authority support supports link building packages, what the team delivers, and what the client should expect at this stage of work."
+        },
+        {
+          "title": "Performance reporting",
+          "description": "[COPY PENDING] Explain how performance reporting supports link building packages, what the team delivers, and what the client should expect at this stage of work."
+        },
+        {
+          "title": "Ongoing improvement",
+          "description": "[COPY PENDING] Explain how ongoing improvement supports link building packages, what the team delivers, and what the client should expect at this stage of work."
+        }
+      ]
+    },
+    {
+      "type": "process",
+      "heading": "How the work happens",
+      "body": "[COPY PENDING] A transparent link building packages workflow gives readers a clear starting point and regular opportunities to review progress. Describe the handover, research, implementation and reporting stages in plain language.",
+      "steps": [
+        {
+          "title": "Discovery",
+          "description": "[COPY PENDING] Explain how discovery supports link building packages, what the team delivers, and what the client should expect at this stage of work."
+        },
+        {
+          "title": "Strategy",
+          "description": "[COPY PENDING] Explain how strategy supports link building packages, what the team delivers, and what the client should expect at this stage of work."
+        },
+        {
+          "title": "Delivery",
+          "description": "[COPY PENDING] Explain how delivery supports link building packages, what the team delivers, and what the client should expect at this stage of work."
+        },
+        {
+          "title": "Review",
+          "description": "[COPY PENDING] Explain how review supports link building packages, what the team delivers, and what the client should expect at this stage of work."
+        }
+      ]
+    },
+    {
+      "type": "proof",
+      "heading": "Evidence and outcomes",
+      "body": "[COPY PENDING] Use this section to show verified evidence for link building packages: relevant outcomes, client context, dates and measurement methods. Replace the provisional metrics below only after the underlying records have been checked.",
+      "metrics": [
+        {
+          "value": "TBC",
+          "label": "[COPY PENDING] Visibility"
+        },
+        {
+          "value": "TBC",
+          "label": "[COPY PENDING] Qualified enquiries"
+        },
+        {
+          "value": "TBC",
+          "label": "[COPY PENDING] Client outcome"
+        }
+      ]
+    },
+    {
+      "type": "pricing",
+      "heading": "Scope and pricing",
+      "body": "[COPY PENDING] Explain the factors that affect link building packages pricing, the expected scope of each option and any external costs. Do not publish unverified prices or guarantee results; invite readers to request a tailored proposal.",
+      "plans": [
+        {
+          "name": "Starter",
+          "description": "[COPY PENDING] Describe the starter scope for link building packages, what is included, any dependencies and the best-fit client."
+        },
+        {
+          "name": "Growth",
+          "description": "[COPY PENDING] Describe the growth scope for link building packages, what is included, any dependencies and the best-fit client."
+        },
+        {
+          "name": "Bespoke",
+          "description": "[COPY PENDING] Describe the bespoke scope for link building packages, what is included, any dependencies and the best-fit client."
+        }
+      ]
+    },
+    {
+      "type": "comparison",
+      "heading": "Compare your options",
+      "body": "[COPY PENDING] Help readers compare approaches to link building packages using practical criteria such as scope, ownership, reporting and turnaround. Keep the comparison factual, balanced and easy to scan on a phone.",
+      "columns": [
+        {
+          "title": "Managed delivery",
+          "points": [
+            "[COPY PENDING] Explain scope for link building packages in clear, verifiable terms.",
+            "[COPY PENDING] Explain ownership for link building packages in clear, verifiable terms.",
+            "[COPY PENDING] Explain reporting for link building packages in clear, verifiable terms."
+          ]
+        },
+        {
+          "title": "In-house option",
+          "points": [
+            "[COPY PENDING] Explain scope for link building packages in clear, verifiable terms.",
+            "[COPY PENDING] Explain ownership for link building packages in clear, verifiable terms.",
+            "[COPY PENDING] Explain reporting for link building packages in clear, verifiable terms."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "richText",
+      "heading": "What to know before you start",
+      "body": "[COPY PENDING] Add a useful explanation of link building packages in context. Define any specialist terms, show how this service connects to the wider strategy and give readers enough detail to assess fit before they contact the team."
+    },
+    {
+      "type": "faq",
+      "heading": "Frequently asked questions",
+      "body": "[COPY PENDING] Answer common questions about link building packages with specific, verifiable information. Keep each answer concise, explain any conditions that change the outcome and avoid claims that depend on an unconfirmed client result."
+    },
+    {
+      "type": "cta",
+      "heading": "Plan your next step",
+      "body": "[COPY PENDING] Tell readers what to send us about their link building packages needs and what response they can expect. Offer a clear, low-pressure next step with no unsupported promises.",
+      "href": "/contact",
+      "label": "Discuss your project"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "[COPY PENDING] What does link building packages include?",
+      "answer": "[COPY PENDING] Give a direct answer about link building packages, including practical scope, any important conditions and the next step a UK client can take."
+    },
+    {
+      "question": "[COPY PENDING] Who is link building packages best suited to?",
+      "answer": "[COPY PENDING] Give a direct answer about link building packages, including practical scope, any important conditions and the next step a UK client can take."
+    },
+    {
+      "question": "[COPY PENDING] How long does link building packages take?",
+      "answer": "[COPY PENDING] Give a direct answer about link building packages, including practical scope, any important conditions and the next step a UK client can take."
+    },
+    {
+      "question": "[COPY PENDING] How is progress measured for link building packages?",
+      "answer": "[COPY PENDING] Give a direct answer about link building packages, including practical scope, any important conditions and the next step a UK client can take."
+    },
+    {
+      "question": "[COPY PENDING] What should we prepare before starting link building packages?",
+      "answer": "[COPY PENDING] Give a direct answer about link building packages, including practical scope, any important conditions and the next step a UK client can take."
+    }
+  ],
+  "relatedSlugs": [
+    "/blogger-outreach-services",
+    "/niche-edits",
+    "/digital-pr-services"
+  ]
+} satisfies PageConfig;

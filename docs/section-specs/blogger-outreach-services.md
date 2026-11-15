@@ -1,0 +1,163 @@
+# Section spec: /blogger-outreach-services
+
+- **Template:** serviceChild via PageTemplateRenderer → ConfigTemplate
+- **URL:** `/blogger-outreach-services`
+- **Parent hub:** `/link-building-services`
+- **Related pages:** `/link-building-services/packages`, `/niche-edits`, `/digital-pr-services`
+- **Main keyword (CSV):** blogger outreach services *
+- **Supporting keywords (CSV):** blogger outreach *, link outreach agency
+- **Audience:** both
+- **Current status:** `draft`
+- **Page config:** `content/pages/blogger-outreach-services.ts`
+
+## Rendering notes
+
+The shared renderer is `src/components/templates/page-template.tsx`. PageSchema emits non-visible structured data first. Breadcrumbs precede `src/components/shared/page-header.tsx`. The header takes H1 from page.h1 and subtitle from the hero body. The hero block returns null in the block list. Every later block renders in config order. Fit targets reflect the existing responsive grid, glass cards and text sizes; they are guidance, not code limits. The prefix [COPY PENDING] marks provisional content. Pricing and comparisons are cards, not HTML tables.
+
+## Sections in render order
+
+### 1. hero — Blogger Outreach Services
+
+- **Component:** `src/components/templates/page-template.tsx` / ConfigTemplate and PageHeader
+
+| Text slot | Recommended fit | Current state / sample |
+| --- | --- | --- |
+| Eyebrow badge (generated from template; block eyebrow ignored) | 2–4 words | Filled — `service Child` |
+| H1 (page.h1; hero.heading ignored) | 6–12 words; 45–70 characters | Filled — `Blogger Outreach Services` |
+| Header subtitle (hero.body) | 25–35 words | [COPY PENDING] — `Explore blogger outreach services with a clear plan for visibility, qualified enquiries and …` |
+| Config-only heading (not rendered) | No visible slot | Filled — `Blogger Outreach Services` |
+
+### 2. problem — The challenge
+
+- **Component:** `src/components/templates/page-template.tsx` / Block
+
+| Text slot | Recommended fit | Current state / sample |
+| --- | --- | --- |
+| H2 heading | 4–9 words; 25–60 characters | Filled — `The challenge` |
+| Body paragraph | 30–55 words | [COPY PENDING] — `Businesses considering blogger outreach services often face unclear priorities, limited time…` |
+
+### 3. servicesGrid — What is included
+
+- **Component:** `src/components/templates/page-template.tsx` / Block
+
+| Text slot | Recommended fit | Current state / sample |
+| --- | --- | --- |
+| H2 heading | 4–9 words; 25–60 characters | Filled — `What is included` |
+| Body paragraph | 20–40 words | [COPY PENDING] — `These blogger outreach services options will be tailored to your goals, audience and current…` |
+
+- **Item count:** 6 configured; 3-column cards at desktop width and stacked on mobile.
+- **Item text slots:** Per card: fixed Service badge, H3 title (3–6 words), description (18–25 words), optional Learn more link and href.
+- **Item 1:** title Filled — `Discovery and planning`; description [COPY PENDING] — `Explain how discovery and planning supports blogger outreach services, what the team deliver…`
+- **Item 2:** title Filled — `Technical foundations`; description [COPY PENDING] — `Explain how technical foundations supports blogger outreach services, what the team delivers…`
+- **Item 3:** title Filled — `Content direction`; description [COPY PENDING] — `Explain how content direction supports blogger outreach services, what the team delivers, an…`
+- **Item 4:** title Filled — `Authority support`; description [COPY PENDING] — `Explain how authority support supports blogger outreach services, what the team delivers, an…`
+- **Item 5:** title Filled — `Performance reporting`; description [COPY PENDING] — `Explain how performance reporting supports blogger outreach services, what the team delivers…`
+- **Item 6:** title Filled — `Ongoing improvement`; description [COPY PENDING] — `Explain how ongoing improvement supports blogger outreach services, what the team delivers, …`
+
+### 4. process — How the work happens
+
+- **Component:** `src/components/templates/page-template.tsx` / Block
+
+| Text slot | Recommended fit | Current state / sample |
+| --- | --- | --- |
+| H2 heading | 4–9 words; 25–60 characters | Filled — `How the work happens` |
+| Body paragraph | 20–40 words | [COPY PENDING] — `A transparent blogger outreach services workflow gives readers a clear starting point and re…` |
+
+- **Item count:** 4 configured; 3-column cards at desktop width and stacked on mobile.
+- **Item text slots:** Per step: automatic number, H3 step name (2–5 words), description (18–30 words).
+- **Item 1:** title Filled — `Discovery`; description [COPY PENDING] — `Explain how discovery supports blogger outreach services, what the team delivers, and what t…`
+- **Item 2:** title Filled — `Strategy`; description [COPY PENDING] — `Explain how strategy supports blogger outreach services, what the team delivers, and what th…`
+- **Item 3:** title Filled — `Delivery`; description [COPY PENDING] — `Explain how delivery supports blogger outreach services, what the team delivers, and what th…`
+- **Item 4:** title Filled — `Review`; description [COPY PENDING] — `Explain how review supports blogger outreach services, what the team delivers, and what the …`
+
+### 5. proof — Evidence and outcomes
+
+- **Component:** `src/components/templates/page-template.tsx` / Block
+
+| Text slot | Recommended fit | Current state / sample |
+| --- | --- | --- |
+| H2 heading | 4–9 words; 25–60 characters | Filled — `Evidence and outcomes` |
+| Body paragraph | 20–40 words | [COPY PENDING] — `Use this section to show verified evidence for blogger outreach services: relevant outcomes,…` |
+
+- **Item count:** 3 configured; 3-column cards at desktop width and stacked on mobile.
+- **Item text slots:** Per metric: value (1–4 words or number), label (2–6 words). No H3.
+- **Item 1:** value Filled — `TBC`; label [COPY PENDING] — `Visibility`
+- **Item 2:** value Filled — `TBC`; label [COPY PENDING] — `Qualified enquiries`
+- **Item 3:** value Filled — `TBC`; label [COPY PENDING] — `Client outcome`
+
+### 6. pricing — Scope and pricing
+
+- **Component:** `src/components/templates/page-template.tsx` / Block
+
+| Text slot | Recommended fit | Current state / sample |
+| --- | --- | --- |
+| H2 heading | 4–9 words; 25–60 characters | Filled — `Scope and pricing` |
+| Body paragraph | 20–40 words | [COPY PENDING] — `Explain the factors that affect blogger outreach services pricing, the expected scope of eac…` |
+
+- **Item count:** 3 configured; 3-column cards at desktop width and stacked on mobile.
+- **Item text slots:** Per plan: fixed Plan badge, H3 name (1–4 words), description (20–35 words). No price or per-plan CTA slot.
+- **Item 1:** name Filled — `Starter`; description [COPY PENDING] — `Describe the starter scope for blogger outreach services, what is included, any dependencies…`
+- **Item 2:** name Filled — `Growth`; description [COPY PENDING] — `Describe the growth scope for blogger outreach services, what is included, any dependencies …`
+- **Item 3:** name Filled — `Bespoke`; description [COPY PENDING] — `Describe the bespoke scope for blogger outreach services, what is included, any dependencies…`
+
+### 7. comparison — Compare your options
+
+- **Component:** `src/components/templates/page-template.tsx` / Block
+
+| Text slot | Recommended fit | Current state / sample |
+| --- | --- | --- |
+| H2 heading | 4–9 words; 25–60 characters | Filled — `Compare your options` |
+| Body paragraph | 20–40 words | [COPY PENDING] — `Help readers compare approaches to blogger outreach services using practical criteria such a…` |
+
+- **Item count:** 2 configured; 2-column cards at desktop width and stacked on mobile.
+- **Item text slots:** Per column: H3 title (2–5 words), 3 bullets (5–12 words each) with fixed check icons. Not an HTML table.
+- **Item 1:** title Filled — `Managed delivery`; points 3 bullets: [COPY PENDING] — `Explain scope for blogger outreach services in clear, verifiable terms.`, [COPY PENDING] — `Explain ownership for blogger outreach services in clear, verifiable terms.`, [COPY PENDING] — `Explain reporting for blogger outreach services in clear, verifiable terms.`
+- **Item 2:** title Filled — `In-house option`; points 3 bullets: [COPY PENDING] — `Explain scope for blogger outreach services in clear, verifiable terms.`, [COPY PENDING] — `Explain ownership for blogger outreach services in clear, verifiable terms.`, [COPY PENDING] — `Explain reporting for blogger outreach services in clear, verifiable terms.`
+
+### 8. richText — What to know before you start
+
+- **Component:** `src/components/templates/page-template.tsx` / Block
+
+| Text slot | Recommended fit | Current state / sample |
+| --- | --- | --- |
+| H2 heading | 4–9 words; 25–60 characters | Filled — `What to know before you start` |
+| Body paragraph | 30–55 words | [COPY PENDING] — `Add a useful explanation of blogger outreach services in context. Define any specialist term…` |
+
+### 9. faq — Frequently asked questions
+
+- **Component:** `src/components/templates/page-template.tsx` / Block
+
+| Text slot | Recommended fit | Current state / sample |
+| --- | --- | --- |
+| H2 heading | 4–9 words; 25–60 characters | Filled — `Frequently asked questions` |
+| Body paragraph (ignored for FAQ when FAQ cards exist) | No visible slot | [COPY PENDING] — `Answer common questions about blogger outreach services with specific, verifiable informatio…` |
+
+- **FAQ count:** 5 configured; two-column cards desktop, one column mobile. Each H3 question should be 8–14 words and each answer 35–65 words.
+- **FAQ 1:** question [COPY PENDING] — `What does blogger outreach services include?`; answer [COPY PENDING] — `Give a direct answer about blogger outreach services, including practical scope, any importa…`
+- **FAQ 2:** question [COPY PENDING] — `Who is blogger outreach services best suited to?`; answer [COPY PENDING] — `Give a direct answer about blogger outreach services, including practical scope, any importa…`
+- **FAQ 3:** question [COPY PENDING] — `How long does blogger outreach services take?`; answer [COPY PENDING] — `Give a direct answer about blogger outreach services, including practical scope, any importa…`
+- **FAQ 4:** question [COPY PENDING] — `How is progress measured for blogger outreach services?`; answer [COPY PENDING] — `Give a direct answer about blogger outreach services, including practical scope, any importa…`
+- **FAQ 5:** question [COPY PENDING] — `What should we prepare before starting blogger outreach services?`; answer [COPY PENDING] — `Give a direct answer about blogger outreach services, including practical scope, any importa…`
+
+### 10. cta — Plan your next step
+
+- **Component:** `src/components/templates/page-template.tsx` / Block
+
+| Text slot | Recommended fit | Current state / sample |
+| --- | --- | --- |
+| H2 heading | 4–9 words; 25–60 characters | Filled — `Plan your next step` |
+| Body paragraph | 20–40 words | [COPY PENDING] — `Tell readers what to send us about their blogger outreach services needs and what response t…` |
+| CTA button label | 2–5 words | Filled — `Discuss your project` |
+- **Button destination:** `/contact`; fixed arrow icon.
+
+## After the configured blocks
+
+- **Component:** `src/components/templates/page-template.tsx` / PageInternalLinks.
+- **Child cards:** 0 when drafts are shown. Fixed H2 Explore our services, responsive three-column cards. H3 uses child title (3–8 words); body uses child metaDescription (18–25 words preferred). None.
+- **Parent hub link:** `/link-building-services` using parent title.
+- **Related pills:** 3 configured; fixed H2 Related services; labels use titles (2–6 words). `/link-building-services/packages`, `/niche-edits`, `/digital-pr-services`.
+- **Schema:** Service and BreadcrumbList; FAQPage when FAQ entries exist. Text derives from metadata and FAQ fields.
+
+## Copy handoff
+
+Replace every [COPY PENDING] text slot with approved copy. Verify facts before replacing TBC proof values. This document does not publish or index the page.

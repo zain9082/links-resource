@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import type { PageConfig } from "../../content/pages/types";
 import { site } from "./data";
+import { siteNoindex } from "./site-flags";
 
-export const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
-  site.url ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined) ||
-  "https://linksresource.com";
+// Canonicals always identify the production domain, including in preview builds.
+export const baseUrl = "https://linksresource.com";
+
+export function canonicalUrl(path: string = "/") {
+  const normalized = `/${path.split("/").filter(Boolean).join("/")}`;
+  return `${baseUrl}${normalized}`;
+}
 
 export function buildMetadata({
   title,
@@ -13,17 +17,21 @@ export function buildMetadata({
   path = "/",
   image = "/og.png",
   noindex = false,
+  follow = !noindex,
 }: {
   title?: string;
   description?: string;
   path?: string;
   image?: string;
   noindex?: boolean;
+  follow?: boolean;
 } = {}): Metadata {
   const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
-  const desc = description ?? site.description;
-  const url = `${baseUrl}${path}`;
+  const desc = description ?? (title ? `${title} at ${site.name}. ${site.description}` : site.description);
+  const url = canonicalUrl(path);
   const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+  const shouldNoindex = siteNoindex || noindex;
+  const shouldFollow = siteNoindex ? false : follow;
 
   return {
     title: fullTitle,
@@ -59,8 +67,8 @@ export function buildMetadata({
       description: desc,
       images: [image],
     },
-    robots: noindex
-      ? { index: false, follow: false, googleBot: { index: false, follow: false } }
+    robots: shouldNoindex
+      ? { index: false, follow: shouldFollow, googleBot: { index: false, follow: shouldFollow } }
       : {
           index: true,
           follow: true,
@@ -71,6 +79,15 @@ export function buildMetadata({
 
 export function buildAdminMetadata(title: string, path: string): Metadata {
   return buildMetadata({ title, path, noindex: true });
+}
+
+export function pageMetadata(page: PageConfig): Metadata {
+  return buildMetadata({
+    title: page.title,
+    description: page.metaDescription,
+    path: page.slug,
+    noindex: page.status === "draft",
+  });
 }
 
 export function serviceJsonLd({
@@ -123,19 +140,20 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: site.legalName,
-    alternateName: site.name,
+    name: site.name,
     url: baseUrl,
     email: site.email,
     telephone: site.phone,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "0/1 7 Aberfoyle Street",
-      addressLocality: "Glasgow",
-      postalCode: "G31 3RW",
-      addressCountry: "GB",
-    },
     sameAs: Object.values(site.socials),
+  };
+}
+
+export function professionalServiceJsonLd() {
+  return {
+    ...organizationJsonLd(),
+    "@type": "ProfessionalService",
+    name: site.name,
+    priceRange: "Contact for a quote",
   };
 }
 

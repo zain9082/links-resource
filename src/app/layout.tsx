@@ -8,7 +8,11 @@ import { Footer } from "@/components/layout/footer";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { AiAssistant } from "@/components/ai/ai-assistant";
 import { Providers } from "@/components/providers";
-import { buildMetadata, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { GlobalBreadcrumbSchema } from "@/components/shared/global-breadcrumb-schema";
+import { pageConfigs } from "../../content/pages";
+import { pageNavigationSections } from "../../content/pages/navigation";
+import { pageMetadata, organizationJsonLd, professionalServiceJsonLd, websiteJsonLd } from "@/lib/seo";
+import homePage from "../../content/pages/home";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -22,7 +26,7 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = buildMetadata();
+export const metadata: Metadata = pageMetadata(homePage);
 
 export const viewport: Viewport = {
   themeColor: "#050816",
@@ -35,7 +39,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${inter.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
@@ -43,14 +47,15 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([organizationJsonLd(), websiteJsonLd()]),
+            __html: JSON.stringify([organizationJsonLd(), professionalServiceJsonLd(), websiteJsonLd()]),
           }}
         />
+        <GlobalBreadcrumbSchema configuredPaths={pageConfigs.map((page) => page.slug)} />
         <AuroraBackground />
         <ScrollProgress />
         <Providers>
           <HashScroll />
-          <Navbar />
+          <Navbar servicesMenu={pageNavigationSections()} />
           <main className="relative">{children}</main>
           <Footer />
           <AiAssistant />
