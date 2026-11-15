@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { pageConfigs } from "../../../../content/pages";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { buildMetadata } from "@/lib/seo";
+import { siteNoindex } from "@/lib/site-flags";
 
 export const metadata: Metadata = buildMetadata({
   title: "Page review inventory",
@@ -28,6 +30,7 @@ function sectionFor(slug: string): string {
 }
 
 export default function InternalPages() {
+  if (!siteNoindex) notFound();
   const pages = [...pageConfigs].sort((a, b) => sectionFor(a.slug).localeCompare(sectionFor(b.slug)) || a.slug.localeCompare(b.slug));
   const drafts = pages.filter((page) => page.status === "draft").length;
 

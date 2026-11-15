@@ -92,7 +92,7 @@ export default {
     {
       "type": "richText",
       "heading": "Want more local customers finding you?",
-      "body": "Let's build a local SEO plan tailored to your service areas and growth goals. ✓ We review your enquiry and match you with the right specialist ✓ Clear scope, timeline, and next steps — no obligation ✓ UK-based team with transparent communication Get Started Now Contact Talk to our UK team +44 7438 836553 hello@linksresource.co.uk WhatsApp Chat UK Company No. 14819683 Get Started Now"
+      "body": "Let's build a local SEO plan tailored to your service areas and growth goals. ✓ We review your enquiry and match you with the right specialist ✓ Clear scope, timeline, and next steps — no obligation ✓ UK-based team with transparent communication Get Started Now Contact Talk to our UK team +44 7438 836553 hello@linksresource.co.uk WhatsApp Chat Get Started Now"
     }
   ],
   "faqs": [

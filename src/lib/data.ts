@@ -20,7 +20,7 @@ import type {
    ============================================================ */
 export const site = {
   name: "Links Resource",
-  legalName: "Links Resource LTD",
+  legalName: "Links Resource",
   domain: "linksresource.com",
   url: "https://linksresource.com",
   tagline: "Premium Link Building & Digital Marketing Agency",
@@ -28,7 +28,6 @@ export const site = {
     "Links Resource is a performance marketing agency specialising in niche-relevant backlinks, content creation & SEO to drive traffic, leads and brand growth.",
   email: "support@linksresource.com",
   phone: "+44 7476 606752",
-  address: "0/1 7 Aberfoyle Street, Glasgow, United Kingdom, G31 3RW",
   socials: {
     linkedin: "https://www.linkedin.com/company/links-resource-ltd",
     facebook: "https://www.facebook.com/linksresourceltd",

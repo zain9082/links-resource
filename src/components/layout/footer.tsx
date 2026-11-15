@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Sparkles, Mail, Phone, MapPin } from "lucide-react";
+import { Sparkles, Mail, Phone } from "lucide-react";
 import { site } from "@/lib/data";
 import { getPageConfig, visiblePageConfigs } from "../../../content/pages";
 
@@ -79,7 +79,6 @@ export function Footer() {
           </p>
         </div>
         <ul className="space-y-2 text-sm text-muted lg:justify-self-end">
-          <li className="flex items-center gap-2"><MapPin className="size-4 text-purple-2" />{site.address}</li>
           <li className="flex items-center gap-2"><Phone className="size-4 text-purple-2" /><a href={"tel:" + site.phone.replace(/\s/g, "")}>{site.phone}</a></li>
           <li className="flex items-center gap-2"><Mail className="size-4 text-purple-2" /><a href={"mailto:" + site.email}>{site.email}</a></li>
         </ul>

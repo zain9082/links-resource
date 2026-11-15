@@ -94,7 +94,7 @@ export default {
     {
       "type": "cta",
       "heading": "Ready to grow your business?",
-      "body": "Let's create a strategy tailored to your business. ✓ We review your enquiry and match you with the right specialist ✓ Clear scope, timeline, and next steps — no obligation ✓ UK-based team with transparent communication Book a Strategy Call Contact Talk to our UK team +44 7438 836553 hello@linksresource.co.uk WhatsApp Chat UK Company No. 14819683 Book a Strategy Call"
+      "body": "Let's create a strategy tailored to your business. ✓ We review your enquiry and match you with the right specialist ✓ Clear scope, timeline, and next steps — no obligation ✓ UK-based team with transparent communication Book a Strategy Call Contact Talk to our UK team +44 7438 836553 hello@linksresource.co.uk WhatsApp Chat Book a Strategy Call"
     }
   ],
   "faqs": [

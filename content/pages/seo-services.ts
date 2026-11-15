@@ -100,7 +100,7 @@ export default {
     {
       "type": "cta",
       "heading": "Ready to grow your business?",
-      "body": "Let's build an SEO strategy tailored to your niche, goals, and growth timeline. ✓ We review your enquiry and match you with the right specialist ✓ Clear scope, timeline, and next steps — no obligation ✓ UK-based team with transparent communication Get Started Now Contact Talk to our UK team +44 7438 836553 hello@linksresource.co.uk WhatsApp Chat UK Company No. 14819683 Get Started Now"
+      "body": "Let's build an SEO strategy tailored to your niche, goals, and growth timeline. ✓ We review your enquiry and match you with the right specialist ✓ Clear scope, timeline, and next steps — no obligation ✓ UK-based team with transparent communication Get Started Now Contact Talk to our UK team +44 7438 836553 hello@linksresource.co.uk WhatsApp Chat Get Started Now"
     }
   ],
   "faqs": [

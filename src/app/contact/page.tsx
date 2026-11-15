@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
 import { ContactForm } from "@/components/forms/contact-form";
 import { site } from "@/lib/data";
@@ -15,7 +15,6 @@ export default function ContactPage() {
   const details = [
     { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
     { icon: Phone, label: "Phone", value: site.phone, href: `tel:${site.phone.replace(/\s/g, "")}` },
-    { icon: MapPin, label: "Office", value: site.address },
   ];
 
   return (

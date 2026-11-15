@@ -21,6 +21,11 @@ const nextConfig: NextConfig = {
         statusCode: 301,
       })),
       {
+        source: "/resources/sync-probe-1788889913",
+        destination: "/resources",
+        statusCode: 301,
+      },
+      {
         source: "/our-team",
         destination: "/team",
         permanent: true,

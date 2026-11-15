@@ -41,7 +41,7 @@ export const restoredLegalRoutes: Record<string, { title: string; description: s
   "/privacy-policy": {
     title: "Privacy Policy",
     description: "How Links Resource collects, uses, and protects personal data.",
-    intro: "This policy explains how Links Resource LTD handles personal information when you use our website and services.",
+    intro: "This policy explains how Links Resource handles personal information when you use our website and services.",
     sections: [
       { heading: "Information we collect", text: "We may collect contact details, website URLs, project requirements, and communication records when you submit forms, request audits, or contact our team." },
       { heading: "How we use information", text: "Information is used to respond to enquiries, deliver services, improve our website, and meet legal or operational requirements. We do not sell personal data." },
