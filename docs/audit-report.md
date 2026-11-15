@@ -702,3 +702,36 @@ The redirect script reported `14/14 checks passed`, including one-hop 308 redire
 - **URL:** https://links-resource-production-2tj1lrn7w-links-resource.vercel.app
 - **Preview verification:** `/internal/pages` returned HTTP 200 with `X-Robots-Tag: noindex, nofollow`; its HTML contains draft route `/locations/london` and `noindex,nofollow` metadata. Preview robots.txt disallows `/`, and its sitemap is empty.
 - **Access:** Vercel Authentication protects this preview; access requires a team-authorized login. Production was not deployed or promoted, and no domain or DNS settings were changed.
+
+## N. Production launch
+
+**Date:** 16 November 2026. **Team/project:** Links Resource (`links-resource`) / `links-resource-production`. `redesign/phase-2` was merged into `main` and pushed. The merged branch was deleted locally; no remote branch existed. Final production deployment `dpl_Gmz6nKtuXLGtRTJkxrWeoZw39qkj` is READY at https://links-resource-production-iqjbbde5a-links-resource.vercel.app and is aliased to https://links-resource-production.vercel.app. The `.vercel.app` production alias is public; project SSO protection was disabled to permit launch checks before custom-domain verification.
+
+### Content and configuration
+
+- Removed the inactive company name, registration number and Glasgow address from active site data, footer, contact page, privacy policy and Organization/ProfessionalService schema. Brand name is `Links Resource`; shared phone and email remain. Removed five legacy content-copy mentions of company number 14819683.
+- Production variables: `SITE_NOINDEX=false`, `SHOW_DRAFTS=false`. Preview variables: `SITE_NOINDEX=true`, `SHOW_DRAFTS=true`. Confirmed the production values by pulling the project environment and inspecting only these two flags.
+- `npm run build` passed with Next.js 16.2.7 after the final route guard change.
+- Project-domain API confirms `linksresource.com` has no redirect and `www.linksresource.com` redirects to `linksresource.com` with HTTP 308. Both names remain unverified until DNS ownership records are added. No other Vercel account was changed.
+
+### Production URL checks
+
+Ran `node scripts/check-production-launch.mjs https://links-resource-production.vercel.app` against the final deployment. **All checks passed:** 39 old URLs from `docs/live-snapshot/index.csv` resolved as 29 direct HTTP 200 responses and 10 single-hop HTTP 301 redirects to HTTP 200 targets, with no 404s. The homepage is indexable and has the `https://linksresource.com` canonical. `robots.txt` allows crawling and lists `https://linksresource.com/sitemap.xml`. `/internal/pages` returns HTTP 404. A representative draft (`/locations/london`) has noindex metadata, is absent from the sitemap and visible navigation/hub links. `/about` is present in the sitemap. The inactive company details are absent from rendered homepage HTML. The unique deployment URL carries Vercel's `X-Robots-Tag: noindex`; the stable production alias does not.
+
+### DNS records to add at GoDaddy
+
+Vercel's project-specific recommendations and verification challenges on 16 November 2026:
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A | `@` | `216.198.79.1` |
+| A | `@` | `64.29.17.1` |
+| CNAME | `www` | `0b9973e30b0befee.vercel-dns-017.com` |
+| TXT | `_vercel` | `vc-domain-verify=linksresource.com,d525839636ae42f054b0` |
+| TXT | `_vercel` | `vc-domain-verify=www.linksresource.com,ddeadeb93805eff931be` |
+
+Both TXT values use the same host and must coexist. Once DNS is set, run `vercel domains verify linksresource.com --scope links-resource` and `vercel domains verify www.linksresource.com --scope links-resource`.
+
+### Git integration
+
+`vercel git connect https://github.com/zain9082/links-resource.git --scope links-resource --project links-resource-production --yes` failed twice: Vercel reports that the Links Resource team lacks access to that repository. The team integration search returned no repositories for the GitHub namespace. The repository's `main` push succeeded and the CLI production deployment is live, but automatic Git deployments remain **not connected**. Grant the Links Resource Vercel GitHub integration access to `zain9082/links-resource`, then retry `vercel git connect` and set `main` as the production branch.
