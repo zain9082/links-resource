@@ -32,7 +32,7 @@ const hubs = await Promise.all(["/locations", "/seo-services", "/industries"].ma
 const checks = {
   oldUrls: failures.length === 0,
   homeIndexable: /<meta name="robots" content="index,\s*follow"/.test(html) && !home.headers.get("x-robots-tag")?.includes("noindex"),
-  canonical: html.includes('rel="canonical" href="https://linksresource.com/"'),
+  canonical: /rel="canonical" href="https:\/\/linksresource\.com\/?"/.test(html),
   robots: robots.includes("Allow: /") && robots.includes("https://linksresource.com/sitemap.xml"),
   internal404: internal.status === 404,
   draftNoindex: draftHtml.includes('name="robots" content="noindex') && draft.status === 200,

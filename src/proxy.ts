@@ -4,6 +4,10 @@ import { NextResponse } from "next/server";
 export const proxy = auth((req) => {
   const { pathname } = req.nextUrl;
 
+  if (pathname === "/internal/pages" && process.env.SITE_NOINDEX === "false") {
+    return new NextResponse("Not Found", { status: 404 });
+  }
+
   if (pathname.startsWith("/admin")) {
     const role = (req.auth?.user as { role?: string } | undefined)?.role;
     if (!req.auth || role !== "ADMIN") {
@@ -17,5 +21,5 @@ export const proxy = auth((req) => {
 });
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/internal/pages"],
 };
